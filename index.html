@@ -6,15 +6,19 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Queueless - skip the wait</title>
+    <title>QueueLess — Skip the Wait</title>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!-- Navigation -->
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
     <header class="navbar">
+
         <div class="logo">
             Queue<span>Less</span>
         </div>
@@ -25,29 +29,370 @@
             <a href="#business">For Businesses</a>
             <a href="#">Login</a>
         </nav>
+
     </header>
 
-    <!--Hero Section-->
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
 
     <main>
+
+        <!-- =========================
+             HERO SECTION
+        ========================== -->
+
         <section class="hero" id="home">
+
             <div class="hero-content">
+
                 <p class="hero-label">
                     SMART QUEUE MANAGEMENT
                 </p>
+
                 <h1>
-                    stop waiting.
-                    <span>start moving.</span>
+                    Stop waiting.
+                    <span>Start moving.</span>
                 </h1>
 
                 <p class="hero-description">
-                    Queueless lets you join queues remotely,
+                    QueueLess lets you join queues remotely,
                     track your position, and spend less time
                     standing around.
                 </p>
-                <div class="hero"
+
+                <div class="hero-buttons">
+
+                    <button class="primary-btn" id="joinQueueBtn">
+                        Join a Queue
+                    </button>
+
+                    <button class="secondary-btn">
+                        For Businesses
+                    </button>
+
+                </div>
+
             </div>
+
+
+            <!-- Queue Preview -->
+
+            <div class="queue-preview">
+
+                <div class="queue-card">
+
+                    <div class="queue-card-header">
+
+                        <span>
+                            Example Business
+                        </span>
+
+                        <span class="status">
+                            ● Open
+                        </span>
+
+                    </div>
+
+
+                    <div class="ticket">
+
+                        <p>
+                            Your Ticket
+                        </p>
+
+                        <h2>
+                            A05
+                        </h2>
+
+                        <p>
+                            People ahead
+                        </p>
+
+                        <strong>
+                            3
+                        </strong>
+
+                    </div>
+
+
+                    <div class="queue-progress">
+
+                        <div></div>
+
+                    </div>
+
+
+                    <p class="queue-message">
+                        You're getting closer!
+                    </p>
+
+                </div>
+
+            </div>
+
         </section>
+
+
+        <!-- =========================
+             CUSTOMER JOIN QUEUE MODAL
+        ========================== -->
+
+        <div class="join-form-container" id="joinFormContainer">
+
+            <div class="join-form">
+
+                <button
+                    class="close-btn"
+                    id="closeFormBtn"
+                    type="button"
+                >
+                    ×
+                </button>
+
+
+                <p class="hero-label">
+                    JOIN QUEUE
+                </p>
+
+
+                <h2>
+                    Get your place in line.
+                </h2>
+
+
+                <p>
+                    Enter your information below to join
+                    this business's queue.
+                </p>
+
+
+                <form id="joinQueueForm">
+
+                    <!-- Customer Name -->
+
+                    <div class="form-group">
+
+                        <label for="customerName">
+                            Your Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customerName"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Phone Number -->
+
+                    <div class="form-group">
+
+                        <label for="customerPhone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            placeholder="e.g. 690123456"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Number of People -->
+
+                    <div class="form-group">
+
+                        <label for="people">
+                            Number of People
+                        </label>
+
+                        <input
+                            type="number"
+                            id="people"
+                            min="1"
+                            value="1"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Submit -->
+
+                    <button
+                        type="submit"
+                        class="primary-btn form-submit-btn"
+                    >
+                        Join Queue
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             HOW IT WORKS
+        ========================== -->
+
+        <section
+            class="how-it-works"
+            id="how-it-works"
+        >
+
+            <div class="section-heading">
+
+                <p>
+                    HOW IT WORKS
+                </p>
+
+                <h2>
+                    Queue smarter.
+                    <span>Live better.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="steps">
+
+                <!-- Step 1 -->
+
+                <div class="step">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Scan a business QR code
+                    </h3>
+
+                    <p>
+                        Scan the QueueLess QR code provided
+                        by the business you want to visit.
+                    </p>
+
+                </div>
+
+
+                <!-- Step 2 -->
+
+                <div class="step">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Join the queue
+                    </h3>
+
+                    <p>
+                        Enter your details and receive
+                        your digital ticket.
+                    </p>
+
+                </div>
+
+
+                <!-- Step 3 -->
+
+                <div class="step">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Track your position
+                    </h3>
+
+                    <p>
+                        Know exactly where you are
+                        without standing in line.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BUSINESS SECTION
+        ========================== -->
+
+        <section
+            class="business-section"
+            id="business"
+        >
+
+            <div>
+
+                <p class="hero-label">
+                    FOR BUSINESSES
+                </p>
+
+
+                <h2>
+                    Give your customers
+                    a better way to wait.
+                </h2>
+
+
+                <p>
+                    Manage your queue, organize your staff,
+                    and keep your customers informed.
+                </p>
+
+
+                <button class="primary-btn">
+                    Get Started
+                </button>
+
+            </div>
+
+        </section>
+
     </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="logo">
+            Queue<span>Less</span>
+        </div>
+
+
+        <p>
+            © 2026 QueueLess. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="js/script.js"></script>
+
 </body>
+
 </html>

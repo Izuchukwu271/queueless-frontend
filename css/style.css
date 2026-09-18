@@ -1,0 +1,577 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8fafc;
+    color: #0f172a;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    width: 100%;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #2563eb;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: #475569;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #2563eb;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 680px;
+    padding: 80px 7%;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 70px;
+    align-items: center;
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            #dbeafe 0%,
+            transparent 35%
+        ),
+        #f8fafc;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero-label {
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 6vw, 76px);
+    line-height: 1.05;
+    letter-spacing: -4px;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    display: block;
+    color: #2563eb;
+}
+
+.hero-description {
+    max-width: 540px;
+    color: #64748b;
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 15px 24px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.primary-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background: white;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+}
+
+.secondary-btn:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+
+/* =========================
+   QUEUE CARD
+========================= */
+
+.queue-preview {
+    display: flex;
+    justify-content: center;
+}
+
+.queue-card {
+    width: 100%;
+    max-width: 390px;
+    padding: 28px;
+    background: white;
+    border-radius: 24px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.12);
+    animation: floatCard 4s ease-in-out infinite;
+}
+
+.queue-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.status {
+    color: #16a34a;
+    font-size: 13px;
+}
+
+.ticket {
+    text-align: center;
+    padding: 40px 0 30px;
+}
+
+.ticket p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.ticket h2 {
+    font-size: 72px;
+    line-height: 1;
+    margin: 12px 0 25px;
+    letter-spacing: -3px;
+}
+
+.ticket strong {
+    display: block;
+    font-size: 28px;
+    margin-top: 4px;
+}
+
+.queue-progress {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.queue-progress div {
+    width: 65%;
+    height: 100%;
+    background: #2563eb;
+    border-radius: inherit;
+}
+
+.queue-message {
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+.how-it-works {
+    padding: 110px 7%;
+    background: white;
+}
+
+.section-heading {
+    max-width: 650px;
+    margin-bottom: 60px;
+}
+
+.section-heading p {
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.section-heading h2 {
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+.section-heading h2 span {
+    color: #2563eb;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.step {
+    padding: 35px;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+}
+
+.step-number {
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.step h3 {
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.step p {
+    color: #64748b;
+}
+
+
+/* =========================
+   BUSINESS SECTION
+========================= */
+
+.business-section {
+    margin: 0 7% 100px;
+    padding: 80px;
+    border-radius: 28px;
+    background: #0f172a;
+    color: white;
+}
+
+.business-section h2 {
+    max-width: 650px;
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+.business-section > div > p:not(.hero-label) {
+    max-width: 550px;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 35px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+}
+
+footer p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* =========================
+   JOIN QUEUE MODAL
+========================= */
+
+.join-form-container {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(8px);
+}
+
+.join-form {
+    position: relative;
+
+    width: 100%;
+    max-width: 500px;
+
+    padding: 40px;
+
+    background: white;
+    border-radius: 24px;
+
+    box-shadow: 0 30px 80px rgba(15, 23, 42, 0.25);
+
+    animation: formAppear 0.25s ease;
+}
+
+.join-form h2 {
+    font-size: 34px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+}
+
+.join-form > p:not(.hero-label) {
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+    color: #475569;
+
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.close-btn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-submit-btn {
+    width: 100%;
+    margin-top: 5px;
+}
+
+@keyframes formAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes floatCard {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        padding: 18px 5%;
+    }
+
+    .navbar nav {
+        display: none;
+    }
+
+    .hero {
+        padding: 65px 5%;
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .queue-card {
+        max-width: 360px;
+    }
+
+    .how-it-works {
+        padding: 80px 5%;
+    }
+
+    .section-heading h2 {
+        font-size: 38px;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .business-section {
+        margin: 0 5% 70px;
+        padding: 45px 30px;
+    }
+
+    .business-section h2 {
+        font-size: 38px;
+    }
+
+    footer {
+        padding: 30px 5%;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .join-form {
+    padding: 30px 22px;
+}
+
+.join-form h2 {
+    font-size: 28px;
+}
+
+}
