@@ -575,3 +575,56 @@ footer p {
 }
 
 }
+/* =========================
+   TICKET RESULT
+========================= */
+
+.ticket-result {
+    display: none;
+}
+
+.ticket-result h2 {
+    font-size: 34px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 25px;
+}
+
+.ticket-display {
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 20px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+}
+
+.ticket-display p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.ticket-display h3 {
+    font-size: 72px;
+    line-height: 1;
+    letter-spacing: -3px;
+    margin: 12px 0 25px;
+}
+
+.ticket-display strong {
+    display: block;
+    font-size: 30px;
+    margin-top: 5px;
+}
+
+.ticket-status {
+    text-align: center;
+    color: #16a34a;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.ticket-message {
+    text-align: center;
+    color: #64748b;
+}
