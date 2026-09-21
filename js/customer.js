@@ -10,10 +10,13 @@ const ticketResult = document.getElementById("ticketResult");
 const ticketNumber = document.getElementById("ticketNumber");
 const peopleAhead = document.getElementById("peopleAhead");
 const ticketStatus = document.getElementById("ticketStatus");
+const queueUpdateMessage = document.getElementById("queueUpdateMessage");
 
 const urlParams = new URLSearchParams(window.location.search);
 
 const slug = urlParams.get("business");
+
+let queueUpdateInterval;
 
 
 // =========================
@@ -136,35 +139,29 @@ joinQueueForm.addEventListener("submit", function (event) {
 
         })
 
-        .then(data => {
+     .then(data => {
 
-            console.log("Queue joined successfully:", data);
+    console.log("Queue joined successfully:", data);
 
+    // Hide the form
+    joinQueueForm.style.display = "none";
 
-            // Hide the form
+    // Show ticket result
+    ticketResult.style.display = "block";
 
-            joinQueueForm.style.display = "none";
+    // Display ticket number
+    ticketNumber.textContent = data.queue.ticket;
 
+    // Start automatic queue updates
+    updateQueueStatus(data.queue.ticket);
 
-            // Show the ticket
+    queueUpdateInterval = setInterval(function () {
+        updateQueueStatus(data.queue.ticket);
+    }, 5000);
 
-            ticketResult.style.display = "block";
+})
 
-
-            // Display ticket information
-
-            ticketNumber.textContent =
-                data.queue.ticket;
-
-
-            peopleAhead.textContent =
-                "—";
-
-
-            ticketStatus.textContent =
-                data.queue.status;
-
-        })
+       
 
         .catch(error => {
 
@@ -177,3 +174,47 @@ joinQueueForm.addEventListener("submit", function (event) {
         });
 
 });
+function updateQueueStatus(ticket) {
+
+    fetch(`http://localhost:3000/join/${slug}/queue/${ticket}`)
+
+        .then(response => {
+
+            if (!response.ok) {
+                throw new Error("Failed to get queue status.");
+            }
+
+            return response.json();
+
+        })
+
+        .then(data => {
+
+            console.log("Queue status updated:", data);
+
+            peopleAhead.textContent = data.people_ahead;
+
+            ticketStatus.textContent = data.status;
+
+            queueUpdateMessage.textContent =
+                "Updated just now";
+
+            // Stop checking once the queue is finished
+            if (
+                data.status === "completed" ||
+                data.status === "cancelled"
+            ) {
+                clearInterval(queueUpdateInterval);
+            }
+
+        })
+
+        .catch(error => {
+
+            console.error("Queue update error:", error);
+
+            queueUpdateMessage.textContent =
+                "Unable to update right now.";
+
+        });
+}
