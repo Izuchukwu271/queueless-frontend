@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>QueueLess — Business Login</title>
+    <title>QueueLess — Create Business Account</title>
 
     <link
         rel="stylesheet"
@@ -25,6 +25,7 @@
     <main class="auth-layout">
 
         <!-- LEFT SIDE -->
+
         <section class="auth-brand">
 
             <div class="auth-brand-content">
@@ -33,20 +34,21 @@
                     QueueLess
                 </a>
 
+
                 <div class="auth-brand-message">
 
                     <p class="hero-label">
-                        QUEUELESS FOR BUSINESS
+                        JOIN QUEUELESS
                     </p>
 
                     <h1>
-                        Your queue.
-                        <span>Your control.</span>
+                        Give your customers
+                        <span>less waiting.</span>
                     </h1>
 
                     <p>
-                        Manage customers, staff and waiting
-                        times from one simple dashboard.
+                        Create your business account and
+                        start managing your queue digitally.
                     </p>
 
                 </div>
@@ -61,13 +63,16 @@
                         </span>
 
                         <div>
+
                             <strong>
-                                Manage your queue
+                                Digital queues
                             </strong>
 
                             <p>
-                                Keep customers moving efficiently.
+                                Replace physical waiting lines with
+                                simple digital tickets.
                             </p>
+
                         </div>
 
                     </div>
@@ -80,13 +85,16 @@
                         </span>
 
                         <div>
+
                             <strong>
-                                Track customers
+                                Real-time updates
                             </strong>
 
                             <p>
-                                See who is waiting and who is being served.
+                                Keep customers informed about
+                                their position.
                             </p>
+
                         </div>
 
                     </div>
@@ -99,13 +107,16 @@
                         </span>
 
                         <div>
+
                             <strong>
-                                Built for any business
+                                Simple management
                             </strong>
 
                             <p>
-                                Clinics, banks, salons, restaurants and more.
+                                Manage your customers and staff
+                                from one dashboard.
                             </p>
+
                         </div>
 
                     </div>
@@ -118,6 +129,7 @@
 
 
         <!-- RIGHT SIDE -->
+
         <section class="auth-panel">
 
             <div class="auth-card">
@@ -129,17 +141,34 @@
                     </p>
 
                     <h2>
-                        Welcome back
+                        Create your account
                     </h2>
 
                     <p>
-                        Sign in to manage your business queue.
+                        Set up your business on QueueLess.
                     </p>
 
                 </div>
 
 
-                <form id="businessLoginForm">
+                <form id="businessRegisterForm">
+
+
+                    <div class="form-group">
+
+                        <label for="businessName">
+                            Business name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="businessName"
+                            placeholder="e.g. Happy Health Clinic"
+                            required
+                        >
+
+                    </div>
+
 
                     <div class="form-group">
 
@@ -160,23 +189,31 @@
 
                     <div class="form-group">
 
-                        <div class="password-label-row">
+                        <label for="location">
+                            Business location
+                        </label>
 
-                            <label for="password">
-                                Password
-                            </label>
+                        <input
+                            type="text"
+                            id="location"
+                            placeholder="e.g. Yaoundé"
+                            required
+                        >
 
-                            <a href="#">
-                                Forgot password?
-                            </a>
+                    </div>
 
-                        </div>
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
 
                         <input
                             type="password"
                             id="password"
-                            placeholder="Enter your password"
-                            autocomplete="current-password"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
                             required
                         >
 
@@ -187,7 +224,7 @@
                         type="submit"
                         class="primary-btn auth-submit-btn"
                     >
-                        Sign in
+                        Create business account
                     </button>
 
                 </form>
@@ -200,10 +237,10 @@
 
                 <p class="auth-register-text">
 
-                    Don't have a QueueLess business account?
+                    Already have a QueueLess account?
 
-                    <a href="#">
-                        Create one
+                    <a href="busi_login.html">
+                        Sign in
                     </a>
 
                 </p>
@@ -223,7 +260,7 @@
     </main>
 
 
-    <script src="js/business-login.js"></script>
+    <script src="js/business-register.js"></script>
 
 </body>
 

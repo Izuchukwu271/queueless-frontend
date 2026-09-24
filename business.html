@@ -20,76 +20,761 @@
 </head>
 
 
-<body>
-
-    <main>
-
-        <section class="hero">
-
-            <div class="hero-content">
-
-                <p class="hero-label">
-                    QUEUELESS BUSINESS
-                </p>
-
-                <h1>
-                    Manage your
-                    <span>queue.</span>
-                </h1>
-
-                <p class="hero-description">
-                    View customers, manage your queue,
-                    and keep things moving.
-                </p>
+<body class="dashboard-page">
 
 
-                <div class="queue-card">
+    <!-- =========================================
+         MOBILE HEADER
+         ========================================= -->
 
-                    <div class="queue-card-header">
+    <header class="mobile-dashboard-header">
 
-                        <span>
-                            Business Dashboard
-                        </span>
+        <a href="business.html" class="dashboard-logo">
+            QueueLess
+        </a>
 
-                        <span class="status">
-                            ● Open
-                        </span>
+        <button
+            class="mobile-menu-btn"
+            id="mobileMenuBtn"
+            type="button"
+        >
+            ☰
+        </button>
 
+    </header>
+
+
+    <!-- =========================================
+         DASHBOARD LAYOUT
+         ========================================= -->
+
+    <div class="dashboard-layout">
+
+
+        <!-- =====================================
+             SIDEBAR
+             ===================================== -->
+
+        <aside class="dashboard-sidebar" id="dashboardSidebar">
+
+            <div class="sidebar-top">
+
+                <a
+                    href="business.html"
+                    class="dashboard-logo"
+                >
+                    QueueLess
+                </a>
+
+
+                <div class="business-mini-profile">
+
+                    <div class="business-avatar">
+                        B
                     </div>
 
+                    <div>
 
-                    <div class="ticket">
-
-                        <p>
-                            Customers Waiting
-                        </p>
-
-                        <h2>
-                            0
-                        </h2>
-
-                        <p>
-                            Currently serving
-                        </p>
-
-                        <strong>
-                            —
+                        <strong id="sidebarBusinessName">
+                            Your Business
                         </strong>
+
+                        <span>
+                            Business account
+                        </span>
 
                     </div>
 
                 </div>
 
 
-                <button class="primary-btn">
-                    Serve Next Customer
-                </button>
+                <nav class="dashboard-nav">
+
+                    <p class="nav-section-title">
+                        MANAGEMENT
+                    </p>
+
+
+                    <a
+                        href="#"
+                        class="dashboard-nav-item active"
+                    >
+
+                        <span class="nav-icon">
+                            ▦
+                        </span>
+
+                        <span>
+                            Overview
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="#"
+                        class="dashboard-nav-item"
+                    >
+
+                        <span class="nav-icon">
+                            ≡
+                        </span>
+
+                        <span>
+                            Queue
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="#"
+                        class="dashboard-nav-item"
+                    >
+
+                        <span class="nav-icon">
+                            ♙
+                        </span>
+
+                        <span>
+                            Staff
+                        </span>
+
+                    </a>
+
+
+                    <p class="nav-section-title nav-section-spaced">
+                        BUSINESS
+                    </p>
+
+
+                    <a
+                        href="#"
+                        class="dashboard-nav-item"
+                    >
+
+                        <span class="nav-icon">
+                            ◉
+                        </span>
+
+                        <span>
+                            QR Code
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="#"
+                        class="dashboard-nav-item"
+                    >
+
+                        <span class="nav-icon">
+                            ⚙
+                        </span>
+
+                        <span>
+                            Settings
+                        </span>
+
+                    </a>
+
+                </nav>
 
             </div>
 
-        </section>
 
-    </main>
+            <div class="sidebar-bottom">
+
+                <a
+                    href="#"
+                    class="dashboard-nav-item logout-link"
+                    id="logoutBtn"
+                >
+
+                    <span class="nav-icon">
+                        ↪
+                    </span>
+
+                    <span>
+                        Sign out
+                    </span>
+
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================
+             MAIN CONTENT
+             ===================================== -->
+
+        <main class="dashboard-main">
+
+
+            <!-- TOP BAR -->
+
+            <header class="dashboard-topbar">
+
+                <div>
+
+                    <p class="dashboard-breadcrumb">
+                        Dashboard
+                    </p>
+
+                    <h1>
+                        Overview
+                    </h1>
+
+                </div>
+
+
+                <div class="dashboard-topbar-actions">
+
+                    <button
+                        class="dashboard-icon-btn"
+                        title="Notifications"
+                        type="button"
+                    >
+                        ♢
+                    </button>
+
+
+                    <div class="topbar-business">
+
+                        <div class="topbar-avatar">
+                            B
+                        </div>
+
+                        <div class="topbar-business-info">
+
+                            <strong id="topbarBusinessName">
+                                Your Business
+                            </strong>
+
+                            <span>
+                                Business owner
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================
+                 WELCOME
+                 ================================= -->
+
+            <section class="dashboard-welcome">
+
+                <div>
+
+                    <p class="dashboard-eyebrow">
+                        QUEUE OVERVIEW
+                    </p>
+
+                    <h2>
+                        Welcome back 👋
+                    </h2>
+
+                    <p>
+                        Here's what's happening with your
+                        queue today.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="dashboard-primary-btn"
+                    id="serveNextBtn"
+                    type="button"
+                >
+
+                    <span>
+                        + 
+                    </span>
+
+                    Serve next customer
+
+                </button>
+
+            </section>
+
+
+            <!-- =================================
+                 STAT CARDS
+                 ================================= -->
+
+            <section class="dashboard-stats">
+
+
+                <article class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <div class="stat-icon stat-icon-blue">
+                            ≡
+                        </div>
+
+                        <span class="stat-label">
+                            WAITING
+                        </span>
+
+                    </div>
+
+                    <strong
+                        class="stat-value"
+                        id="waitingCount"
+                    >
+                        0
+                    </strong>
+
+                    <p>
+                        Customers currently waiting
+                    </p>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <div class="stat-icon stat-icon-green">
+                            ●
+                        </div>
+
+                        <span class="stat-label">
+                            SERVING
+                        </span>
+
+                    </div>
+
+                    <strong
+                        class="stat-value"
+                        id="servingCount"
+                    >
+                        0
+                    </strong>
+
+                    <p>
+                        Currently being served
+                    </p>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <div class="stat-icon stat-icon-purple">
+                            #
+                        </div>
+
+                        <span class="stat-label">
+                            CURRENT TICKET
+                        </span>
+
+                    </div>
+
+                    <strong
+                        class="stat-value ticket-stat"
+                        id="currentTicket"
+                    >
+                        —
+                    </strong>
+
+                    <p>
+                        Customer currently being served
+                    </p>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <div class="stat-icon stat-icon-orange">
+                            ✓
+                        </div>
+
+                        <span class="stat-label">
+                            COMPLETED
+                        </span>
+
+                    </div>
+
+                    <strong
+                        class="stat-value"
+                        id="completedCount"
+                    >
+                        0
+                    </strong>
+
+                    <p>
+                        Customers completed today
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================
+                 MAIN DASHBOARD GRID
+                 ================================= -->
+
+            <section class="dashboard-content-grid">
+
+
+                <!-- QUEUE -->
+
+                <div class="dashboard-panel queue-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="panel-eyebrow">
+                                LIVE QUEUE
+                            </p>
+
+                            <h3>
+                                Customers
+                            </h3>
+
+                        </div>
+
+
+                        <button
+                            class="panel-action"
+                            type="button"
+                        >
+                            View all →
+                        </button>
+
+                    </div>
+
+
+                    <div class="queue-table-wrapper">
+
+                        <table class="dashboard-queue-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        TICKET
+                                    </th>
+
+                                    <th>
+                                        CUSTOMER
+                                    </th>
+
+                                    <th>
+                                        PEOPLE
+                                    </th>
+
+                                    <th>
+                                        STATUS
+                                    </th>
+
+                                    <th>
+                                        ACTION
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="queueList">
+
+                                <tr class="queue-empty-row">
+
+                                    <td colspan="5">
+
+                                        <div class="queue-empty-state">
+
+                                            <div class="empty-icon">
+                                                ✓
+                                            </div>
+
+                                            <strong>
+                                                Your queue is empty
+                                            </strong>
+
+                                            <p>
+                                                New customers will appear
+                                                here when they join.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CURRENT CUSTOMER -->
+
+                <aside class="dashboard-panel current-customer-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="panel-eyebrow">
+                                NOW SERVING
+                            </p>
+
+                            <h3>
+                                Current customer
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="current-ticket-display">
+
+                        <span>
+                            CURRENT TICKET
+                        </span>
+
+                        <strong id="currentCustomerTicket">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="current-customer-info">
+
+                        <div class="customer-info-row">
+
+                            <span>
+                                Customer
+                            </span>
+
+                            <strong id="currentCustomerName">
+                                No customer
+                            </strong>
+
+                        </div>
+
+
+                        <div class="customer-info-row">
+
+                            <span>
+                                People
+                            </span>
+
+                            <strong id="currentCustomerPeople">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="customer-info-row">
+
+                            <span>
+                                Status
+                            </span>
+
+                            <span
+                                class="dashboard-status serving"
+                                id="currentCustomerStatus"
+                            >
+                                Not serving
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="current-customer-actions">
+
+                        <button
+                            class="dashboard-complete-btn"
+                            id="completeCustomerBtn"
+                            type="button"
+                        >
+                            Complete customer
+                        </button>
+
+
+                        <button
+                            class="dashboard-cancel-btn"
+                            id="cancelCustomerBtn"
+                            type="button"
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
+
+                </aside>
+
+            </section>
+
+
+            <!-- =================================
+                 QUICK ACTIONS
+                 ================================= -->
+
+            <section class="quick-actions-section">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <p class="panel-eyebrow">
+                            QUICK ACTIONS
+                        </p>
+
+                        <h3>
+                            Manage your business
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-actions-grid">
+
+
+                    <button
+                        class="quick-action-card"
+                        type="button"
+                    >
+
+                        <span class="quick-action-icon">
+                            ◉
+                        </span>
+
+                        <span>
+
+                            <strong>
+                                Business QR Code
+                            </strong>
+
+                            <small>
+                                Let customers scan and join
+                                your queue.
+                            </small>
+
+                        </span>
+
+                        <span class="quick-action-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="quick-action-card"
+                        type="button"
+                    >
+
+                        <span class="quick-action-icon">
+                            ♙
+                        </span>
+
+                        <span>
+
+                            <strong>
+                                Manage staff
+                            </strong>
+
+                            <small>
+                                Add and manage your service staff.
+                            </small>
+
+                        </span>
+
+                        <span class="quick-action-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="quick-action-card"
+                        type="button"
+                    >
+
+                        <span class="quick-action-icon">
+                            ⚙
+                        </span>
+
+                        <span>
+
+                            <strong>
+                                Business settings
+                            </strong>
+
+                            <small>
+                                Update your business information.
+                            </small>
+
+                        </span>
+
+                        <span class="quick-action-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer class="dashboard-footer">
+
+                <span>
+                    QueueLess Business
+                </span>
+
+                <span>
+                    Queue management made simple.
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/business.js"></script>
 
 </body>
 
