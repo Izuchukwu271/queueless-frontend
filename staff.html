@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QueueLess — Staff Management</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="dashboard-sidebar">
+
+            <div class="sidebar-top">
+
+                <a href="business.html" class="dashboard-logo">
+                    QueueLess
+                </a>
+
+                <nav class="dashboard-nav">
+
+                    <p class="nav-section-title">MANAGEMENT</p>
+
+                    <a href="business.html" class="dashboard-nav-item">
+                        <span class="nav-icon">▦</span>
+                        <span>Overview</span>
+                    </a>
+
+                    <a href="business.html" class="dashboard-nav-item">
+                        <span class="nav-icon">≡</span>
+                        <span>Queue</span>
+                    </a>
+
+                    <a href="staff.html" class="dashboard-nav-item active">
+                        <span class="nav-icon">♙</span>
+                        <span>Staff</span>
+                    </a>
+
+                </nav>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <header class="dashboard-topbar">
+
+                <div>
+                    <p class="dashboard-breadcrumb">
+                        Management
+                    </p>
+
+                    <h1>Staff Management</h1>
+                </div>
+
+            </header>
+
+            <!-- WELCOME SECTION -->
+            <section class="dashboard-welcome">
+
+                <div>
+                    <p class="dashboard-eyebrow">YOUR TEAM</p>
+
+                    <h2>Manage your staff 👥</h2>
+
+                    <p>
+                        Add staff members and monitor their availability.
+                    </p>
+                </div>
+
+            </section>
+
+            <!-- ADD STAFF FORM -->
+            <section class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <p class="panel-eyebrow">STAFF MANAGEMENT</p>
+                        <h3>Add a staff member</h3>
+                    </div>
+                </div>
+
+                <form id="staffForm">
+
+                    <label for="staffName">Staff member's name</label>
+
+                    <input
+                        type="text"
+                        id="staffName"
+                        placeholder="Enter staff member's name"
+                        required
+                    >
+
+                    <button type="submit" class="dashboard-primary-btn">
+                        + Add Staff
+                    </button>
+
+                </form>
+
+                <p id="staffMessage"></p>
+
+            </section>
+
+            <!-- STAFF LIST -->
+            <section class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <p class="panel-eyebrow">YOUR TEAM</p>
+                        <h3>Staff members</h3>
+                    </div>
+                </div>
+
+                <div class="queue-table-wrapper">
+
+                    <table class="dashboard-queue-table">
+
+                        <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>AVAILABILITY</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="staffList">
+
+                            <tr>
+                                <td colspan="2">
+                                    Loading staff members...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/staff.js"></script>
+
+</body>
+</html>

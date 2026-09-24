@@ -2830,3 +2830,83 @@ footer p {
     }
 
 }
+
+/* =====================================
+   STAFF MANAGEMENT PAGE
+===================================== */
+
+#staffForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 600px;
+    padding: 24px;
+}
+
+#staffForm label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+}
+
+#staffName {
+    width: 100%;
+    max-width: 500px;
+    padding: 14px 16px;
+    border: 1px solid #dbe3ef;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#staffName:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+#staffForm .dashboard-primary-btn {
+    width: fit-content;
+    margin-top: 8px;
+}
+
+#staffMessage {
+    margin: 0 24px 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#staffList td {
+    padding: 18px 24px;
+}
+
+#staffList .status-badge.available {
+    background: #dcfce7;
+    color: #166534;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#staffList .status-badge.busy {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Mobile responsiveness */
+
+@media (max-width: 600px) {
+    #staffForm {
+        padding: 18px;
+    }
+
+    #staffName {
+        max-width: 100%;
+    }
+}
