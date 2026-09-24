@@ -2246,3 +2246,587 @@ footer p {
     }
 
 }
+/* =========================================
+   QUEUELESS CUSTOMER PAGE
+========================================= */
+
+.customer-page {
+    margin: 0;
+    min-height: 100vh;
+    background: #f3f6fb;
+    color: #101a32;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+
+/* HEADER */
+
+.customer-header {
+    height: 88px;
+    padding: 0 5%;
+    background: #101a32;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.customer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: white;
+    text-decoration: none;
+    font-size: 29px;
+    font-weight: 800;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+
+    background: #2864ed;
+    color: white;
+
+    display: grid;
+    place-items: center;
+}
+
+.logo-blue {
+    color: #4384ff;
+}
+
+.header-business {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 15px;
+    color: #e1e8f7;
+}
+
+
+/* MAIN LAYOUT */
+
+.customer-main {
+    width: 90%;
+    max-width: 1500px;
+    margin: 50px auto;
+
+    display: grid;
+    grid-template-columns: 1.2fr 0.92fr;
+    gap: 45px;
+}
+
+
+/* LEFT HERO */
+
+.customer-hero {
+    min-height: 760px;
+    padding: 65px;
+
+    border-radius: 16px;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(12, 24, 48, 0.97),
+            rgba(18, 39, 75, 0.91)
+        );
+
+    box-shadow: 0 15px 40px rgba(16, 26, 50, 0.12);
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    width: fit-content;
+    padding: 12px 20px;
+
+    border-radius: 30px;
+    background: rgba(42, 104, 237, 0.3);
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.hero-content h1 {
+    margin: 35px 0 20px;
+
+    font-size: clamp(38px, 4vw, 62px);
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+}
+
+.hero-content h1 span {
+    color: #4384ff;
+}
+
+.hero-description {
+    max-width: 520px;
+
+    color: #d0d9eb;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+
+/* BENEFITS */
+
+.customer-benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+
+    margin-top: 55px;
+}
+
+.benefit {
+    padding-right: 15px;
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.benefit:last-child {
+    border-right: none;
+}
+
+.benefit-icon {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 15px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+    background: rgba(57, 112, 235, 0.3);
+
+    font-size: 23px;
+}
+
+.benefit h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+}
+
+.benefit p {
+    margin: 0;
+    color: #c4cee0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* BUSINESS CARD */
+
+.customer-business-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+
+    padding: 25px;
+    margin-top: 60px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.business-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+    background: #2864ed;
+
+    font-size: 23px;
+}
+
+.business-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.business-details h3 {
+    margin: 2px 0 14px;
+    font-size: 19px;
+    overflow-wrap: anywhere;
+}
+
+.business-details p {
+    margin: 8px 0;
+    color: #d0d9eb;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.business-open {
+    padding: 7px 12px;
+    border-radius: 8px;
+
+    background: rgba(27, 174, 102, 0.2);
+    color: #8df0bc;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* RIGHT FORM CARD */
+
+.customer-form-section {
+    display: flex;
+    align-items: stretch;
+}
+
+.customer-form-card {
+    width: 100%;
+    padding: 45px;
+
+    border: 1px solid #e2e8f3;
+    border-radius: 16px;
+
+    background: white;
+    box-shadow: 0 12px 35px rgba(16, 26, 50, 0.04);
+}
+
+.form-icon {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 22px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+    background: #edf3ff;
+
+    font-size: 32px;
+}
+
+.customer-form-card > h2 {
+    margin: 0 0 14px;
+    font-size: 34px;
+    letter-spacing: -0.8px;
+}
+
+.form-description {
+    margin: 0 0 35px;
+
+    color: #697995;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* FORM FIELDS */
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+
+    color: #15213b;
+    font-size: 15px;
+    font-weight: 650;
+}
+
+.form-group label span {
+    color: #e34a5a;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    height: 58px;
+    padding: 0 17px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #dce4f2;
+    border-radius: 10px;
+
+    background: #fff;
+    color: #15213b;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    outline: none;
+    transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #2864ed;
+    box-shadow: 0 0 0 4px rgba(40, 100, 237, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #8b99b1;
+}
+
+
+/* JOIN BUTTON */
+
+.customer-submit-btn {
+    width: 100%;
+    min-height: 64px;
+    margin-top: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    border: none;
+    border-radius: 11px;
+
+    background: #2864ed;
+    color: white;
+
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 650;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.customer-submit-btn:hover {
+    background: #1c50ce;
+    transform: translateY(-1px);
+}
+
+.customer-submit-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* INFO NOTE */
+
+.customer-info-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    margin-top: 35px;
+    padding: 18px;
+
+    border-radius: 12px;
+    background: #f0f5ff;
+
+    color: #5d6f90;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.customer-info-note span {
+    color: #2864ed;
+    font-size: 19px;
+}
+
+
+/* TICKET RESULT */
+
+.ticket-result {
+    display: none;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.ticket-success-icon {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 15px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+    background: #e9f9ef;
+    color: #159447;
+
+    font-size: 27px;
+}
+
+.ticket-success-label {
+    color: #2864ed;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.ticket-result h2 {
+    font-size: 28px;
+}
+
+.ticket-display {
+    margin: 25px 0;
+    padding: 30px;
+
+    border-radius: 14px;
+    background: #101a32;
+    color: white;
+}
+
+.ticket-display p {
+    color: #aab8d0;
+    font-size: 13px;
+}
+
+.ticket-display h3 {
+    margin: 15px 0 25px;
+
+    color: #fff;
+    font-size: 56px;
+    letter-spacing: 3px;
+}
+
+.ticket-display strong {
+    display: block;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.ticket-status {
+    color: #159447;
+    font-weight: 700;
+}
+
+.ticket-message {
+    color: #52627e;
+}
+
+.queue-update-message {
+    color: #8290a8;
+    font-size: 13px;
+}
+
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1100px) {
+
+    .customer-main {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .customer-hero {
+        min-height: auto;
+        padding: 45px;
+    }
+
+    .customer-business-card {
+        margin-top: 45px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .customer-header {
+        height: 75px;
+        padding: 0 5%;
+    }
+
+    .customer-logo {
+        font-size: 22px;
+    }
+
+    .logo-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .header-business {
+        max-width: 48%;
+        font-size: 12px;
+    }
+
+    .customer-main {
+        width: 92%;
+        margin: 22px auto;
+    }
+
+    .customer-hero {
+        padding: 28px 22px;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .customer-benefits {
+        gap: 12px;
+        margin-top: 35px;
+    }
+
+    .benefit {
+        padding-right: 8px;
+    }
+
+    .benefit h3 {
+        font-size: 14px;
+    }
+
+    .benefit p {
+        font-size: 12px;
+    }
+
+    .benefit-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .customer-business-card {
+        padding: 18px 14px;
+        gap: 12px;
+    }
+
+    .business-details h3 {
+        font-size: 15px;
+    }
+
+    .business-details p {
+        font-size: 12px;
+    }
+
+    .customer-form-card {
+        padding: 28px 22px;
+    }
+
+    .customer-form-card > h2 {
+        font-size: 28px;
+    }
+
+    .form-description {
+        font-size: 14px;
+    }
+
+}

@@ -2,225 +2,232 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>QueueLess — Join Queue</title>
 
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
+<body class="customer-page">
 
-<body>
+    <!-- HEADER -->
+    <header class="customer-header">
 
-    <main>
+        <a href="index.html" class="customer-logo">
+            <span class="logo-icon">Q</span>
+            <span>Queue<span class="logo-blue">Less</span></span>
+        </a>
 
-        <section class="hero">
+        <div class="header-business">
+            <span>▣</span>
+            <span id="businessName">Loading business...</span>
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="customer-main">
+
+        <!-- LEFT HERO SECTION -->
+        <section class="customer-hero">
 
             <div class="hero-content">
 
-                <p class="hero-label">
-                    QUEUELESS
-                </p>
+                <div class="hero-badge">
+                    <span>👥</span>
+                    Join the queue
+                </div>
 
                 <h1>
-                    Join the queue.
-                    <span>Skip the wait.</span>
+                    Skip the line,<br>
+                    <span>save your time.</span>
                 </h1>
 
                 <p class="hero-description">
-                    You are about to join a QueueLess queue.
-                    Enter your details below to get your
-                    digital ticket.
+                    Get your queue number in seconds and wait comfortably.
+                    No more standing in line!
+                </p>
+
+                <div class="customer-benefits">
+
+                    <div class="benefit">
+                        <div class="benefit-icon">⚡</div>
+                        <h3>Fast</h3>
+                        <p>Get your number in seconds.</p>
+                    </div>
+
+                    <div class="benefit">
+                        <div class="benefit-icon">🛡</div>
+                        <h3>Safe</h3>
+                        <p>Your information stays secure.</p>
+                    </div>
+
+                    <div class="benefit">
+                        <div class="benefit-icon">◷</div>
+                        <h3>Convenient</h3>
+                        <p>Wait at your own pace.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUSINESS INFORMATION -->
+            <div class="customer-business-card">
+
+                <div class="business-icon">▣</div>
+
+                <div class="business-details">
+
+                    <h3 id="businessCardName">
+                        Loading business...
+                    </h3>
+
+                    <p>
+                        📍 <span id="businessLocation">Loading location...</span>
+                    </p>
+
+                    <p>
+                        ☎ <span id="businessPhone">Loading phone...</span>
+                    </p>
+
+                </div>
+
+                <span class="business-open">Open</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT FORM SECTION -->
+        <section class="customer-form-section">
+
+            <div class="customer-form-card">
+
+                <div class="form-icon">👥</div>
+
+                <h2>Join Our Queue</h2>
+
+                <p class="form-description">
+                    Fill in your details below to get your queue number
+                    and wait for your turn.
                 </p>
 
 
-                <button
-                    class="primary-btn"
-                    id="joinQueueBtn"
-                >
-                    Join Queue
-                </button>
-                <div class="join-form-container" id="joinFormContainer">
+                <!-- JOIN FORM -->
+                <form id="joinQueueForm">
 
-    <div class="join-form">
+                    <div class="form-group">
 
-        <button
-            class="close-btn"
-            id="closeFormBtn"
-            type="button"
-        >
-            ×
-        </button>
+                        <label for="customerName">
+                            Full Name <span>*</span>
+                        </label>
 
-        <p class="hero-label">
-            JOIN QUEUE
-        </p>
-
-        <h2>
-            Get your place in line.
-        </h2>
-
-        <p>
-            Enter your information to join this business's queue.
-        </p>
-
-        <form id="joinQueueForm">
-
-            <div class="form-group">
-
-                <label for="customerName">
-                    Your Name
-                </label>
-
-                <input
-                    type="text"
-                    id="customerName"
-                    placeholder="Enter your name"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="customerPhone">
-                    Phone Number
-                </label>
-
-                <input
-                    type="tel"
-                    id="customerPhone"
-                    placeholder="e.g. 690123456"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="people">
-                    Number of People
-                </label>
-
-                <input
-                    type="number"
-                    id="people"
-                    min="1"
-                    value="1"
-                    required
-                >
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="primary-btn form-submit-btn"
-            >
-                Join Queue
-            </button>
-
-        </form>
-        <div class="ticket-result" id="ticketResult">
-
-    <p class="hero-label">
-        YOU'RE IN THE QUEUE
-    </p>
-
-    <h2>
-        Your digital ticket
-    </h2>
-
-    <div class="ticket-display">
-
-        <p>
-            Your Ticket
-        </p>
-
-        <h3 id="ticketNumber">
-            A00
-        </h3>
-
-        <p>
-            People ahead
-        </p>
-
-        <strong id="peopleAhead">
-            0
-        </strong>
-
-    </div>
-
-    <div class="ticket-status">
-        ● <span id="ticketStatus">Waiting</span>
-    </div>
-
-    <p class="ticket-message">
-        You're getting closer!
-    </p>
-    
-    <p class="queue-update-message" id="queueUpdateMessage">
-    Updating your queue position...
-</p>
-
-</div>
-
-    </div>
-
-</div>
-
-            </div>
-
-
-            <div class="queue-preview">
-
-                <div class="queue-card">
-
-                    <div class="queue-card-header">
-
-                        <span id="businessName">
-                            Loading business...
-                        </span>
-
-                        <span class="status">
-                            ● Open
-                        </span>
+                        <input
+                            type="text"
+                            id="customerName"
+                            placeholder="Enter your full name"
+                            required
+                        >
 
                     </div>
 
 
-                    <div class="ticket">
+                    <div class="form-group">
 
-                        <p>
-                            Your QueueLess Ticket
-                        </p>
+                        <label for="customerPhone">
+                            Phone Number <span>*</span>
+                        </label>
 
-                        <h2>
-                            —
-                        </h2>
-
-                        <p>
-                            People ahead
-                        </p>
-
-                        <strong>
-                            —
-                        </strong>
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            placeholder="Enter your phone number"
+                            required
+                        >
 
                     </div>
 
+
+                    <div class="form-group">
+
+                        <label for="people">
+                            Number of People <span>*</span>
+                        </label>
+
+                        <select id="people" required>
+                            <option value="1">1 person</option>
+                            <option value="2">2 people</option>
+                            <option value="3">3 people</option>
+                            <option value="4">4 people</option>
+                            <option value="5">5 people</option>
+                            <option value="6">6 people</option>
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="customer-submit-btn"
+                    >
+                        <span>▣</span>
+                        Join Queue
+                    </button>
+
+                </form>
+
+
+                <!-- TICKET RESULT -->
+                <div class="ticket-result" id="ticketResult">
+
+                    <div class="ticket-success-icon">✓</div>
+
+                    <p class="ticket-success-label">
+                        YOU'RE IN THE QUEUE
+                    </p>
+
+                    <h2>Your digital ticket</h2>
+
+                    <div class="ticket-display">
+
+                        <p>YOUR TICKET</p>
+
+                        <h3 id="ticketNumber">A00</h3>
+
+                        <p>People ahead</p>
+
+                        <strong id="peopleAhead">0</strong>
+
+                    </div>
+
+                    <div class="ticket-status">
+                        ● <span id="ticketStatus">Waiting</span>
+                    </div>
+
+                    <p class="ticket-message">
+                        You're getting closer!
+                    </p>
+
+                    <p
+                        class="queue-update-message"
+                        id="queueUpdateMessage"
+                    >
+                        Updating your queue position...
+                    </p>
+
+                </div>
+
+
+                <div class="customer-info-note">
+                    <span>ⓘ</span>
+                    Once you join, you'll receive your queue number
+                    and an updated position in the queue.
                 </div>
 
             </div>
