@@ -255,8 +255,26 @@ function renderQueueTable(queues) {
         statusCell.appendChild(statusBadge);
 
         const actionCell = document.createElement("td");
-        actionCell.textContent = "—";
 
+if (customer.status === "waiting") {
+
+    const cancelBtn = document.createElement("button");
+
+    cancelBtn.textContent = "Cancel";
+
+    cancelBtn.className = "dashboard-cancel-btn";
+
+    cancelBtn.dataset.queueId = customer.id;
+
+    cancelBtn.classList.add("cancel-queue-btn");
+
+    actionCell.appendChild(cancelBtn);
+
+} else {
+
+    actionCell.textContent = "—";
+
+}
         row.appendChild(ticketCell);
         row.appendChild(nameCell);
         row.appendChild(peopleCell);
@@ -415,72 +433,68 @@ completeCustomerBtn.addEventListener("click", function () {
 });
 
 // =====================================
-// CANCEL CURRENT CUSTOMER
+// CANCEL A WAITING CUSTOMER
 // =====================================
 
-cancelCustomerBtn.addEventListener("click", function () {
+queueList.addEventListener("click", function (event) {
 
-    // Check if there is a customer being served
-    if (!currentServingQueueId) {
-        alert("There is no customer currently being served.");
+    const button = event.target.closest(".cancel-queue-btn");
+
+    if (!button) {
         return;
     }
 
-    // Ask for confirmation
+    const queueId = button.dataset.queueId;
+
     const confirmCancel = confirm(
-        "Are you sure you want to cancel this customer?"
+        "Are you sure you want to cancel this waiting customer?"
     );
 
     if (!confirmCancel) {
         return;
     }
 
-    // Disable button while cancelling
-    cancelCustomerBtn.disabled = true;
-    cancelCustomerBtn.textContent = "Cancelling...";
+    button.disabled = true;
+    button.textContent = "Cancelling...";
 
-    // Send cancellation request to backend
-    fetch(`http://localhost:3000/queues/${currentServingQueueId}/cancel`, {
+    fetch(`http://localhost:3000/queues/${queueId}/cancel`, {
 
         method: "PATCH",
 
         headers: {
-            "Authorization": `Bearer ${token}`
+            Authorization: `Bearer ${token}`
         }
 
     })
 
     .then(async response => {
 
-    const data = await response.json();
+        const data = await response.json();
 
-    if (!response.ok) {
-        throw new Error(data.message || "Failed to cancel customer.");
-    }
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to cancel customer.");
+        }
 
-    return data;
+        return data;
 
-})
-    .then(data => {
+    })
+
+    .then(() => {
 
         alert("Customer cancelled successfully!");
 
-        // Refresh dashboard
         loadQueueData();
 
     })
 
     .catch(error => {
 
-    console.error("Error cancelling customer:", error);
+        console.error("Cancellation error:", error);
 
-    alert(error.message);
+        alert(error.message);
 
-})
-    .finally(() => {
-
-        cancelCustomerBtn.disabled = false;
-        cancelCustomerBtn.textContent = "Cancel";
+        button.disabled = false;
+        button.textContent = "Cancel";
 
     });
 
