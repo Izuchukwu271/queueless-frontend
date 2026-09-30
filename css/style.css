@@ -2910,3 +2910,225 @@ footer p {
         max-width: 100%;
     }
 }
+/* =========================================
+   CURRENTLY SERVING - NEW MULTI STAFF UI
+   ========================================= */
+
+.currently-serving-panel {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.currently-serving-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+
+/* Serving count badge */
+
+.serving-count-badge {
+    min-width: 30px;
+    height: 30px;
+    padding: 0 9px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 999px;
+
+    background: #eef4ff;
+    color: #2563eb;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* Individual serving card */
+
+.serving-customer-card {
+    padding: 18px;
+
+    border: 1px solid #e5eaf2;
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.serving-customer-card:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+
+/* Card top */
+
+.serving-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+}
+
+
+/* Ticket */
+
+.serving-ticket {
+    font-size: 24px;
+    font-weight: 800;
+
+    color: #2563eb;
+}
+
+
+/* Serving status */
+
+.serving-status {
+    padding: 6px 10px;
+
+    border-radius: 999px;
+
+    background: #ecfdf3;
+    color: #16a34a;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+/* Bottom section */
+
+.serving-card-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 16px;
+}
+
+
+/* Customer information */
+
+.serving-customer-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.serving-customer-info strong {
+    color: #111827;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.serving-customer-info span {
+    color: #7b879f;
+
+    font-size: 12px;
+}
+
+
+/* Complete button */
+
+.serving-complete-btn {
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 9px;
+
+    background: #16a34a;
+    color: white;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.serving-complete-btn:hover {
+    background: #15803d;
+
+    transform: translateY(-1px);
+}
+
+.serving-complete-btn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* Empty state */
+
+.serving-empty-state {
+    padding: 30px 18px;
+
+    text-align: center;
+
+    border: 1px dashed #dce3ee;
+
+    border-radius: 14px;
+
+    background: #fafbfd;
+}
+
+.serving-empty-icon {
+    width: 42px;
+    height: 42px;
+
+    margin: 0 auto 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ecfdf3;
+    color: #16a34a;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.serving-empty-state strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #172033;
+
+    font-size: 14px;
+}
+
+.serving-empty-state p {
+    margin: 0;
+
+    color: #8994a8;
+
+    font-size: 12px;
+    line-height: 1.5;
+}

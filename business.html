@@ -17,6 +17,173 @@
         href="css/style.css"
     >
 
+
+    <style>
+        /* =========================================
+           QUEUELESS - CURRENTLY SERVING UI
+           ========================================= */
+
+        .currently-serving-panel {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+
+        .currently-serving-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .serving-count-badge {
+            min-width: 30px;
+            height: 30px;
+            padding: 0 9px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            background: #eef4ff;
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .serving-customer-card {
+            padding: 18px;
+            border: 1px solid #e5eaf2;
+            border-radius: 14px;
+            background: #ffffff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .serving-customer-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+        }
+
+        .serving-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .serving-ticket {
+            font-size: 24px;
+            font-weight: 800;
+            color: #2563eb;
+        }
+
+        .serving-status {
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #ecfdf3;
+            color: #16a34a;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .serving-card-bottom {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .serving-customer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 0;
+        }
+
+        .serving-customer-info strong {
+            color: #111827;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .serving-customer-info span {
+            color: #7b879f;
+            font-size: 12px;
+        }
+
+        .serving-complete-btn {
+            flex-shrink: 0;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 9px;
+            background: #16a34a;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .serving-complete-btn:hover {
+            background: #15803d;
+            transform: translateY(-1px);
+        }
+
+        .serving-complete-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .serving-empty-state {
+            padding: 30px 18px;
+            text-align: center;
+            border: 1px dashed #dce3ee;
+            border-radius: 14px;
+            background: #fafbfd;
+        }
+
+        .serving-empty-icon {
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #ecfdf3;
+            color: #16a34a;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .serving-empty-state strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #172033;
+            font-size: 14px;
+        }
+
+        .serving-empty-state p {
+            margin: 0;
+            color: #8994a8;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 900px) {
+            .serving-card-bottom {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .serving-complete-btn {
+                width: 100%;
+            }
+        }
+    </style>
+
 </head>
 
 
@@ -376,28 +543,27 @@
                     <div class="stat-card-top">
 
                         <div class="stat-icon stat-icon-purple">
-                            #
+                            ♙
                         </div>
 
                         <span class="stat-label">
-                            CURRENT TICKET
+                            ACTIVE STAFF
                         </span>
 
                     </div>
 
                     <strong
-                        class="stat-value ticket-stat"
-                        id="currentTicket"
+                        class="stat-value"
+                        id="activeStaffCount"
                     >
-                        —
+                        0
                     </strong>
 
                     <p>
-                        Customer currently being served
+                        Staff currently serving customers
                     </p>
 
                 </article>
-
 
                 <article class="stat-card">
 
@@ -533,111 +699,55 @@
 
                 </div>
 
+<!-- CURRENTLY SERVING -->
 
-                <!-- CURRENT CUSTOMER -->
+<aside class="dashboard-panel currently-serving-panel">
 
-                <aside class="dashboard-panel current-customer-panel">
+    <div class="panel-header">
 
-                    <div class="panel-header">
+        <div>
 
-                        <div>
+            <p class="panel-eyebrow">
+                NOW SERVING
+            </p>
 
-                            <p class="panel-eyebrow">
-                                NOW SERVING
-                            </p>
+            <h3>
+                Currently serving
+            </h3>
 
-                            <h3>
-                                Current customer
-                            </h3>
+        </div>
 
-                        </div>
+        <span class="serving-count-badge" id="servingStaffCount">
+            0
+        </span>
 
-                    </div>
-
-
-                    <div class="current-ticket-display">
-
-                        <span>
-                            CURRENT TICKET
-                        </span>
-
-                        <strong id="currentCustomerTicket">
-                            —
-                        </strong>
-
-                    </div>
+    </div>
 
 
-                    <div class="current-customer-info">
+    <div
+        class="currently-serving-list"
+        id="currentlyServingList"
+    >
 
-                        <div class="customer-info-row">
+        <div class="serving-empty-state">
 
-                            <span>
-                                Customer
-                            </span>
+            <div class="serving-empty-icon">
+                ✓
+            </div>
 
-                            <strong id="currentCustomerName">
-                                No customer
-                            </strong>
+            <strong>
+                No customers being served
+            </strong>
 
-                        </div>
+            <p>
+                Customers assigned to staff will appear here.
+            </p>
 
+        </div>
 
-                        <div class="customer-info-row">
+    </div>
 
-                            <span>
-                                People
-                            </span>
-
-                            <strong id="currentCustomerPeople">
-                                —
-                            </strong>
-
-                        </div>
-
-
-                        <div class="customer-info-row">
-
-                            <span>
-                                Status
-                            </span>
-
-                            <span
-                                class="dashboard-status serving"
-                                id="currentCustomerStatus"
-                            >
-                                Not serving
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="current-customer-actions">
-
-                        <button
-                            class="dashboard-complete-btn"
-                            id="completeCustomerBtn"
-                            type="button"
-                        >
-                            Complete customer
-                        </button>
-
-
-                        <button
-                            class="dashboard-cancel-btn"
-                            id="cancelCustomerBtn"
-                            type="button"
-                        >
-                            Cancel
-                        </button>
-
-                    </div>
-
-                </aside>
-
-            </section>
+</aside>
 
 
             <!-- =================================

@@ -1,12 +1,16 @@
 const token = localStorage.getItem("queuelessToken");
+
 let businessId = null;
+
 // Check if the user is logged in
 if (!token) {
     window.location.href = "busi_login.html";
 }
 
 
+// =====================================
 // DASHBOARD ELEMENTS
+// =====================================
 
 const sidebarBusinessName =
     document.getElementById("sidebarBusinessName");
@@ -23,33 +27,17 @@ const servingCount =
 const completedCount =
     document.getElementById("completedCount");
 
-const currentTicket =
-    document.getElementById("currentTicket");
+const activeStaffCount =
+    document.getElementById("activeStaffCount");
 
 const queueList =
     document.getElementById("queueList");
 
-const currentCustomerTicket =
-    document.getElementById("currentCustomerTicket");
+const currentlyServingList =
+    document.getElementById("currentlyServingList");
 
-const currentCustomerName =
-    document.getElementById("currentCustomerName");
-
-const currentCustomerPeople =
-    document.getElementById("currentCustomerPeople");
-
-const currentCustomerStatus =
-    document.getElementById("currentCustomerStatus");
-
- // BUTTON ELEMENTS
-const completeCustomerBtn =
-    document.getElementById("completeCustomerBtn");
-
-const cancelCustomerBtn =
-    document.getElementById("cancelCustomerBtn");
-
-
-    let currentServingQueueId = null;
+const servingStaffCount =
+    document.getElementById("servingStaffCount");
 
 
 // =====================================
@@ -80,6 +68,7 @@ function loadBusinessInformation() {
         console.log("Business information:", data);
 
         const business = data.business;
+
         businessId = business.id;
 
         sidebarBusinessName.textContent =
@@ -128,7 +117,11 @@ function loadQueueData() {
 
         const queues = data.queues || [];
 
-        // Count customers by status
+
+        // =====================================
+        // FILTER CUSTOMERS BY STATUS
+        // =====================================
+
         const waiting = queues.filter(
             customer => customer.status === "waiting"
         );
@@ -141,17 +134,32 @@ function loadQueueData() {
             customer => customer.status === "completed"
         );
 
-        // Update dashboard statistics
+
+        // =====================================
+        // UPDATE DASHBOARD STATISTICS
+        // =====================================
+
         waitingCount.textContent = waiting.length;
 
         servingCount.textContent = serving.length;
 
         completedCount.textContent = completed.length;
 
-        // Update current customer
-        updateCurrentCustomer(serving);
+        // Number of staff currently serving
+        activeStaffCount.textContent = serving.length;
 
-        // Update queue table
+
+        // =====================================
+        // UPDATE CURRENTLY SERVING PANEL
+        // =====================================
+
+        renderCurrentlyServing(serving);
+
+
+        // =====================================
+        // UPDATE QUEUE TABLE
+        // =====================================
+
         renderQueueTable(queues);
 
     })
@@ -166,44 +174,117 @@ function loadQueueData() {
 
 
 // =====================================
-// UPDATE CURRENT CUSTOMER
+// RENDER CURRENTLY SERVING
 // =====================================
 
-function updateCurrentCustomer(serving) {
+function renderCurrentlyServing(serving) {
 
-    currentServingQueueId = null;
+    currentlyServingList.innerHTML = "";
 
+    servingStaffCount.textContent = serving.length;
+
+
+    // No customers currently being served
     if (serving.length === 0) {
 
-        currentTicket.textContent = "—";
+        currentlyServingList.innerHTML = `
+            <div class="serving-empty-state">
 
-        currentCustomerTicket.textContent = "—";
+                <div class="serving-empty-icon">
+                    ✓
+                </div>
 
-        currentCustomerName.textContent = "No customer being served";
+                <strong>
+                    No customers being served
+                </strong>
 
-        currentCustomerPeople.textContent = "—";
+                <p>
+                    Customers assigned to staff will appear here.
+                </p>
 
-        currentCustomerStatus.textContent = "Waiting for next customer";
+            </div>
+        `;
 
         return;
-
     }
 
-    const customer = serving[0];
-    currentServingQueueId = customer.id;
 
-    currentTicket.textContent = customer.ticket;
+    // Create a card for EVERY serving customer
+    serving.forEach(customer => {
 
-    currentCustomerTicket.textContent = customer.ticket;
+        const card = document.createElement("div");
 
-    currentCustomerName.textContent =
-        customer.customer_name;
+        card.className = "serving-customer-card";
 
-    currentCustomerPeople.textContent =
-        customer.people ?? "—";
 
-    currentCustomerStatus.textContent =
-        customer.status;
+        // Ticket
+        const ticket = document.createElement("div");
+
+        ticket.className = "serving-ticket";
+
+        ticket.textContent = customer.ticket;
+
+
+        // Customer information
+        const customerInfo = document.createElement("div");
+
+        customerInfo.className = "serving-customer-info";
+
+        customerInfo.innerHTML = `
+            <strong>${customer.customer_name}</strong>
+
+            <span>
+                People: ${customer.people ?? "—"}
+            </span>
+
+           <span>Staff: ${customer.staff_name ?? "Unassigned"}</span>
+        `;
+
+
+        // Status
+        const status = document.createElement("span");
+
+        status.className = "serving-status";
+
+        status.textContent = "Serving";
+
+
+        // Complete button
+        const completeBtn = document.createElement("button");
+
+        completeBtn.className = "serving-complete-btn";
+
+        completeBtn.textContent = "Complete";
+
+        completeBtn.dataset.queueId = customer.id;
+
+
+        // Card top
+        const cardTop = document.createElement("div");
+
+        cardTop.className = "serving-card-top";
+
+        cardTop.appendChild(ticket);
+        cardTop.appendChild(status);
+
+
+        // Card bottom
+        const cardBottom = document.createElement("div");
+
+        cardBottom.className = "serving-card-bottom";
+
+        cardBottom.appendChild(customerInfo);
+        cardBottom.appendChild(completeBtn);
+
+
+        // Build card
+        card.appendChild(cardTop);
+        card.appendChild(cardBottom);
+
+
+        currentlyServingList.appendChild(card);
+
+    });
 
 }
 
@@ -216,6 +297,7 @@ function renderQueueTable(queues) {
 
     queueList.innerHTML = "";
 
+
     if (queues.length === 0) {
 
         queueList.innerHTML = `
@@ -227,58 +309,105 @@ function renderQueueTable(queues) {
         `;
 
         return;
-
     }
+
 
     queues.forEach(customer => {
 
         const row = document.createElement("tr");
 
+
+        // Ticket
         const ticketCell = document.createElement("td");
+
         ticketCell.textContent = customer.ticket;
 
+
+        // Customer name
         const nameCell = document.createElement("td");
+
         nameCell.textContent = customer.customer_name;
 
-        const peopleCell = document.createElement("td");
-        peopleCell.textContent = customer.people ?? "—";
 
+        // Number of people
+        const peopleCell = document.createElement("td");
+
+        peopleCell.textContent =
+            customer.people ?? "—";
+
+
+        // Status
         const statusCell = document.createElement("td");
 
         const statusBadge = document.createElement("span");
 
-        statusBadge.textContent = customer.status;
+        statusBadge.textContent =
+            customer.status;
 
         statusBadge.className =
             "status-badge " + customer.status;
 
         statusCell.appendChild(statusBadge);
 
+
+        // Actions
         const actionCell = document.createElement("td");
 
-if (customer.status === "waiting") {
 
-    const cancelBtn = document.createElement("button");
+        // WAITING → Cancel
+        if (customer.status === "waiting") {
 
-    cancelBtn.textContent = "Cancel";
+            const cancelBtn =
+                document.createElement("button");
 
-    cancelBtn.className = "dashboard-cancel-btn";
+            cancelBtn.textContent = "Cancel";
 
-    cancelBtn.dataset.queueId = customer.id;
+            cancelBtn.className =
+                "dashboard-cancel-btn cancel-queue-btn";
 
-    cancelBtn.classList.add("cancel-queue-btn");
+            cancelBtn.dataset.queueId =
+                customer.id;
 
-    actionCell.appendChild(cancelBtn);
+            actionCell.appendChild(cancelBtn);
 
-} else {
+        }
 
-    actionCell.textContent = "—";
 
-}
+        // SERVING → Complete
+        else if (customer.status === "serving") {
+
+            const completeBtn =
+                document.createElement("button");
+
+            completeBtn.textContent = "Complete";
+
+            completeBtn.className =
+                "complete-queue-btn";
+
+            completeBtn.dataset.queueId =
+                customer.id;
+
+            actionCell.appendChild(completeBtn);
+
+        }
+
+
+        // COMPLETED / CANCELLED
+        else {
+
+            actionCell.textContent = "—";
+
+        }
+
+
         row.appendChild(ticketCell);
+
         row.appendChild(nameCell);
+
         row.appendChild(peopleCell);
+
         row.appendChild(statusCell);
+
         row.appendChild(actionCell);
 
         queueList.appendChild(row);
@@ -297,45 +426,62 @@ loadBusinessInformation();
 loadQueueData();
 
 
-// Refresh queue data every 5 seconds
-
+// Refresh queue every 5 seconds
 setInterval(function () {
 
     loadQueueData();
 
 }, 5000);
+
+
 // =====================================
 // SERVE NEXT CUSTOMER
 // =====================================
 
-const serveNextBtn = document.getElementById("serveNextBtn");
+const serveNextBtn =
+    document.getElementById("serveNextBtn");
+
 
 serveNextBtn.addEventListener("click", function () {
 
     if (!businessId) {
-        alert("Business information is still loading.");
+
+        alert(
+            "Business information is still loading."
+        );
+
         return;
     }
 
+
     serveNextBtn.disabled = true;
-    serveNextBtn.textContent = "Serving...";
 
-    fetch(`http://localhost:3000/queues/${businessId}/next`, {
+    serveNextBtn.textContent =
+        "Serving...";
 
-        method: "PATCH",
 
-        headers: {
-            "Authorization": `Bearer ${token}`
+    fetch(
+        `http://localhost:3000/queues/${businessId}/next`,
+        {
+            method: "PATCH",
+
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
         }
-
-    })
+    )
 
     .then(response => {
 
         return response.json().then(data => {
 
             if (!response.ok) {
-                throw new Error(data.message || "Failed to serve customer.");
+
+                throw new Error(
+                    data.message ||
+                    "Failed to serve customer."
+                );
+
             }
 
             return data;
@@ -346,11 +492,16 @@ serveNextBtn.addEventListener("click", function () {
 
     .then(data => {
 
-        console.log("Customer is now being served:", data);
+        console.log(
+            "Customer is now being served:",
+            data
+        );
+
 
         alert(
             `${data.queue.customer_name} is now being served!`
         );
+
 
         loadQueueData();
 
@@ -358,7 +509,10 @@ serveNextBtn.addEventListener("click", function () {
 
     .catch(error => {
 
-        console.error("Serve next error:", error);
+        console.error(
+            "Serve next error:",
+            error
+        );
 
         alert(error.message);
 
@@ -367,135 +521,306 @@ serveNextBtn.addEventListener("click", function () {
     .finally(() => {
 
         serveNextBtn.disabled = false;
-        serveNextBtn.textContent = "+ Serve next customer";
+
+        serveNextBtn.textContent =
+            "+ Serve next customer";
 
     });
 
 });
 
+
 // =====================================
-// COMPLETE CURRENT CUSTOMER
+// COMPLETE SERVING CUSTOMER
 // =====================================
 
-completeCustomerBtn.addEventListener("click", function () {
+currentlyServingList.addEventListener(
+    "click",
+    function (event) {
 
-    if (!currentServingQueueId) {
-        alert("There is no customer currently being served.");
-        return;
+        const button =
+            event.target.closest(
+                ".serving-complete-btn"
+            );
+
+
+        if (!button) {
+            return;
+        }
+
+
+        const queueId =
+            button.dataset.queueId;
+
+
+        button.disabled = true;
+
+        button.textContent =
+            "Completing...";
+
+
+        fetch(
+            `http://localhost:3000/queues/${queueId}/complete`,
+            {
+                method: "PATCH",
+
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+        )
+
+        .then(async response => {
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.message ||
+                    "Failed to complete customer."
+                );
+
+            }
+
+
+            return data;
+
+        })
+
+        .then(() => {
+
+            alert(
+                "Customer completed successfully!"
+            );
+
+
+            loadQueueData();
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Error completing customer:",
+                error
+            );
+
+
+            alert(
+                error.message ||
+                "Could not complete customer."
+            );
+
+
+            button.disabled = false;
+
+            button.textContent =
+                "Complete";
+
+        });
+
     }
+);
 
-    completeCustomerBtn.disabled = true;
-    completeCustomerBtn.textContent = "Completing...";
-
-    fetch(`http://localhost:3000/queues/${currentServingQueueId}/complete`, {
-
-        method: "PATCH",
-
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-
-    })
-
-    .then(response => {
-
-        if (!response.ok) {
-            throw new Error("Failed to complete customer.");
-        }
-
-        return response.json();
-
-    })
-
-    .then(data => {
-
-        alert("Customer completed successfully!");
-
-        loadQueueData();
-
-    })
-
-    .catch(error => {
-
-        console.error("Error completing customer:", error);
-
-        alert("Could not complete customer. Please try again.");
-
-    })
-
-    .finally(() => {
-
-        completeCustomerBtn.disabled = false;
-        completeCustomerBtn.textContent = "Complete customer";
-
-    });
-
-});
 
 // =====================================
-// CANCEL A WAITING CUSTOMER
+// COMPLETE CUSTOMER FROM QUEUE TABLE
 // =====================================
 
-queueList.addEventListener("click", function (event) {
+queueList.addEventListener(
+    "click",
+    function (event) {
 
-    const button = event.target.closest(".cancel-queue-btn");
+        const button =
+            event.target.closest(
+                ".complete-queue-btn"
+            );
 
-    if (!button) {
-        return;
-    }
 
-    const queueId = button.dataset.queueId;
-
-    const confirmCancel = confirm(
-        "Are you sure you want to cancel this waiting customer?"
-    );
-
-    if (!confirmCancel) {
-        return;
-    }
-
-    button.disabled = true;
-    button.textContent = "Cancelling...";
-
-    fetch(`http://localhost:3000/queues/${queueId}/cancel`, {
-
-        method: "PATCH",
-
-        headers: {
-            Authorization: `Bearer ${token}`
+        if (!button) {
+            return;
         }
 
-    })
 
-    .then(async response => {
+        const queueId =
+            button.dataset.queueId;
 
-        const data = await response.json();
 
-        if (!response.ok) {
-            throw new Error(data.message || "Failed to cancel customer.");
+        button.disabled = true;
+
+        button.textContent =
+            "Completing...";
+
+
+        fetch(
+            `http://localhost:3000/queues/${queueId}/complete`,
+            {
+                method: "PATCH",
+
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+        )
+
+        .then(async response => {
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.message ||
+                    "Failed to complete customer."
+                );
+
+            }
+
+
+            return data;
+
+        })
+
+        .then(() => {
+
+            alert(
+                "Customer completed successfully!"
+            );
+
+
+            loadQueueData();
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Error completing customer:",
+                error
+            );
+
+
+            alert(
+                error.message ||
+                "Could not complete customer."
+            );
+
+
+            button.disabled = false;
+
+            button.textContent =
+                "Complete";
+
+        });
+
+    }
+);
+
+
+// =====================================
+// CANCEL WAITING CUSTOMER
+// =====================================
+
+queueList.addEventListener(
+    "click",
+    function (event) {
+
+        const button =
+            event.target.closest(
+                ".cancel-queue-btn"
+            );
+
+
+        if (!button) {
+            return;
         }
 
-        return data;
 
-    })
+        const queueId =
+            button.dataset.queueId;
 
-    .then(() => {
 
-        alert("Customer cancelled successfully!");
+        const confirmCancel =
+            confirm(
+                "Are you sure you want to cancel this waiting customer?"
+            );
 
-        loadQueueData();
 
-    })
+        if (!confirmCancel) {
+            return;
+        }
 
-    .catch(error => {
 
-        console.error("Cancellation error:", error);
+        button.disabled = true;
 
-        alert(error.message);
+        button.textContent =
+            "Cancelling...";
 
-        button.disabled = false;
-        button.textContent = "Cancel";
 
-    });
+        fetch(
+            `http://localhost:3000/queues/${queueId}/cancel`,
+            {
+                method: "PATCH",
 
-});
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+        )
+
+        .then(async response => {
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.message ||
+                    "Failed to cancel customer."
+                );
+
+            }
+
+
+            return data;
+
+        })
+
+        .then(() => {
+
+            alert(
+                "Customer cancelled successfully!"
+            );
+
+
+            loadQueueData();
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Cancellation error:",
+                error
+            );
+
+
+            alert(error.message);
+
+
+            button.disabled = false;
+
+            button.textContent =
+                "Cancel";
+
+        });
+
+    }
+);
