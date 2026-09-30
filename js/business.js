@@ -1,6 +1,7 @@
 const token = localStorage.getItem("queuelessToken");
 
 let businessId = null;
+let businessSlug = null;
 
 // Check if the user is logged in
 if (!token) {
@@ -39,6 +40,38 @@ const currentlyServingList =
 const servingStaffCount =
     document.getElementById("servingStaffCount");
 
+    const businessQrBtn =
+    document.getElementById("businessQrBtn");
+
+const qrModal =
+    document.getElementById("qrModal");
+
+const qrModalClose =
+    document.getElementById("qrModalClose");
+
+const qrCodeContainer =
+    document.getElementById("qrCodeContainer");
+
+const qrBusinessName =
+    document.getElementById("qrBusinessName");
+
+const qrBusinessLocation =
+    document.getElementById("qrBusinessLocation");
+
+const qrCustomerUrl =
+    document.getElementById("qrCustomerUrl");
+
+
+// =====================================
+// STAFF STATUS ELEMENTS
+// =====================================
+
+const staffStatusList =
+    document.getElementById("staffStatusList");
+
+const staffStatusCount =
+    document.getElementById("staffStatusCount");
+
 
 // =====================================
 // LOAD BUSINESS INFORMATION
@@ -70,6 +103,7 @@ function loadBusinessInformation() {
         const business = data.business;
 
         businessId = business.id;
+        businessSlug = business.slug;
 
         sidebarBusinessName.textContent =
             business.business_name;
@@ -157,6 +191,13 @@ function loadQueueData() {
 
 
         // =====================================
+        // UPDATE STAFF STATUS
+        // =====================================
+
+        loadStaffStatus(queues);
+
+
+        // =====================================
         // UPDATE QUEUE TABLE
         // =====================================
 
@@ -174,6 +215,190 @@ function loadQueueData() {
 
 
 // =====================================
+// LOAD STAFF STATUS
+// =====================================
+
+function loadStaffStatus(queues) {
+
+    fetch("http://localhost:3000/my-staff", {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+
+    .then(response => {
+
+        if (!response.ok) {
+            throw new Error("Failed to load staff.");
+        }
+
+        return response.json();
+
+    })
+
+    .then(data => {
+
+        console.log("Staff records:", data.staff);
+
+        const staff = data.staff || [];
+
+
+        // =====================================
+        // UPDATE STAFF COUNT
+        // =====================================
+
+        staffStatusCount.textContent =
+            staff.length;
+
+
+        // =====================================
+        // NO STAFF
+        // =====================================
+
+        if (staff.length === 0) {
+
+            staffStatusList.innerHTML = `
+                <div class="staff-status-empty">
+
+                    <div class="staff-status-empty-icon">
+                        👤
+                    </div>
+
+                    <strong>
+                        No staff members
+                    </strong>
+
+                    <p>
+                        Add staff members to see their status here.
+                    </p>
+
+                </div>
+            `;
+
+            return;
+        }
+
+
+        // =====================================
+        // CLEAR OLD STAFF STATUS
+        // =====================================
+
+        staffStatusList.innerHTML = "";
+
+
+        // =====================================
+        // DISPLAY EACH STAFF MEMBER
+        // =====================================
+
+        staff.forEach(member => {
+
+
+            // Find a customer currently being
+            // served by this staff member
+
+            const servingCustomer = queues.find(
+                customer =>
+                    customer.status === "serving" &&
+                    customer.staff_id === member.id
+            );
+
+
+            // =====================================
+            // DETERMINE STAFF STATUS
+            // =====================================
+
+            let statusBadge;
+
+            let statusDescription;
+
+
+            if (servingCustomer) {
+
+                statusBadge = `
+                    <span class="staff-status-badge serving">
+                        🔴 Serving ${servingCustomer.ticket}
+                    </span>
+                `;
+
+                statusDescription =
+                    `Currently serving ${servingCustomer.ticket}`;
+
+            } else {
+
+                statusBadge = `
+                    <span class="staff-status-badge available">
+                        🟢 Available
+                    </span>
+                `;
+
+                statusDescription =
+                    "Ready for next customer";
+
+            }
+
+
+            // =====================================
+            // STAFF CARD
+            // =====================================
+
+            const staffCard =
+                document.createElement("div");
+
+            staffCard.className =
+                "staff-status-card";
+
+
+            staffCard.innerHTML = `
+
+                <div class="staff-status-info">
+
+                    <div class="staff-avatar">
+                        ${member.staff_name
+                            .charAt(0)
+                            .toUpperCase()}
+                    </div>
+
+                    <div class="staff-details">
+
+                        <strong>
+                            ${member.staff_name}
+                        </strong>
+
+                        <span>
+                            ${statusDescription}
+                        </span>
+
+                    </div>
+
+                </div>
+
+                ${statusBadge}
+
+            `;
+
+
+            staffStatusList.appendChild(
+                staffCard
+            );
+
+        });
+
+    })
+
+    .catch(error => {
+
+        console.error(
+            "Staff status loading error:",
+            error
+        );
+
+    });
+
+}
+
+
+// =====================================
 // RENDER CURRENTLY SERVING
 // =====================================
 
@@ -181,7 +406,8 @@ function renderCurrentlyServing(serving) {
 
     currentlyServingList.innerHTML = "";
 
-    servingStaffCount.textContent = serving.length;
+    servingStaffCount.textContent =
+        serving.length;
 
 
     // No customers currently being served
@@ -212,75 +438,120 @@ function renderCurrentlyServing(serving) {
     // Create a card for EVERY serving customer
     serving.forEach(customer => {
 
-        const card = document.createElement("div");
+        const card =
+            document.createElement("div");
 
-        card.className = "serving-customer-card";
-
-
-        // Ticket
-        const ticket = document.createElement("div");
-
-        ticket.className = "serving-ticket";
-
-        ticket.textContent = customer.ticket;
+        card.className =
+            "serving-customer-card";
 
 
-        // Customer information
-        const customerInfo = document.createElement("div");
+        // =====================================
+        // TICKET
+        // =====================================
 
-        customerInfo.className = "serving-customer-info";
+        const ticket =
+            document.createElement("div");
+
+        ticket.className =
+            "serving-ticket";
+
+        ticket.textContent =
+            customer.ticket;
+
+
+        // =====================================
+        // CUSTOMER INFORMATION
+        // =====================================
+
+        const customerInfo =
+            document.createElement("div");
+
+        customerInfo.className =
+            "serving-customer-info";
 
         customerInfo.innerHTML = `
-            <strong>${customer.customer_name}</strong>
+            <strong>
+                ${customer.customer_name}
+            </strong>
 
             <span>
                 People: ${customer.people ?? "—"}
             </span>
 
-           <span>Staff: ${customer.staff_name ?? "Unassigned"}</span>
+            <span>
+                Staff: ${customer.staff_name ?? "Unassigned"}
+            </span>
         `;
 
 
-        // Status
-        const status = document.createElement("span");
+        // =====================================
+        // STATUS
+        // =====================================
 
-        status.className = "serving-status";
+        const status =
+            document.createElement("span");
 
-        status.textContent = "Serving";
+        status.className =
+            "serving-status";
 
-
-        // Complete button
-        const completeBtn = document.createElement("button");
-
-        completeBtn.className = "serving-complete-btn";
-
-        completeBtn.textContent = "Complete";
-
-        completeBtn.dataset.queueId = customer.id;
+        status.textContent =
+            "Serving";
 
 
-        // Card top
-        const cardTop = document.createElement("div");
+        // =====================================
+        // COMPLETE BUTTON
+        // =====================================
 
-        cardTop.className = "serving-card-top";
+        const completeBtn =
+            document.createElement("button");
+
+        completeBtn.className =
+            "serving-complete-btn";
+
+        completeBtn.textContent =
+            "Complete";
+
+        completeBtn.dataset.queueId =
+            customer.id;
+
+
+        // =====================================
+        // CARD TOP
+        // =====================================
+
+        const cardTop =
+            document.createElement("div");
+
+        cardTop.className =
+            "serving-card-top";
 
         cardTop.appendChild(ticket);
+
         cardTop.appendChild(status);
 
 
-        // Card bottom
-        const cardBottom = document.createElement("div");
+        // =====================================
+        // CARD BOTTOM
+        // =====================================
 
-        cardBottom.className = "serving-card-bottom";
+        const cardBottom =
+            document.createElement("div");
+
+        cardBottom.className =
+            "serving-card-bottom";
 
         cardBottom.appendChild(customerInfo);
+
         cardBottom.appendChild(completeBtn);
 
 
-        // Build card
-        card.appendChild(cardTop);
-        card.appendChild(cardBottom);
+        // =====================================
+        // BUILD CARD
+        // =====================================
 
+        card.appendChild(cardTop);
+
+        card.appendChild(cardBottom);
 
         currentlyServingList.appendChild(card);
 
@@ -314,53 +585,84 @@ function renderQueueTable(queues) {
 
     queues.forEach(customer => {
 
-        const row = document.createElement("tr");
+        const row =
+            document.createElement("tr");
 
 
-        // Ticket
-        const ticketCell = document.createElement("td");
+        // =====================================
+        // TICKET
+        // =====================================
 
-        ticketCell.textContent = customer.ticket;
+        const ticketCell =
+            document.createElement("td");
+
+        ticketCell.textContent =
+            customer.ticket;
 
 
-        // Customer name
-        const nameCell = document.createElement("td");
+        // =====================================
+        // CUSTOMER NAME
+        // =====================================
 
-        nameCell.textContent = customer.customer_name;
+        const nameCell =
+            document.createElement("td");
+
+        nameCell.textContent =
+            customer.customer_name;
 
 
-        // Number of people
-        const peopleCell = document.createElement("td");
+        // =====================================
+        // NUMBER OF PEOPLE
+        // =====================================
+
+        const peopleCell =
+            document.createElement("td");
 
         peopleCell.textContent =
             customer.people ?? "—";
 
 
-        // Status
-        const statusCell = document.createElement("td");
+        // =====================================
+        // STATUS
+        // =====================================
 
-        const statusBadge = document.createElement("span");
+        const statusCell =
+            document.createElement("td");
+
+        const statusBadge =
+            document.createElement("span");
 
         statusBadge.textContent =
             customer.status;
 
         statusBadge.className =
-            "status-badge " + customer.status;
+            "status-badge " +
+            customer.status;
 
-        statusCell.appendChild(statusBadge);
+        statusCell.appendChild(
+            statusBadge
+        );
 
 
-        // Actions
-        const actionCell = document.createElement("td");
+        // =====================================
+        // ACTIONS
+        // =====================================
+
+        const actionCell =
+            document.createElement("td");
 
 
-        // WAITING → Cancel
+        // =====================================
+        // WAITING → CANCEL
+        // =====================================
+
         if (customer.status === "waiting") {
 
             const cancelBtn =
                 document.createElement("button");
 
-            cancelBtn.textContent = "Cancel";
+            cancelBtn.textContent =
+                "Cancel";
 
             cancelBtn.className =
                 "dashboard-cancel-btn cancel-queue-btn";
@@ -368,18 +670,24 @@ function renderQueueTable(queues) {
             cancelBtn.dataset.queueId =
                 customer.id;
 
-            actionCell.appendChild(cancelBtn);
+            actionCell.appendChild(
+                cancelBtn
+            );
 
         }
 
 
-        // SERVING → Complete
+        // =====================================
+        // SERVING → COMPLETE
+        // =====================================
+
         else if (customer.status === "serving") {
 
             const completeBtn =
                 document.createElement("button");
 
-            completeBtn.textContent = "Complete";
+            completeBtn.textContent =
+                "Complete";
 
             completeBtn.className =
                 "complete-queue-btn";
@@ -387,15 +695,21 @@ function renderQueueTable(queues) {
             completeBtn.dataset.queueId =
                 customer.id;
 
-            actionCell.appendChild(completeBtn);
+            actionCell.appendChild(
+                completeBtn
+            );
 
         }
 
 
+        // =====================================
         // COMPLETED / CANCELLED
+        // =====================================
+
         else {
 
-            actionCell.textContent = "—";
+            actionCell.textContent =
+                "—";
 
         }
 
@@ -426,7 +740,10 @@ loadBusinessInformation();
 loadQueueData();
 
 
-// Refresh queue every 5 seconds
+// =====================================
+// REFRESH DASHBOARD EVERY 5 SECONDS
+// =====================================
+
 setInterval(function () {
 
     loadQueueData();
@@ -442,92 +759,97 @@ const serveNextBtn =
     document.getElementById("serveNextBtn");
 
 
-serveNextBtn.addEventListener("click", function () {
+serveNextBtn.addEventListener(
+    "click",
+    function () {
 
-    if (!businessId) {
+        if (!businessId) {
 
-        alert(
-            "Business information is still loading."
-        );
+            alert(
+                "Business information is still loading."
+            );
 
-        return;
-    }
-
-
-    serveNextBtn.disabled = true;
-
-    serveNextBtn.textContent =
-        "Serving...";
-
-
-    fetch(
-        `http://localhost:3000/queues/${businessId}/next`,
-        {
-            method: "PATCH",
-
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
+            return;
         }
-    )
 
-    .then(response => {
 
-        return response.json().then(data => {
+        serveNextBtn.disabled = true;
 
-            if (!response.ok) {
+        serveNextBtn.textContent =
+            "Serving...";
 
-                throw new Error(
-                    data.message ||
-                    "Failed to serve customer."
-                );
 
+        fetch(
+            `http://localhost:3000/queues/${businessId}/next`,
+            {
+                method: "PATCH",
+
+                headers: {
+                    "Authorization":
+                        `Bearer ${token}`
+                }
             }
+        )
 
-            return data;
+        .then(response => {
+
+            return response.json()
+                .then(data => {
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            data.message ||
+                            "Failed to serve customer."
+                        );
+
+                    }
+
+                    return data;
+
+                });
+
+        })
+
+        .then(data => {
+
+            console.log(
+                "Customer is now being served:",
+                data
+            );
+
+
+            alert(
+                `${data.queue.customer_name} is now being served!`
+            );
+
+
+            loadQueueData();
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Serve next error:",
+                error
+            );
+
+            alert(error.message);
+
+        })
+
+        .finally(() => {
+
+            serveNextBtn.disabled = false;
+
+            serveNextBtn.textContent =
+                "+ Serve next customer";
 
         });
 
-    })
-
-    .then(data => {
-
-        console.log(
-            "Customer is now being served:",
-            data
-        );
-
-
-        alert(
-            `${data.queue.customer_name} is now being served!`
-        );
-
-
-        loadQueueData();
-
-    })
-
-    .catch(error => {
-
-        console.error(
-            "Serve next error:",
-            error
-        );
-
-        alert(error.message);
-
-    })
-
-    .finally(() => {
-
-        serveNextBtn.disabled = false;
-
-        serveNextBtn.textContent =
-            "+ Serve next customer";
-
-    });
-
-});
+    }
+);
 
 
 // =====================================
@@ -565,7 +887,8 @@ currentlyServingList.addEventListener(
                 method: "PATCH",
 
                 headers: {
-                    "Authorization": `Bearer ${token}`
+                    "Authorization":
+                        `Bearer ${token}`
                 }
             }
         )
@@ -661,7 +984,8 @@ queueList.addEventListener(
                 method: "PATCH",
 
                 headers: {
-                    "Authorization": `Bearer ${token}`
+                    "Authorization":
+                        `Bearer ${token}`
                 }
             }
         )
@@ -768,7 +1092,8 @@ queueList.addEventListener(
                 method: "PATCH",
 
                 headers: {
-                    "Authorization": `Bearer ${token}`
+                    "Authorization":
+                        `Bearer ${token}`
                 }
             }
         )
@@ -821,6 +1146,174 @@ queueList.addEventListener(
                 "Cancel";
 
         });
+
+    }
+);
+
+businessQrBtn.addEventListener(
+    "click",
+    function () {
+
+        if (!businessSlug) {
+            alert(
+                "Business information is still loading."
+            );
+            return;
+        }
+
+        const customerUrl =
+            `${window.location.origin}/frontend/customer.html?business=${businessSlug}`;
+
+        qrCodeContainer.innerHTML = `
+            <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(customerUrl)}"
+                alt="Business QR Code"
+            >
+        `;
+
+        const business =
+            JSON.parse(
+                localStorage.getItem("queuelessBusiness")
+            );
+
+        if (business) {
+            qrBusinessName.textContent =
+                business.business_name;
+
+            qrBusinessLocation.textContent =
+                business.location || "Location not provided";
+        }
+
+        qrCustomerUrl.textContent =
+            customerUrl;
+
+        qrModal.classList.add("show");
+    }
+);
+qrModalClose.addEventListener(
+    "click",
+    function () {
+        qrModal.classList.remove("show");
+    }
+);
+
+qrModal.addEventListener(
+    "click",
+    function (event) {
+
+        if (event.target === qrModal) {
+            qrModal.classList.remove("show");
+        }
+
+    }
+);
+
+const manageStaffBtn =
+    document.getElementById("manageStaffBtn");
+
+manageStaffBtn.addEventListener(
+    "click",
+    function () {
+        window.location.href = "staff.html";
+    }
+);
+
+// =========================
+// BUSINESS SETTINGS
+// =========================
+
+const businessSettingsBtn =
+    document.getElementById("businessSettingsBtn");
+
+const settingsModal =
+    document.getElementById("settingsModal");
+
+const settingsModalClose =
+    document.getElementById("settingsModalClose");
+
+const darkModeToggle =
+    document.getElementById("darkModeToggle");
+
+
+// Open settings modal
+
+businessSettingsBtn.addEventListener(
+    "click",
+    function () {
+
+        settingsModal.classList.add("show");
+
+    }
+);
+
+
+// Close settings modal
+
+settingsModalClose.addEventListener(
+    "click",
+    function () {
+
+        settingsModal.classList.remove("show");
+
+    }
+);
+
+
+// Close when clicking outside the modal
+
+settingsModal.addEventListener(
+    "click",
+    function (event) {
+
+        if (event.target === settingsModal) {
+
+            settingsModal.classList.remove("show");
+
+        }
+
+    }
+);
+
+
+// Apply saved theme
+
+const savedTheme =
+    localStorage.getItem("queuelessTheme");
+
+if (savedTheme === "dark") {
+
+    document.body.classList.add("dark-mode");
+
+    darkModeToggle.checked = true;
+
+}
+
+
+// Toggle dark mode
+
+darkModeToggle.addEventListener(
+    "change",
+    function () {
+
+        if (darkModeToggle.checked) {
+
+            document.body.classList.add("dark-mode");
+
+            localStorage.setItem(
+                "queuelessTheme",
+                "dark"
+            );
+
+        } else {
+
+            document.body.classList.remove("dark-mode");
+
+            localStorage.setItem(
+                "queuelessTheme",
+                "light"
+            );
+
+        }
 
     }
 );

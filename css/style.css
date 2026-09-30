@@ -3132,3 +3132,1327 @@ footer p {
     font-size: 12px;
     line-height: 1.5;
 }
+
+/* =========================
+   STAFF STATUS
+========================= */
+
+.staff-status-panel {
+    margin-top: 20px;
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid #e5eaf2;
+    border-radius: 16px;
+}
+
+.staff-status-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.staff-count-badge {
+    min-width: 30px;
+    height: 30px;
+    padding: 0 9px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.staff-status-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px 16px;
+    border: 1px solid #e5eaf2;
+    border-radius: 12px;
+    background: #fafbfd;
+}
+
+.staff-status-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.staff-avatar {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #eef4ff;
+    color: #2563eb;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.staff-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.staff-details strong {
+    color: #172033;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.staff-details span {
+    color: #8994a8;
+    font-size: 12px;
+}
+
+.staff-status-badge {
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.staff-status-badge.available {
+    background: #ecfdf3;
+    color: #16a34a;
+}
+
+.staff-status-badge.serving {
+    background: #fff7ed;
+    color: #ea580c;
+}
+
+.staff-status-empty {
+    padding: 30px 18px;
+    text-align: center;
+    border: 1px dashed #dce3ee;
+    border-radius: 14px;
+    background: #fafbfd;
+}
+
+.staff-status-empty-icon {
+    width: 42px;
+    height: 42px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #eef4ff;
+    font-size: 18px;
+}
+
+.staff-status-empty strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #172033;
+    font-size: 14px;
+}
+
+.staff-status-empty p {
+    margin: 0;
+    color: #8994a8;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+
+    .staff-status-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .staff-status-badge {
+        margin-left: 52px;
+    }
+
+}
+
+/* =========================
+   QUICK ACTIONS - DASHBOARD
+========================= */
+
+.quick-actions-section {
+    width: 100%;
+}
+
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.quick-action-card {
+    width: 100%;
+    min-height: 82px;
+
+    display: grid;
+    grid-template-columns: 42px 1fr 20px;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px 16px;
+
+    border: 1px solid #e5eaf2;
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    text-align: left;
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-2px);
+    border-color: #d7e2f5;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+.quick-action-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #eef4ff;
+    color: #2563eb;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.quick-action-card > span:nth-child(2) {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.quick-action-card strong {
+    color: #172033;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.quick-action-card small {
+    color: #8994a8;
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.quick-action-arrow {
+    color: #9aa6ba;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* =========================
+   BUSINESS QR MODAL
+========================= */
+
+.qr-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(5px);
+}
+
+.qr-modal.show {
+    display: flex;
+}
+
+.qr-modal-content {
+    position: relative;
+
+    width: 100%;
+    max-width: 430px;
+
+    padding: 32px;
+
+    background: #ffffff;
+    border-radius: 20px;
+
+    box-shadow:
+        0 25px 60px rgba(15, 23, 42, 0.18);
+
+    text-align: center;
+}
+
+.qr-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f1f5f9;
+    color: #64748b;
+
+    font-size: 24px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.qr-modal-close:hover {
+    background: #e2e8f0;
+    color: #172033;
+}
+
+.qr-modal-header {
+    margin-bottom: 24px;
+}
+
+.qr-modal-header h2 {
+    margin: 5px 0 8px;
+
+    color: #172033;
+    font-size: 24px;
+}
+
+.qr-modal-header p:last-child {
+    margin: 0;
+
+    color: #8994a8;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.qr-code-container {
+    width: 230px;
+    height: 230px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e5eaf2;
+    border-radius: 16px;
+
+    background: #ffffff;
+}
+
+.qr-code-container img {
+    width: 200px;
+    height: 200px;
+
+    display: block;
+}
+
+.qr-loading {
+    color: #8994a8;
+    font-size: 13px;
+}
+
+.qr-business-name {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    margin-bottom: 16px;
+}
+
+.qr-business-name strong {
+    color: #172033;
+    font-size: 16px;
+}
+
+.qr-business-name span {
+    color: #8994a8;
+    font-size: 12px;
+}
+
+.qr-url-box {
+    padding: 11px 13px;
+
+    border: 1px solid #e5eaf2;
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    overflow: hidden;
+}
+
+.qr-url-box span {
+    display: block;
+
+    color: #64748b;
+    font-size: 11px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 500px) {
+
+    .qr-modal-content {
+        padding: 26px 20px;
+    }
+
+    .qr-code-container {
+        width: 210px;
+        height: 210px;
+    }
+
+    .qr-code-container img {
+        width: 180px;
+        height: 180px;
+    }
+
+}
+
+/* =====================================================
+   QUEUELESS — PREMIUM DARK MODE
+===================================================== */
+
+body.dark-mode {
+    background: #070d1a;
+    color: #e8eef8;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* =====================================================
+   MAIN LAYOUT
+===================================================== */
+
+body.dark-mode .main-content {
+    background:
+        radial-gradient(
+            circle at 75% 5%,
+            rgba(37, 99, 235, 0.08),
+            transparent 28%
+        ),
+        #070d1a;
+}
+
+body.dark-mode .content,
+body.dark-mode .dashboard-content,
+body.dark-mode .dashboard-main {
+    background: #070d1a;
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+body.dark-mode .sidebar {
+    background:
+        linear-gradient(
+            180deg,
+            #0a1222 0%,
+            #080f1d 100%
+        );
+
+    border-right: 1px solid #1b2940;
+}
+
+body.dark-mode .sidebar-business,
+body.dark-mode .business-account,
+body.dark-mode .business-card {
+    background: #101a2d;
+    border-color: #22324c;
+}
+
+body.dark-mode .sidebar h1,
+body.dark-mode .sidebar h2,
+body.dark-mode .sidebar h3,
+body.dark-mode .sidebar strong {
+    color: #f8fbff;
+}
+
+body.dark-mode .sidebar p,
+body.dark-mode .sidebar span {
+    color: #8fa0ba;
+}
+
+/* Navigation */
+
+body.dark-mode .nav-item {
+    color: #91a0b7;
+}
+
+body.dark-mode .nav-item:hover {
+    color: #ffffff;
+    background: #15233b;
+}
+
+body.dark-mode .nav-item.active {
+    color: #ffffff;
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    box-shadow:
+        0 10px 25px rgba(37, 99, 235, 0.25);
+}
+
+/* =====================================================
+   TOP BAR
+===================================================== */
+
+body.dark-mode .topbar {
+    background: rgba(7, 13, 26, 0.92);
+    border-bottom: 1px solid #1b2940;
+    backdrop-filter: blur(16px);
+}
+
+body.dark-mode .topbar h1,
+body.dark-mode .topbar h2,
+body.dark-mode .topbar strong {
+    color: #f8fbff;
+}
+
+body.dark-mode .topbar p,
+body.dark-mode .topbar span {
+    color: #8fa0ba;
+}
+
+/* =====================================================
+   PAGE HEADINGS
+===================================================== */
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4 {
+    color: #f8fbff;
+}
+
+body.dark-mode .panel-eyebrow {
+    color: #8da2c0;
+    letter-spacing: 2px;
+}
+
+body.dark-mode .page-subtitle,
+body.dark-mode .subtitle {
+    color: #8292aa;
+}
+
+/* =====================================================
+   STAT CARDS
+===================================================== */
+
+body.dark-mode .stat-card {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101a2d,
+            #0d1627
+        );
+
+    border: 1px solid #1d2c45;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+body.dark-mode .stat-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #29466f;
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+body.dark-mode .stat-card strong,
+body.dark-mode .stat-card h2,
+body.dark-mode .stat-card .stat-number {
+    color: #f8fbff;
+}
+
+body.dark-mode .stat-card p,
+body.dark-mode .stat-card span {
+    color: #8292aa;
+}
+
+/* =====================================================
+   GENERIC PANELS
+===================================================== */
+
+body.dark-mode .panel,
+body.dark-mode .queue-panel,
+body.dark-mode .queue-section,
+body.dark-mode .currently-serving-panel,
+body.dark-mode .serving-panel,
+body.dark-mode .staff-status-panel,
+body.dark-mode .quick-actions-section,
+body.dark-mode .dashboard-panel {
+    background:
+        linear-gradient(
+            145deg,
+            #0f192b,
+            #0b1424
+        );
+
+    border: 1px solid #1c2b43;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.16);
+}
+
+/* =====================================================
+   LIVE QUEUE
+===================================================== */
+
+body.dark-mode .queue-header,
+body.dark-mode .panel-header {
+    border-color: #1e2d44;
+}
+
+body.dark-mode .queue-header h2,
+body.dark-mode .queue-header h3,
+body.dark-mode .panel-header h2,
+body.dark-mode .panel-header h3 {
+    color: #f8fbff;
+}
+
+body.dark-mode .queue-header p,
+body.dark-mode .panel-header p {
+    color: #8191aa;
+}
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+body.dark-mode table {
+    width: 100%;
+    color: #e8eef8;
+    background: transparent;
+}
+
+body.dark-mode thead,
+body.dark-mode th {
+    background: #111e33;
+}
+
+body.dark-mode th {
+    color: #8fa2bf;
+    border-color: #24334c;
+}
+
+body.dark-mode td {
+    color: #d8e1ef;
+    border-color: #1c2b42;
+}
+
+body.dark-mode tbody tr {
+    background: transparent;
+    transition: background 0.2s ease;
+}
+
+body.dark-mode tbody tr:hover {
+    background: rgba(37, 99, 235, 0.06);
+}
+
+/* Ticket */
+
+body.dark-mode td:first-child {
+    color: #6ea0ff;
+    font-weight: 700;
+}
+
+/* =====================================================
+   STATUS BADGES
+===================================================== */
+
+body.dark-mode .status-badge.completed {
+    background: rgba(16, 185, 129, 0.14);
+    color: #34d399;
+}
+
+body.dark-mode .status-badge.waiting {
+    background: rgba(245, 158, 11, 0.14);
+    color: #fbbf24;
+}
+
+body.dark-mode .status-badge.serving {
+    background: rgba(59, 130, 246, 0.14);
+    color: #60a5fa;
+}
+
+body.dark-mode .status-badge.cancelled {
+    background: rgba(239, 68, 68, 0.14);
+    color: #f87171;
+}
+
+/* =====================================================
+   CURRENTLY SERVING
+===================================================== */
+
+body.dark-mode .serving-customer-card {
+    background:
+        linear-gradient(
+            145deg,
+            #121f34,
+            #0d1728
+        );
+
+    border: 1px solid #223451;
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+body.dark-mode .serving-ticket {
+    background: #1d4ed8;
+    color: #ffffff;
+
+    box-shadow:
+        0 6px 18px rgba(37, 99, 235, 0.25);
+}
+
+body.dark-mode .serving-customer-info strong {
+    color: #f8fbff;
+}
+
+body.dark-mode .serving-customer-info span {
+    color: #8798b1;
+}
+
+body.dark-mode .serving-status {
+    background: rgba(16, 185, 129, 0.13);
+    color: #34d399;
+}
+
+body.dark-mode .serving-empty-state {
+    background:
+        radial-gradient(
+            circle at center,
+            #13223a,
+            #0d1728
+        );
+
+    border-color: #263750;
+}
+
+body.dark-mode .serving-empty-state strong {
+    color: #f1f5f9;
+}
+
+body.dark-mode .serving-empty-state p {
+    color: #8292aa;
+}
+
+/* =====================================================
+   STAFF STATUS
+===================================================== */
+
+body.dark-mode .staff-status-card {
+    background: #111d31;
+    border-color: #21324c;
+}
+
+body.dark-mode .staff-status-card:hover {
+    background: #14223a;
+    border-color: #2b4264;
+}
+
+body.dark-mode .staff-details strong {
+    color: #f5f8fd;
+}
+
+body.dark-mode .staff-details span {
+    color: #8191aa;
+}
+
+body.dark-mode .staff-avatar {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color: #ffffff;
+}
+
+body.dark-mode .staff-status-empty {
+    background: #101a2d;
+    border-color: #263750;
+}
+
+body.dark-mode .staff-status-empty strong {
+    color: #f5f8fd;
+}
+
+body.dark-mode .staff-status-empty p {
+    color: #8191aa;
+}
+
+/* =====================================================
+   QUICK ACTIONS
+===================================================== */
+
+body.dark-mode .quick-action-card {
+    background:
+        linear-gradient(
+            145deg,
+            #111d31,
+            #0d1728
+        );
+
+    border-color: #21324c;
+
+    color: #ffffff;
+}
+
+body.dark-mode .quick-action-card:hover {
+    background:
+        linear-gradient(
+            145deg,
+            #14243d,
+            #101c31
+        );
+
+    border-color: #31568a;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.24);
+}
+
+body.dark-mode .quick-action-card strong {
+    color: #f8fbff;
+}
+
+body.dark-mode .quick-action-card small {
+    color: #8394ad;
+}
+
+body.dark-mode .quick-action-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #1d4ed8,
+            #4338ca
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 6px 18px rgba(37, 99, 235, 0.18);
+}
+
+body.dark-mode .quick-action-arrow {
+    color: #7184a1;
+}
+
+/* =====================================================
+   PRIMARY BUTTONS
+===================================================== */
+
+body.dark-mode #serveNextBtn,
+body.dark-mode .primary-btn {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    color: #ffffff;
+
+    border: none;
+
+    box-shadow:
+        0 10px 25px rgba(37, 99, 235, 0.25);
+}
+
+body.dark-mode #serveNextBtn:hover,
+body.dark-mode .primary-btn:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #3b82f6,
+            #2563eb
+        );
+
+    transform: translateY(-1px);
+}
+
+/* =====================================================
+   COMPLETE BUTTON
+===================================================== */
+
+body.dark-mode .serving-complete-btn,
+body.dark-mode .complete-queue-btn {
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    color: #34d399;
+}
+
+body.dark-mode .serving-complete-btn:hover,
+body.dark-mode .complete-queue-btn:hover {
+    background: #10b981;
+    color: #ffffff;
+}
+
+/* =====================================================
+   CANCEL BUTTON
+===================================================== */
+
+body.dark-mode .dashboard-cancel-btn {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(248, 113, 113, 0.18);
+    color: #f87171;
+}
+
+body.dark-mode .dashboard-cancel-btn:hover {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+/* =====================================================
+   QR MODAL
+===================================================== */
+
+body.dark-mode .qr-modal {
+    background: rgba(2, 6, 23, 0.78);
+}
+
+body.dark-mode .qr-modal-content {
+    background:
+        linear-gradient(
+            145deg,
+            #111d31,
+            #0c1627
+        );
+
+    border: 1px solid #263a59;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .qr-modal-header h2 {
+    color: #f8fbff;
+}
+
+body.dark-mode .qr-modal-header p:last-child {
+    color: #8495ae;
+}
+
+body.dark-mode .qr-modal-close {
+    background: #1b2940;
+    color: #a8b6c9;
+}
+
+body.dark-mode .qr-modal-close:hover {
+    background: #263750;
+    color: #ffffff;
+}
+
+body.dark-mode .qr-business-name strong {
+    color: #f8fbff;
+}
+
+body.dark-mode .qr-business-name span {
+    color: #8191aa;
+}
+
+body.dark-mode .qr-url-box {
+    background: #0a1322;
+    border-color: #263750;
+}
+
+body.dark-mode .qr-url-box span {
+    color: #8191aa;
+}
+
+/* =====================================================
+   SETTINGS MODAL
+===================================================== */
+
+body.dark-mode .settings-modal {
+    background: rgba(2, 6, 23, 0.78);
+}
+
+body.dark-mode .settings-modal-content {
+    background:
+        linear-gradient(
+            145deg,
+            #111d31,
+            #0c1627
+        );
+
+    border: 1px solid #263a59;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .settings-header h2 {
+    color: #f8fbff;
+}
+
+body.dark-mode .settings-header p:last-child {
+    color: #8191aa;
+}
+
+body.dark-mode .settings-option {
+    background: #101b2e;
+    border-color: #263750;
+}
+
+body.dark-mode .settings-option-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #1d4ed8,
+            #4338ca
+        );
+}
+
+body.dark-mode .settings-option-info strong {
+    color: #f8fbff;
+}
+
+body.dark-mode .settings-option-info span {
+    color: #8191aa;
+}
+
+body.dark-mode .settings-modal-close {
+    background: #1b2940;
+    color: #a8b6c9;
+}
+
+body.dark-mode .settings-modal-close:hover {
+    background: #263750;
+    color: #ffffff;
+}
+
+/* =====================================================
+   INPUTS / FORMS
+===================================================== */
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background: #0d1728;
+    border-color: #263750;
+    color: #f1f5f9;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #667892;
+}
+
+body.dark-mode input:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus {
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+body.dark-mode ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+    background: #080f1d;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: #263750;
+    border-radius: 999px;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: #355176;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    body.dark-mode .main-content {
+        background: #070d1a;
+    }
+
+    body.dark-mode .stat-card,
+    body.dark-mode .panel,
+    body.dark-mode .queue-panel,
+    body.dark-mode .staff-status-panel {
+        box-shadow:
+            0 8px 22px rgba(0, 0, 0, 0.18);
+    }
+
+}
+
+/* =========================
+   BUSINESS SETTINGS MODAL
+========================= */
+
+.settings-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2100;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(5px);
+}
+
+.settings-modal.show {
+    display: flex;
+}
+
+.settings-modal-content {
+    position: relative;
+
+    width: 100%;
+    max-width: 500px;
+
+    padding: 30px;
+
+    background: #ffffff;
+    border-radius: 20px;
+
+    box-shadow:
+        0 25px 60px rgba(15, 23, 42, 0.18);
+}
+
+.settings-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f1f5f9;
+    color: #64748b;
+
+    font-size: 24px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.settings-header {
+    margin-bottom: 24px;
+}
+
+.settings-header h2 {
+    margin: 5px 0 8px;
+
+    color: #172033;
+    font-size: 24px;
+}
+
+.settings-header p:last-child {
+    margin: 0;
+
+    color: #8994a8;
+    font-size: 13px;
+}
+
+.settings-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 18px;
+
+    border: 1px solid #e5eaf2;
+    border-radius: 14px;
+
+    background: #fafbfd;
+}
+
+.settings-option-info {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.settings-option-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background: #eef4ff;
+
+    font-size: 18px;
+}
+
+.settings-option-info strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #172033;
+    font-size: 14px;
+}
+
+.settings-option-info span {
+    display: block;
+
+    color: #8994a8;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+/* Toggle */
+
+.theme-switch {
+    position: relative;
+
+    width: 48px;
+    height: 26px;
+
+    flex-shrink: 0;
+
+    cursor: pointer;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-slider {
+    position: absolute;
+    inset: 0;
+
+    border-radius: 999px;
+
+    background: #cbd5e1;
+
+    transition: 0.25s ease;
+}
+
+.theme-slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    left: 3px;
+    top: 3px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+
+    transition: 0.25s ease;
+}
+
+.theme-switch input:checked + .theme-slider {
+    background: #2563eb;
+}
+
+.theme-switch input:checked + .theme-slider::before {
+    transform: translateX(22px);
+}
+
+body.dark-mode .settings-modal-content {
+    background: #111827;
+}
+
+body.dark-mode .settings-option {
+    background: #172033;
+    border-color: #263449;
+}
+
+body.dark-mode .settings-option-icon {
+    background: #1e3a8a;
+}
+
+body.dark-mode .settings-option-info strong {
+    color: #f8fafc;
+}
+
+body.dark-mode .settings-modal-close {
+    background: #1f2937;
+    color: #cbd5e1;
+}
