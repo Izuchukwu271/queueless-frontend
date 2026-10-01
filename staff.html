@@ -2,140 +2,390 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>QueueLess — Staff Management</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
 
-<body class="dashboard-page">
+
+<body class="dashboard-page staff-page">
+
 
     <div class="dashboard-layout">
 
-        <!-- SIDEBAR -->
+
+        <!-- =====================================
+             SIDEBAR
+        ====================================== -->
+
         <aside class="dashboard-sidebar">
 
             <div class="sidebar-top">
 
-                <a href="business.html" class="dashboard-logo">
+                <a
+                    href="business.html"
+                    class="dashboard-logo"
+                >
                     QueueLess
                 </a>
 
+
                 <nav class="dashboard-nav">
 
-                    <p class="nav-section-title">MANAGEMENT</p>
+                    <p class="nav-section-title">
+                        MANAGEMENT
+                    </p>
 
-                    <a href="business.html" class="dashboard-nav-item">
-                        <span class="nav-icon">▦</span>
-                        <span>Overview</span>
+
+                    <!-- OVERVIEW -->
+
+                    <a
+                        href="business.html"
+                        class="dashboard-nav-item"
+                    >
+
+                        <span class="nav-icon">
+                            ▦
+                        </span>
+
+                        <span>
+                            Overview
+                        </span>
+
                     </a>
 
-                    <a href="business.html" class="dashboard-nav-item">
-                        <span class="nav-icon">≡</span>
-                        <span>Queue</span>
+
+                    <!-- QUEUE -->
+
+                    <a
+                        href="business.html"
+                        class="dashboard-nav-item"
+                    >
+
+                        <span class="nav-icon">
+                            ≡
+                        </span>
+
+                        <span>
+                            Queue
+                        </span>
+
                     </a>
 
-                    <a href="staff.html" class="dashboard-nav-item active">
-                        <span class="nav-icon">♙</span>
-                        <span>Staff</span>
+
+                    <!-- STAFF -->
+
+                    <a
+                        href="staff.html"
+                        class="dashboard-nav-item active"
+                    >
+
+                        <span class="nav-icon">
+                            ♙
+                        </span>
+
+                        <span>
+                            Staff
+                        </span>
+
                     </a>
+
 
                 </nav>
 
             </div>
 
+
+            <!-- SIDEBAR FOOTER -->
+
+            <div class="staff-sidebar-footer">
+
+                <div class="staff-sidebar-footer-icon">
+                    👥
+                </div>
+
+                <div>
+                    <strong>
+                        Team Management
+                    </strong>
+
+                    <span>
+                        Manage your service staff
+                    </span>
+                </div>
+
+            </div>
+
+
         </aside>
 
-        <!-- MAIN CONTENT -->
+
+
+        <!-- =====================================
+             MAIN CONTENT
+        ====================================== -->
+
         <main class="dashboard-main">
+
+
+            <!-- =================================
+                 TOP BAR
+            ================================== -->
 
             <header class="dashboard-topbar">
 
                 <div>
+
                     <p class="dashboard-breadcrumb">
                         Management
                     </p>
 
-                    <h1>Staff Management</h1>
+                    <h1>
+                        Staff Management
+                    </h1>
+
+                </div>
+
+
+                <div class="staff-topbar-badge">
+
+                    <span class="staff-topbar-icon">
+                        👥
+                    </span>
+
+                    <span>
+                        Team
+                    </span>
+
                 </div>
 
             </header>
 
-            <!-- WELCOME SECTION -->
-            <section class="dashboard-welcome">
+
+
+            <!-- =================================
+                 PAGE INTRO
+            ================================== -->
+
+            <section class="staff-hero">
 
                 <div>
-                    <p class="dashboard-eyebrow">YOUR TEAM</p>
 
-                    <h2>Manage your staff 👥</h2>
+                    <p class="dashboard-eyebrow">
+                        YOUR TEAM
+                    </p>
+
+                    <h2>
+                        Manage your staff
+                        <span class="staff-title-icon">
+                            👥
+                        </span>
+                    </h2>
 
                     <p>
-                        Add staff members and monitor their availability.
+                        Add staff members and monitor
+                        their availability in real time.
                     </p>
+
                 </div>
 
             </section>
 
-            <!-- ADD STAFF FORM -->
-            <section class="dashboard-panel">
+
+
+            <!-- =================================
+                 ADD STAFF
+            ================================== -->
+
+            <section
+                class="dashboard-panel staff-form-panel"
+            >
 
                 <div class="panel-header">
+
                     <div>
-                        <p class="panel-eyebrow">STAFF MANAGEMENT</p>
-                        <h3>Add a staff member</h3>
+
+                        <p class="panel-eyebrow">
+                            STAFF MANAGEMENT
+                        </p>
+
+                        <h3>
+                            Add a staff member
+                        </h3>
+
                     </div>
+
+                    <div class="staff-panel-icon">
+                        +
+                    </div>
+
                 </div>
+
+
+                <div class="staff-form-intro">
+
+                    <p>
+                        Add a member of your team so
+                        they can be assigned customers
+                        from the queue.
+                    </p>
+
+                </div>
+
 
                 <form id="staffForm">
 
-                    <label for="staffName">Staff member's name</label>
 
-                    <input
-                        type="text"
-                        id="staffName"
-                        placeholder="Enter staff member's name"
-                        required
+                    <div class="staff-form-field">
+
+                        <label
+                            for="staffName"
+                        >
+                            Staff member's name
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="staffName"
+                            placeholder="Enter staff member's name"
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="dashboard-primary-btn add-staff-btn"
                     >
+                        <span>
+                            +
+                        </span>
 
-                    <button type="submit" class="dashboard-primary-btn">
-                        + Add Staff
+                        Add Staff
                     </button>
+
 
                 </form>
 
-                <p id="staffMessage"></p>
+
+                <p
+                    id="staffMessage"
+                    class="staff-message"
+                ></p>
+
 
             </section>
 
-            <!-- STAFF LIST -->
-            <section class="dashboard-panel">
 
-                <div class="panel-header">
+
+            <!-- =================================
+                 STAFF LIST
+            ================================== -->
+
+            <section
+                class="dashboard-panel staff-list-panel"
+            >
+
+
+                <!-- PANEL HEADER -->
+
+                <div class="staff-list-header">
+
                     <div>
-                        <p class="panel-eyebrow">YOUR TEAM</p>
-                        <h3>Staff members</h3>
+
+                        <p class="panel-eyebrow">
+                            YOUR TEAM
+                        </p>
+
+                        <h3>
+                            Staff members
+                        </h3>
+
+                        <p class="staff-list-description">
+                            Monitor the availability
+                            of your service team.
+                        </p>
+
                     </div>
+
+
+                    <div class="staff-team-badge">
+
+                        <span class="staff-team-icon">
+                            👥
+                        </span>
+
+                        <span>
+                            Team
+                        </span>
+
+                    </div>
+
                 </div>
+
+
+
+                <!-- STAFF TABLE -->
 
                 <div class="queue-table-wrapper">
 
-                    <table class="dashboard-queue-table">
+                    <table
+                        class="dashboard-queue-table staff-table"
+                    >
 
                         <thead>
+
                             <tr>
-                                <th>NAME</th>
-                                <th>AVAILABILITY</th>
+
+                                <th>
+                                    TEAM MEMBER
+                                </th>
+
+                                <th>
+                                    AVAILABILITY
+                                </th>
+
                             </tr>
+
                         </thead>
+
 
                         <tbody id="staffList">
 
                             <tr>
-                                <td colspan="2">
-                                    Loading staff members...
+
+                                <td
+                                    colspan="2"
+                                    class="staff-loading-cell"
+                                >
+
+                                    <div class="staff-loading">
+
+                                        <div class="staff-loading-dot"></div>
+
+                                        <span>
+                                            Loading staff members...
+                                        </span>
+
+                                    </div>
+
                                 </td>
+
                             </tr>
 
                         </tbody>
@@ -144,13 +394,42 @@
 
                 </div>
 
+
             </section>
+
+
+
+            <!-- =================================
+                 STAFF PAGE FOOTER
+            ================================== -->
+
+            <div class="staff-page-footer">
+
+                <span>
+                    QueueLess Staff Management
+                </span>
+
+                <span>
+                    Manage your team efficiently
+                </span>
+
+            </div>
+
 
         </main>
 
+
     </div>
+
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
 
     <script src="js/staff.js"></script>
 
+
 </body>
+
 </html>

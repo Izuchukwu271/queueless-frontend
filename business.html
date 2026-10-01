@@ -279,19 +279,16 @@
 
 
                     <a
-                        href="#"
-                        class="dashboard-nav-item"
+                      href="#queueSection"
+                      class="dashboard-nav-item"
                     >
-
-                        <span class="nav-icon">
-                            ≡
-                        </span>
-
-                        <span>
-                            Queue
-                        </span>
-
-                    </a>
+               <span class="nav-icon">
+                ≡
+            </span>
+          <span>
+            Queue
+        </span>
+</a>
 
 
                     <a
@@ -318,6 +315,7 @@
                     <a
                         href="#"
                         class="dashboard-nav-item"
+                         id="sidebarQrBtn"
                     >
 
                         <span class="nav-icon">
@@ -334,6 +332,7 @@
                     <a
                         href="#"
                         class="dashboard-nav-item"
+                        id="sidebarSettingsBtn"
                     >
 
                         <span class="nav-icon">
@@ -356,7 +355,7 @@
                 <a
                     href="#"
                     class="dashboard-nav-item logout-link"
-                    id="logoutBtn"
+                    id="signOutBtn"
                 >
 
                     <span class="nav-icon">
@@ -401,13 +400,75 @@
                 <div class="dashboard-topbar-actions">
 
                     <button
-                        class="dashboard-icon-btn"
-                        title="Notifications"
-                        type="button"
-                    >
-                        ♢
-                    </button>
+    class="dashboard-icon-btn"
+    id="notificationBtn"
+    title="Notifications"
+    type="button"
+>
+    ♢
+    
+    <span
+        class="notification-badge"
+        id="notificationBadge"
+    >
+        0
+    </span>
+</button>
 
+<!-- NOTIFICATION PANEL -->
+
+<div
+    class="notification-panel"
+    id="notificationPanel"
+>
+
+    <div class="notification-panel-header">
+
+        <div>
+            <p class="panel-eyebrow">
+                QUEUELESS
+            </p>
+
+            <h3>
+                Notifications
+            </h3>
+        </div>
+
+        <button
+            type="button"
+            id="markNotificationsRead"
+            class="mark-read-btn"
+        >
+            Mark all read
+        </button>
+
+    </div>
+
+
+    <div
+        class="notification-list"
+        id="notificationList"
+    >
+
+        <div class="notification-empty">
+
+            <div class="notification-empty-icon">
+                ✓
+            </div>
+
+            <strong>
+                You're all caught up
+            </strong>
+
+            <p>
+                New queue activity will appear here.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
 
                     <div class="topbar-business">
 
@@ -604,7 +665,9 @@
 
                 <!-- QUEUE -->
 
-                <div class="dashboard-panel queue-panel">
+                <div class="dashboard-panel queue-panel"
+                   id="queueSection"
+                >
 
                     <div class="panel-header">
 
@@ -984,7 +1047,9 @@
 
 </div>
 
-<!-- BUSINESS SETTINGS MODAL -->
+<!-- =========================
+     BUSINESS SETTINGS MODAL
+========================= -->
 
 <div
     class="settings-modal"
@@ -993,6 +1058,7 @@
 
     <div class="settings-modal-content">
 
+        <!-- CLOSE BUTTON -->
         <button
             class="settings-modal-close"
             id="settingsModalClose"
@@ -1001,6 +1067,8 @@
             ×
         </button>
 
+
+        <!-- HEADER -->
         <div class="settings-header">
 
             <p class="panel-eyebrow">
@@ -1012,48 +1080,164 @@
             </h2>
 
             <p>
-                Customize your QueueLess dashboard.
+                Update your business information and dashboard preferences.
             </p>
 
         </div>
 
-        <div class="settings-option">
 
-            <div class="settings-option-info">
+        <!-- BUSINESS INFORMATION -->
+        <div class="settings-section">
 
-                <div class="settings-option-icon">
-                    🌙
-                </div>
+            <div class="settings-section-title">
 
-                <div>
-                    <strong>
-                        Dark Mode
-                    </strong>
+                <strong>
+                    Business Information
+                </strong>
 
-                    <span>
-                        Use a darker appearance for your dashboard.
-                    </span>
-                </div>
+                <span>
+                    Keep your business details up to date.
+                </span>
 
             </div>
 
-            <label class="theme-switch">
 
-                <input
-                    type="checkbox"
-                    id="darkModeToggle"
+            <form id="businessSettingsForm">
+
+                <!-- BUSINESS NAME -->
+
+                <div class="settings-form-group">
+
+                    <label for="settingsBusinessName">
+                        Business Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="settingsBusinessName"
+                        placeholder="Enter your business name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="settings-form-group">
+
+                    <label for="settingsPhone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="settingsPhone"
+                        placeholder="Enter your phone number"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="settings-form-group">
+
+                    <label for="settingsLocation">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="settingsLocation"
+                        placeholder="Enter your business location"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <p
+                    id="settingsMessage"
+                    class="settings-message"
+                ></p>
+
+
+                <!-- SAVE BUTTON -->
+
+                <button
+                    type="submit"
+                    class="settings-save-btn"
+                    id="settingsSaveBtn"
                 >
+                    Save Changes
+                </button>
 
-                <span class="theme-slider"></span>
+            </form>
 
-            </label>
+        </div>
+
+
+        <!-- APPEARANCE -->
+        <div class="settings-section settings-appearance">
+
+            <div class="settings-section-title">
+
+                <strong>
+                    Appearance
+                </strong>
+
+                <span>
+                    Customize how your dashboard looks.
+                </span>
+
+            </div>
+
+
+            <div class="settings-option">
+
+                <div class="settings-option-info">
+
+                    <div class="settings-option-icon">
+                        🌙
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Dark Mode
+                        </strong>
+
+                        <span>
+                            Use a darker appearance for your dashboard.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <label class="theme-switch">
+
+                    <input
+                        type="checkbox"
+                        id="darkModeToggle"
+                    >
+
+                    <span class="theme-slider"></span>
+
+                </label>
+
+            </div>
 
         </div>
 
     </div>
 
 </div>
-
 
     <script src="js/business.js"></script>
 

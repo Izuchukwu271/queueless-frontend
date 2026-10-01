@@ -4456,3 +4456,1827 @@ body.dark-mode .settings-modal-close {
     background: #1f2937;
     color: #cbd5e1;
 }
+/* =====================================================
+   QUEUELESS — PREMIUM DARK TOPBAR
+   Add this at the VERY BOTTOM of style.css
+===================================================== */
+
+/* TOPBAR CONTAINER */
+body.dark-mode .topbar {
+    min-height: 88px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0a1222 0%,
+            #08101f 55%,
+            #070d1a 100%
+        );
+
+    border-bottom: 1px solid #1b2940;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+/* TOPBAR TITLE AREA */
+body.dark-mode .topbar h1,
+body.dark-mode .topbar h2,
+body.dark-mode .topbar h3 {
+    color: #f8fbff !important;
+}
+
+body.dark-mode .topbar p {
+    color: #8ea0bb !important;
+}
+
+
+/* TOPBAR BUSINESS NAME */
+body.dark-mode #topbarBusinessName {
+    color: #f8fbff !important;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 0.1px;
+}
+
+
+/* BUSINESS OWNER TEXT */
+body.dark-mode .topbar span {
+    color: #8ea0bb !important;
+}
+
+
+/* If the business owner text is a small element */
+body.dark-mode .topbar small {
+    color: #8ea0bb !important;
+
+    font-size: 12px;
+}
+
+
+/* TOPBAR BUSINESS/account AREA */
+body.dark-mode .topbar .business-account,
+body.dark-mode .topbar .business-info,
+body.dark-mode .topbar .account-info,
+body.dark-mode .topbar .user-info {
+    color: #f8fbff !important;
+}
+
+
+/* Make account text readable even if another
+   CSS rule has higher specificity */
+body.dark-mode .topbar .business-account strong,
+body.dark-mode .topbar .business-info strong,
+body.dark-mode .topbar .account-info strong,
+body.dark-mode .topbar .user-info strong {
+    color: #f8fbff !important;
+}
+
+
+/* ACCOUNT ROLE */
+body.dark-mode .topbar .business-account span,
+body.dark-mode .topbar .business-info span,
+body.dark-mode .topbar .account-info span,
+body.dark-mode .topbar .user-info span {
+    color: #8ea0bb !important;
+}
+
+
+/* BUSINESS AVATAR */
+body.dark-mode .topbar .business-avatar,
+body.dark-mode .topbar .account-avatar,
+body.dark-mode .topbar .user-avatar {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color: #ffffff !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 8px 22px rgba(37, 99, 235, 0.28);
+}
+
+
+/* If your avatar doesn't have a special class,
+   this catches the common avatar structure */
+body.dark-mode .topbar .avatar {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color: #ffffff !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 8px 22px rgba(37, 99, 235, 0.28);
+}
+
+
+/* TOPBAR ICON BUTTONS */
+body.dark-mode .topbar button {
+    background: #101c31;
+
+    border: 1px solid #263750;
+
+    color: #dce7f7 !important;
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.16);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+body.dark-mode .topbar button:hover {
+    background: #162642;
+
+    border-color: #31568a;
+
+    color: #ffffff !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* ICONS INSIDE TOPBAR BUTTONS */
+body.dark-mode .topbar button svg,
+body.dark-mode .topbar button i,
+body.dark-mode .topbar button span {
+    color: #dce7f7 !important;
+}
+
+
+/* BUSINESS AVATAR LETTER */
+body.dark-mode .topbar .avatar *,
+body.dark-mode .topbar .business-avatar *,
+body.dark-mode .topbar .account-avatar *,
+body.dark-mode .topbar .user-avatar * {
+    color: #ffffff !important;
+}
+
+
+/* TOPBAR DIVIDERS */
+body.dark-mode .topbar hr {
+    border-color: #1f2f47;
+}
+
+
+/* TOPBAR RIGHT SIDE */
+body.dark-mode .topbar-right {
+    color: #f8fbff !important;
+}
+
+
+/* TOPBAR ACCOUNT NAME — EXTRA FORCE */
+body.dark-mode #topbarBusinessName,
+body.dark-mode #topbarBusinessName strong,
+body.dark-mode #topbarBusinessName span {
+    color: #f8fbff !important;
+}
+
+
+/* BUSINESS ROLE SHOULD BE MUTED,
+   NOT INVISIBLE */
+body.dark-mode #topbarBusinessName + span {
+    color: #8ea0bb !important;
+}
+
+
+/* SIDEBAR BUSINESS NAME */
+body.dark-mode #sidebarBusinessName {
+    color: #f8fbff !important;
+
+    font-weight: 700;
+}
+
+
+/* SIDEBAR TEXT */
+body.dark-mode .sidebar {
+    color: #dce7f7;
+}
+
+body.dark-mode .sidebar p {
+    color: #8ea0bb !important;
+}
+
+body.dark-mode .sidebar span {
+    color: #8ea0bb;
+}
+
+
+/* SIDEBAR BRAND */
+body.dark-mode .sidebar .logo,
+body.dark-mode .sidebar .brand,
+body.dark-mode .sidebar .brand-name {
+    color: #f8fbff !important;
+}
+
+
+/* SIDEBAR ACTIVE ITEM */
+body.dark-mode .dashboard-nav-item.active {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    color: #ffffff !important;
+
+    border-color: transparent;
+
+    box-shadow:
+        0 10px 25px rgba(37, 99, 235, 0.25);
+}
+
+
+/* SIDEBAR NORMAL ITEMS */
+body.dark-mode .dashboard-nav-item {
+    color: #91a0b7 !important;
+}
+
+body.dark-mode .dashboard-nav-item:hover {
+    color: #ffffff !important;
+
+    background: #15233b;
+}
+
+
+/* =====================================================
+   EXTRA PREMIUM HEADER GLOW
+===================================================== */
+
+body.dark-mode .topbar::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(37, 99, 235, 0.45),
+            transparent
+        );
+
+    pointer-events: none;
+}
+
+/* =====================================================
+   QUEUELESS — PROFESSIONAL STAFF MANAGEMENT
+===================================================== */
+
+
+/* =========================
+   STAFF PAGE
+========================= */
+
+.staff-page {
+    min-height: 100vh;
+}
+
+
+/* =========================
+   STAFF SIDEBAR FOOTER
+========================= */
+
+.staff-sidebar-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin: 20px 14px;
+    padding: 14px;
+
+    border: 1px solid #1d2940;
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.staff-sidebar-footer-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: #17233a;
+
+    font-size: 15px;
+}
+
+.staff-sidebar-footer strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #e8eef8;
+
+    font-size: 11px;
+}
+
+.staff-sidebar-footer span {
+    display: block;
+
+    color: #71809a;
+
+    font-size: 9px;
+}
+
+
+/* =========================
+   TOPBAR TEAM BADGE
+========================= */
+
+.staff-topbar-badge {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 8px 12px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #52627a;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.staff-topbar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 8px;
+
+    background: #eef4ff;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   STAFF HERO
+========================= */
+
+.staff-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 28px;
+}
+
+.staff-hero h2 {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin: 6px 0 8px;
+
+    color: #172033;
+
+    font-size: 30px;
+    font-weight: 800;
+
+    letter-spacing: -0.6px;
+}
+
+.staff-hero > div > p:last-child {
+    margin: 0;
+
+    color: #718096;
+
+    font-size: 14px;
+}
+
+.staff-title-icon {
+    font-size: 25px;
+}
+
+
+/* =========================
+   STAFF FORM PANEL
+========================= */
+
+.staff-form-panel {
+    padding: 28px 30px;
+
+    margin-bottom: 20px;
+}
+
+.staff-form-panel .panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.staff-panel-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef4ff,
+            #e8edff
+        );
+
+    color: #2563eb;
+
+    font-size: 22px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   FORM DESCRIPTION
+========================= */
+
+.staff-form-intro {
+    margin: 4px 0 22px;
+}
+
+.staff-form-intro p {
+    margin: 0;
+
+    max-width: 650px;
+
+    color: #8190a8;
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   FORM FIELD
+========================= */
+
+.staff-form-field {
+    max-width: 650px;
+}
+
+.staff-form-field label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #344054;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.staff-form-field input {
+    width: 100%;
+    height: 50px;
+
+    padding: 0 15px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #dce4ef;
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #172033;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.staff-form-field input:hover {
+    border-color: #cbd6e5;
+}
+
+.staff-form-field input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.09);
+}
+
+
+/* =========================
+   ADD BUTTON
+========================= */
+
+.add-staff-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 44px;
+
+    margin-top: 14px;
+
+    padding: 0 18px;
+}
+
+.add-staff-btn span {
+    font-size: 17px;
+    line-height: 1;
+}
+
+
+/* =========================
+   STAFF MESSAGE
+========================= */
+
+.staff-message {
+    min-height: 18px;
+
+    margin: 12px 0 0;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.staff-message.success {
+    color: #16a34a;
+}
+
+.staff-message.error {
+    color: #dc2626;
+}
+
+
+/* =========================
+   STAFF LIST HEADER
+========================= */
+
+.staff-list-panel {
+    overflow: hidden;
+}
+
+.staff-list-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 25px 28px;
+
+    border-bottom: 1px solid #e7ecf3;
+}
+
+.staff-list-header h3 {
+    margin: 5px 0 5px;
+
+    color: #172033;
+
+    font-size: 19px;
+}
+
+.staff-list-description {
+    margin: 0;
+
+    color: #8a96a8;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   TEAM BADGE
+========================= */
+
+.staff-team-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 11px;
+
+    border-radius: 999px;
+
+    background: #f1f5ff;
+
+    color: #2563eb;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.staff-team-icon {
+    font-size: 12px;
+}
+
+
+/* =========================
+   STAFF TABLE
+========================= */
+
+.staff-table {
+    width: 100%;
+}
+
+.staff-table th {
+    padding: 14px 20px;
+
+    background: #f8fafc;
+
+    color: #8190a8;
+
+    font-size: 10px;
+
+    letter-spacing: 1.2px;
+}
+
+.staff-table td {
+    padding: 15px 20px;
+}
+
+.staff-table tbody tr {
+    transition:
+        background 0.2s ease;
+}
+
+.staff-table tbody tr:hover {
+    background: #f8faff;
+}
+
+
+/* =========================
+   STAFF NAME CELL
+========================= */
+
+.staff-name-cell {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+}
+
+.staff-table-avatar {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef4ff,
+            #e7eaff
+        );
+
+    color: #3159c9;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.staff-name-cell strong {
+    color: #172033;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   STATUS BADGES
+========================= */
+
+.staff-table .status-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 6px 10px;
+
+    border-radius: 999px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.staff-table .status-badge.available {
+    background: #ecfdf3;
+
+    color: #16a34a;
+}
+
+.staff-table .status-badge.busy {
+    background: #fff7ed;
+
+    color: #ea580c;
+}
+
+
+/* Add status dot */
+
+.staff-table .status-badge.available::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+}
+
+.staff-table .status-badge.busy::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #f97316;
+}
+
+
+/* =========================
+   EMPTY / ERROR STATES
+========================= */
+
+.staff-empty-cell,
+.staff-error-cell,
+.staff-loading-cell {
+    padding: 0 !important;
+
+    border-bottom: none !important;
+}
+
+.staff-empty-state {
+    display: flex;
+
+    align-items: center;
+    flex-direction: column;
+
+    padding: 45px 20px;
+
+    text-align: center;
+}
+
+.staff-empty-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 12px;
+
+    border-radius: 14px;
+
+    background: #eef4ff;
+
+    font-size: 19px;
+}
+
+.staff-empty-state strong {
+    margin-bottom: 5px;
+
+    color: #172033;
+
+    font-size: 14px;
+}
+
+.staff-empty-state p {
+    margin: 0;
+
+    max-width: 300px;
+
+    color: #8a96a8;
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   LOADING STATE
+========================= */
+
+.staff-loading {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 35px;
+
+    color: #8996aa;
+
+    font-size: 12px;
+}
+
+.staff-loading-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+
+    animation:
+        staffLoadingPulse 1s ease-in-out infinite;
+}
+
+@keyframes staffLoadingPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* =========================
+   PAGE FOOTER
+========================= */
+
+.staff-page-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 20px 4px 5px;
+
+    color: #9aa6b8;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   STAFF PAGE — PREMIUM DARK MODE
+===================================================== */
+
+body.dark-mode.staff-page .dashboard-main {
+    background:
+        radial-gradient(
+            circle at 75% 5%,
+            rgba(37, 99, 235, 0.08),
+            transparent 28%
+        ),
+        #070d1a;
+}
+
+
+/* TOPBAR */
+
+body.dark-mode.staff-page .staff-topbar-badge {
+    background: #101c31;
+
+    border-color: #263750;
+
+    color: #c8d4e5;
+}
+
+body.dark-mode.staff-page .staff-topbar-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #1d4ed8,
+            #4338ca
+        );
+}
+
+
+/* HERO */
+
+body.dark-mode.staff-page .staff-hero h2 {
+    color: #f8fbff !important;
+}
+
+body.dark-mode.staff-page .staff-hero > div > p:last-child {
+    color: #8495ae;
+}
+
+
+/* FORM PANEL */
+
+body.dark-mode.staff-page .staff-form-panel {
+    background:
+        linear-gradient(
+            145deg,
+            #101b2e,
+            #0c1627
+        );
+}
+
+body.dark-mode.staff-page .staff-panel-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #1d4ed8,
+            #4338ca
+        );
+
+    color: #ffffff;
+}
+
+
+/* FORM DESCRIPTION */
+
+body.dark-mode.staff-page .staff-form-intro p {
+    color: #8191aa;
+}
+
+
+/* LABEL */
+
+body.dark-mode.staff-page .staff-form-field label {
+    color: #d8e2f0;
+}
+
+
+/* INPUT */
+
+body.dark-mode.staff-page .staff-form-field input {
+    background: #0a1322;
+
+    border-color: #263750;
+
+    color: #f8fbff;
+}
+
+body.dark-mode.staff-page .staff-form-field input::placeholder {
+    color: #667892;
+}
+
+body.dark-mode.staff-page .staff-form-field input:hover {
+    border-color: #355176;
+}
+
+body.dark-mode.staff-page .staff-form-field input:focus {
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+
+/* MESSAGE */
+
+body.dark-mode.staff-page .staff-message.success {
+    color: #34d399;
+}
+
+body.dark-mode.staff-page .staff-message.error {
+    color: #f87171;
+}
+
+
+/* STAFF LIST HEADER */
+
+body.dark-mode.staff-page .staff-list-header {
+    border-color: #1e2d44;
+}
+
+body.dark-mode.staff-page .staff-list-header h3 {
+    color: #f8fbff;
+}
+
+body.dark-mode.staff-page .staff-list-description {
+    color: #8191aa;
+}
+
+
+/* TEAM BADGE */
+
+body.dark-mode.staff-page .staff-team-badge {
+    background: rgba(37, 99, 235, 0.13);
+
+    color: #60a5fa;
+}
+
+
+/* TABLE */
+
+body.dark-mode.staff-page .staff-table th {
+    background: #111e33;
+
+    color: #8fa2bf;
+
+    border-color: #24334c;
+}
+
+body.dark-mode.staff-page .staff-table td {
+    color: #d8e1ef;
+
+    border-color: #1c2b42;
+}
+
+body.dark-mode.staff-page .staff-table tbody tr:hover {
+    background: rgba(37, 99, 235, 0.06);
+}
+
+
+/* STAFF AVATAR */
+
+body.dark-mode.staff-page .staff-table-avatar {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color: #ffffff;
+}
+
+
+/* STAFF NAME */
+
+body.dark-mode.staff-page .staff-name-cell strong {
+    color: #f8fbff;
+}
+
+
+/* AVAILABLE */
+
+body.dark-mode.staff-page .staff-table .status-badge.available {
+    background: rgba(16, 185, 129, 0.13);
+
+    color: #34d399;
+}
+
+
+/* BUSY */
+
+body.dark-mode.staff-page .staff-table .status-badge.busy {
+    background: rgba(245, 158, 11, 0.13);
+
+    color: #fbbf24;
+}
+
+
+/* EMPTY STATE */
+
+body.dark-mode.staff-page .staff-empty-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #1d4ed8,
+            #4338ca
+        );
+}
+
+body.dark-mode.staff-page .staff-empty-state strong {
+    color: #f8fbff;
+}
+
+body.dark-mode.staff-page .staff-empty-state p {
+    color: #8191aa;
+}
+
+
+/* LOADING */
+
+body.dark-mode.staff-page .staff-loading {
+    color: #8191aa;
+}
+
+body.dark-mode.staff-page .staff-loading-dot {
+    background: #60a5fa;
+}
+
+
+/* FOOTER */
+
+body.dark-mode.staff-page .staff-page-footer {
+    color: #61718a;
+}
+
+
+/* SIDEBAR FOOTER */
+
+body.dark-mode.staff-page .staff-sidebar-footer {
+    background: rgba(255, 255, 255, 0.025);
+
+    border-color: #1d2940;
+}
+
+body.dark-mode.staff-page .staff-sidebar-footer-icon {
+    background: #17233a;
+}
+
+body.dark-mode.staff-page .staff-sidebar-footer strong {
+    color: #dce7f7;
+}
+
+body.dark-mode.staff-page .staff-sidebar-footer span {
+    color: #71809a;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .staff-hero {
+        margin-bottom: 22px;
+    }
+
+    .staff-hero h2 {
+        font-size: 25px;
+    }
+
+    .staff-form-panel {
+        padding: 22px 20px;
+    }
+
+    .staff-list-header {
+        padding: 20px;
+    }
+
+    .staff-topbar-badge {
+        display: none;
+    }
+
+    .staff-page-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+/* =========================
+   BUSINESS SETTINGS FORM
+========================= */
+
+.settings-section {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid #26344b;
+}
+
+.settings-section-title {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.settings-section-title strong {
+    color: #f8fbff;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.settings-section-title span {
+    color: #8ea0bb;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   SETTINGS FORM
+========================= */
+
+.settings-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 17px;
+}
+
+.settings-form-group label {
+    color: #dbe5f3;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.settings-form-group input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 13px 14px;
+
+    border: 1px solid #2b3b55;
+    border-radius: 10px;
+
+    background: #111b2d;
+    color: #f8fbff;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.settings-form-group input::placeholder {
+    color: #64748b;
+}
+
+.settings-form-group input:focus {
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.12);
+
+    background: #142036;
+}
+
+
+/* =========================
+   SAVE BUTTON
+========================= */
+
+.settings-save-btn {
+    width: 100%;
+
+    margin-top: 5px;
+
+    padding: 13px 18px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #2563eb;
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.settings-save-btn:hover {
+    background: #1d4ed8;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.22);
+
+    transform: translateY(-1px);
+}
+
+.settings-save-btn:active {
+    transform: translateY(0);
+}
+
+.settings-save-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* =========================
+   SETTINGS MESSAGE
+========================= */
+
+.settings-message {
+    min-height: 18px;
+
+    margin: 4px 0 12px;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.settings-message.success {
+    color: #4ade80;
+}
+
+.settings-message.error {
+    color: #f87171;
+}
+
+
+/* =========================
+   APPEARANCE SECTION
+========================= */
+
+.settings-appearance {
+    margin-top: 30px;
+}
+
+
+/* =========================
+   LIGHT MODE SUPPORT
+========================= */
+
+body:not(.dark-mode) .settings-section {
+    border-top-color: #e2e8f0;
+}
+
+body:not(.dark-mode) .settings-section-title strong {
+    color: #172033;
+}
+
+body:not(.dark-mode) .settings-section-title span {
+    color: #64748b;
+}
+
+body:not(.dark-mode) .settings-form-group label {
+    color: #334155;
+}
+
+body:not(.dark-mode) .settings-form-group input {
+    background: #ffffff;
+    border-color: #d7dee9;
+    color: #172033;
+}
+
+body:not(.dark-mode) .settings-form-group input::placeholder {
+    color: #94a3b8;
+}
+
+body:not(.dark-mode) .settings-form-group input:focus {
+    border-color: #2563eb;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .settings-modal-content {
+        width: calc(100% - 24px);
+        padding: 24px 20px;
+    }
+
+    .settings-header h2 {
+        font-size: 24px;
+    }
+
+    .settings-section-title strong {
+        font-size: 16px;
+    }
+
+}
+
+.dashboard-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    line-height: 1;
+}
+
+.dashboard-icon-btn::first-letter {
+    line-height: 1;
+}
+
+/* =========================
+   NOTIFICATION SYSTEM
+========================= */
+
+/* Make the topbar actions the positioning reference */
+.dashboard-topbar-actions {
+    position: relative;
+}
+
+
+/* =========================
+   NOTIFICATION BUTTON
+========================= */
+
+#notificationBtn {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+}
+
+
+/* =========================
+   NOTIFICATION BADGE
+========================= */
+
+.notification-badge {
+    position: absolute;
+
+    top: -5px;
+    right: -5px;
+
+    min-width: 18px;
+    height: 18px;
+
+    padding: 0 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 999px;
+
+    background: #ef4444;
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    border: 2px solid #0b1220;
+
+    box-sizing: border-box;
+}
+
+
+/* Hide badge when there are no notifications */
+.notification-badge:empty {
+    display: none;
+}
+
+
+/* =========================
+   NOTIFICATION PANEL
+========================= */
+
+.notification-panel {
+    position: absolute;
+
+    top: calc(100% + 14px);
+    right: 0;
+
+    width: 360px;
+    max-width: calc(100vw - 32px);
+
+    background: #111b2d;
+
+    border: 1px solid #263852;
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35);
+
+    overflow: hidden;
+
+    z-index: 1000;
+
+    /* Hidden by default */
+    display: none;
+}
+
+
+/* When JavaScript adds .show */
+.notification-panel.show {
+    display: block;
+}
+
+
+/* =========================
+   PANEL HEADER
+========================= */
+
+.notification-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    padding: 20px;
+
+    border-bottom: 1px solid #263852;
+}
+
+.notification-panel-header .panel-eyebrow {
+    margin: 0 0 5px;
+}
+
+.notification-panel-header h3 {
+    margin: 0;
+
+    color: #f8fbff;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   MARK ALL READ
+========================= */
+
+.mark-read-btn {
+    border: none;
+
+    background: transparent;
+
+    color: #60a5fa;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    padding: 6px 0;
+}
+
+.mark-read-btn:hover {
+    color: #93c5fd;
+}
+
+
+/* =========================
+   NOTIFICATION LIST
+========================= */
+
+.notification-list {
+    max-height: 380px;
+
+    overflow-y: auto;
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.notification-empty {
+    padding: 38px 24px;
+
+    text-align: center;
+}
+
+.notification-empty-icon {
+    width: 42px;
+    height: 42px;
+
+    margin: 0 auto 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #17243a;
+
+    color: #4ade80;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.notification-empty strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #f8fbff;
+
+    font-size: 14px;
+}
+
+.notification-empty p {
+    margin: 0;
+
+    color: #8493aa;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   NOTIFICATION ITEM
+========================= */
+
+.notification-item {
+    display: flex;
+
+    gap: 12px;
+
+    padding: 15px 18px;
+
+    border-bottom: 1px solid #1f2d43;
+
+    transition: background 0.2s ease;
+}
+
+.notification-item:hover {
+    background: #17243a;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-icon {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #172c50;
+
+    font-size: 15px;
+}
+
+.notification-content {
+    min-width: 0;
+}
+
+.notification-content strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #e8eef8;
+
+    font-size: 13px;
+}
+
+.notification-content p {
+    margin: 0;
+
+    color: #8796ad;
+
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.notification-time {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #5f718c;
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+body:not(.dark-mode) .notification-panel {
+    background: #ffffff;
+
+    border-color: #e2e8f0;
+
+    box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.16);
+}
+
+body:not(.dark-mode) .notification-panel-header {
+    border-bottom-color: #e8edf4;
+}
+
+body:not(.dark-mode) .notification-panel-header h3 {
+    color: #172033;
+}
+
+body:not(.dark-mode) .notification-empty-icon {
+    background: #ecfdf3;
+}
+
+body:not(.dark-mode) .notification-empty strong {
+    color: #172033;
+}
+
+body:not(.dark-mode) .notification-item {
+    border-bottom-color: #edf1f6;
+}
+
+body:not(.dark-mode) .notification-item:hover {
+    background: #f8fafc;
+}
+
+body:not(.dark-mode) .notification-content strong {
+    color: #172033;
+}
+
+body:not(.dark-mode) .notification-icon {
+    background: #eef4ff;
+}
+
+body:not(.dark-mode) .notification-badge {
+    border-color: #ffffff;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .notification-panel {
+        position: fixed;
+
+        top: 78px;
+        left: 12px;
+        right: 12px;
+
+        width: auto;
+        max-width: none;
+    }
+
+    .notification-panel-header {
+        padding: 17px;
+    }
+
+}

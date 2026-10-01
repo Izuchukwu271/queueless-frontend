@@ -43,6 +43,9 @@ const servingStaffCount =
     const businessQrBtn =
     document.getElementById("businessQrBtn");
 
+    const sidebarQrBtn =
+    document.getElementById("sidebarQrBtn");
+
 const qrModal =
     document.getElementById("qrModal");
 
@@ -110,6 +113,17 @@ function loadBusinessInformation() {
 
         topbarBusinessName.textContent =
             business.business_name;
+
+        // Fill Business Settings form
+
+      settingsBusinessName.value =
+       business.business_name || "";
+
+     settingsPhone.value =
+     business.phone || "";
+
+     settingsLocation.value =
+      business.location || "";    
 
     })
 
@@ -1190,6 +1204,17 @@ businessQrBtn.addEventListener(
         qrModal.classList.add("show");
     }
 );
+
+sidebarQrBtn.addEventListener(
+    "click",
+    function (event) {
+
+        event.preventDefault();
+
+        businessQrBtn.click();
+
+    }
+);
 qrModalClose.addEventListener(
     "click",
     function () {
@@ -1233,6 +1258,36 @@ const settingsModalClose =
 
 const darkModeToggle =
     document.getElementById("darkModeToggle");
+
+    const businessSettingsForm =
+    document.getElementById(
+        "businessSettingsForm"
+    );
+
+const settingsBusinessName =
+    document.getElementById(
+        "settingsBusinessName"
+    );
+
+const settingsPhone =
+    document.getElementById(
+        "settingsPhone"
+    );
+
+const settingsLocation =
+    document.getElementById(
+        "settingsLocation"
+    );
+
+const settingsMessage =
+    document.getElementById(
+        "settingsMessage"
+    );
+
+const settingsSaveBtn =
+    document.getElementById(
+        "settingsSaveBtn"
+    );
 
 
 // Open settings modal
@@ -1314,6 +1369,265 @@ darkModeToggle.addEventListener(
             );
 
         }
+
+    }
+);
+
+const sidebarSettingsBtn =
+    document.getElementById("sidebarSettingsBtn");
+
+sidebarSettingsBtn.addEventListener(
+    "click",
+    function (event) {
+
+        event.preventDefault();
+
+        settingsModal.classList.add("show");
+
+    }
+);
+
+// =========================
+// SAVE BUSINESS SETTINGS
+// =========================
+
+businessSettingsForm.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+
+        const businessName =
+            settingsBusinessName.value.trim();
+
+        const phone =
+            settingsPhone.value.trim();
+
+        const location =
+            settingsLocation.value.trim();
+
+
+        // =========================
+        // VALIDATION
+        // =========================
+
+        if (
+            businessName === "" ||
+            phone === "" ||
+            location === ""
+        ) {
+
+            settingsMessage.textContent =
+                "Please fill in all business information.";
+
+            settingsMessage.className =
+                "settings-message error";
+
+            return;
+        }
+
+
+        // =========================
+        // DISABLE BUTTON
+        // =========================
+
+        settingsSaveBtn.disabled = true;
+
+        settingsSaveBtn.textContent =
+            "Saving...";
+
+        settingsMessage.textContent =
+            "";
+
+
+        // =========================
+        // SEND UPDATE TO BACKEND
+        // =========================
+
+        fetch(
+            "http://localhost:3000/my-business",
+            {
+
+                method: "PATCH",
+
+                headers: {
+
+                    "Content-Type":
+                        "application/json",
+
+                    "Authorization":
+                        `Bearer ${token}`
+
+                },
+
+                body: JSON.stringify({
+
+                    business_name:
+                        businessName,
+
+                    phone:
+                        phone,
+
+                    location:
+                        location
+
+                })
+
+            }
+        )
+
+        .then(async response => {
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.message ||
+                    "Failed to update business information."
+                );
+
+            }
+
+
+            return data;
+
+        })
+
+        .then(data => {
+
+            console.log(
+                "Business information updated:",
+                data
+            );
+
+
+            const updatedBusiness =
+                data.business;
+
+
+            // =========================
+            // UPDATE DASHBOARD NAME
+            // =========================
+
+            sidebarBusinessName.textContent =
+                updatedBusiness.business_name;
+
+            topbarBusinessName.textContent =
+                updatedBusiness.business_name;
+
+
+            // =========================
+            // UPDATE LOCAL STORAGE
+            // =========================
+
+            localStorage.setItem(
+                "queuelessBusiness",
+                JSON.stringify(
+                    updatedBusiness
+                )
+            );
+
+
+            // =========================
+            // SUCCESS MESSAGE
+            // =========================
+
+            settingsMessage.textContent =
+                "Business information updated successfully!";
+
+            settingsMessage.className =
+                "settings-message success";
+
+
+            // =========================
+            // KEEP FORM UPDATED
+            // =========================
+
+            settingsBusinessName.value =
+                updatedBusiness.business_name;
+
+            settingsPhone.value =
+                updatedBusiness.phone;
+
+            settingsLocation.value =
+                updatedBusiness.location;
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Business settings error:",
+                error
+            );
+
+
+            settingsMessage.textContent =
+                error.message ||
+                "Could not update business information.";
+
+            settingsMessage.className =
+                "settings-message error";
+
+        })
+
+        .finally(() => {
+
+            settingsSaveBtn.disabled =
+                false;
+
+            settingsSaveBtn.textContent =
+                "Save Changes";
+
+        });
+
+    }
+);
+
+// =========================
+// SIGN OUT
+// =========================
+
+const signOutBtn =
+    document.getElementById(
+        "signOutBtn"
+    );
+
+signOutBtn.addEventListener(
+    "click",
+    function (event) {
+
+        event.preventDefault();
+
+        const confirmLogout =
+            confirm(
+                "Are you sure you want to sign out?"
+            );
+
+        if (!confirmLogout) {
+            return;
+        }
+
+
+        // Remove login session
+
+        localStorage.removeItem(
+            "queuelessToken"
+        );
+
+        localStorage.removeItem(
+            "queuelessBusiness"
+        );
+
+
+        // Return to login page
+
+        window.location.href =
+            "busi_login.html";
 
     }
 );
