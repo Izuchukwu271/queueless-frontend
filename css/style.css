@@ -6280,3 +6280,27 @@ body:not(.dark-mode) .notification-badge {
     }
 
 }
+
+/* =========================
+   QUEUE NOTIFICATION HIGHLIGHT
+========================= */
+
+.queue-notification-highlight {
+    animation: queueNotificationHighlight 3s ease;
+}
+
+@keyframes queueNotificationHighlight {
+
+    0% {
+        background: #dbeafe;
+    }
+
+    40% {
+        background: #bfdbfe;
+    }
+
+    100% {
+        background: transparent;
+    }
+
+}

@@ -3,6 +3,11 @@ const token = localStorage.getItem("queuelessToken");
 let businessId = null;
 let businessSlug = null;
 
+let knownQueueIds = new Set();
+let notifications = [];
+let unreadNotificationCount = 0;
+let notificationsInitialized = false;
+
 // Check if the user is logged in
 if (!token) {
     window.location.href = "busi_login.html";
@@ -164,6 +169,34 @@ function loadQueueData() {
         console.log("Queue records:", data.queues);
 
         const queues = data.queues || [];
+
+        // Detect newly joined customers
+if (!notificationsInitialized) {
+
+    queues.forEach(customer => {
+        knownQueueIds.add(customer.id);
+    });
+
+    notificationsInitialized = true;
+
+} else {
+
+    queues.forEach(customer => {
+
+        if (
+            !knownQueueIds.has(customer.id) &&
+            customer.status === "waiting"
+        ) {
+
+            addNotification(customer);
+
+        }
+
+        knownQueueIds.add(customer.id);
+
+    });
+
+}
 
 
         // =====================================
@@ -601,6 +634,9 @@ function renderQueueTable(queues) {
 
         const row =
             document.createElement("tr");
+
+         row.dataset.queueId =
+         customer.id;    
 
 
         // =====================================
@@ -1631,3 +1667,248 @@ signOutBtn.addEventListener(
 
     }
 );
+
+// =========================
+// NOTIFICATIONS
+// =========================
+
+const notificationBtn =
+    document.getElementById("notificationBtn");
+
+const notificationPanel =
+    document.getElementById("notificationPanel");
+
+const notificationBadge =
+    document.getElementById("notificationBadge");
+
+const notificationList =
+    document.getElementById("notificationList");
+
+const markNotificationsRead =
+    document.getElementById("markNotificationsRead");
+
+
+// Add a new notification
+function addNotification(customer) {
+
+    notifications.unshift({
+    id: Date.now(),
+    type: "new_customer",
+
+    queueId: customer.id,
+
+    title: "New customer joined",
+
+    message:
+        `${customer.customer_name} joined the queue with ticket ${customer.ticket}.`,
+
+    time: "Just now"
+});
+
+    unreadNotificationCount++;
+
+    updateNotificationBadge();
+
+    renderNotifications();
+
+    // Automatically open the notification panel
+    notificationPanel.classList.add("show");
+}
+
+
+// Update notification badge
+function updateNotificationBadge() {
+
+    if (unreadNotificationCount > 0) {
+
+        notificationBadge.textContent =
+            unreadNotificationCount;
+
+    } else {
+
+        notificationBadge.textContent = "";
+
+    }
+}
+
+
+// Render notifications
+function renderNotifications() {
+
+    if (notifications.length === 0) {
+
+        notificationList.innerHTML = `
+            <div class="notification-empty">
+                <div class="notification-empty-icon">✓</div>
+
+                <strong>You're all caught up</strong>
+
+                <p>
+                    New queue activity will appear here.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    notificationList.innerHTML = "";
+
+
+    notifications.forEach(notification => {
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+      "notification-item";
+
+      item.dataset.queueId =
+      notification.queueId;
+
+      item.style.cursor =
+       "pointer";
+
+
+        item.innerHTML = `
+            <div class="notification-icon">
+                👤
+            </div>
+
+            <div class="notification-content">
+
+                <strong>
+                    ${notification.title}
+                </strong>
+
+                <p>
+                    ${notification.message}
+                </p>
+
+                <span class="notification-time">
+                    ${notification.time}
+                </span>
+
+            </div>
+        `;
+
+
+        notificationList.appendChild(item);
+
+    });
+}
+
+// Click a notification to find the customer
+notificationList.addEventListener(
+    "click",
+    function (event) {
+
+        const notification =
+            event.target.closest(".notification-item");
+
+        if (!notification) {
+            return;
+        }
+
+        const queueId =
+            notification.dataset.queueId;
+
+        if (!queueId) {
+            return;
+        }
+
+        // Close notification panel
+        notificationPanel.classList.remove("show");
+
+        // Scroll to the queue section
+        const queueSection =
+            document.getElementById("queueSection");
+
+        if (queueSection) {
+
+            queueSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+        // Find the corresponding queue row
+        const queueRow =
+            document.querySelector(
+                `[data-queue-id="${queueId}"]`
+            );
+
+        if (queueRow) {
+
+            queueRow.classList.add(
+                "queue-notification-highlight"
+            );
+
+            setTimeout(function () {
+
+                queueRow.classList.remove(
+                    "queue-notification-highlight"
+                );
+
+            }, 3000);
+
+        }
+
+    }
+);
+
+
+// Open / close notification panel
+notificationBtn.addEventListener(
+    "click",
+    function (event) {
+
+        event.stopPropagation();
+
+        notificationPanel.classList.toggle("show");
+
+    }
+);
+
+
+// Prevent clicks inside panel from closing it
+notificationPanel.addEventListener(
+    "click",
+    function (event) {
+
+        event.stopPropagation();
+
+    }
+);
+
+
+// Close when clicking outside
+document.addEventListener(
+    "click",
+    function () {
+
+        notificationPanel.classList.remove("show");
+
+    }
+);
+
+
+// Mark all notifications as read
+markNotificationsRead.addEventListener(
+    "click",
+    function () {
+
+        unreadNotificationCount = 0;
+
+        updateNotificationBadge();
+
+        notificationPanel.classList.remove("show");
+
+    }
+);
+
+
+// Start with an empty notification badge
+updateNotificationBadge();
