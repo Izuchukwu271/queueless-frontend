@@ -130,6 +130,13 @@ joinQueueForm.addEventListener("submit", function (event) {
             ticketResult.style.display = "block";
 
             ticketNumber.textContent = data.queue.ticket;
+            localStorage.setItem(
+            "queueLessTicket",
+            JSON.stringify({
+            slug: slug,
+           ticket: data.queue.ticket
+        })
+);
 
             updateQueueStatus(data.queue.ticket);
 
@@ -245,12 +252,14 @@ if (data.status === "waiting") {
 
 }
             if (
-                data.status === "completed" ||
-                data.status === "cancelled"
-            ) {
-                clearInterval(queueUpdateInterval);
-            }
+    data.status === "completed" ||
+    data.status === "cancelled"
+) {
 
+    clearInterval(queueUpdateInterval);
+
+    localStorage.removeItem("queueLessTicket");
+}
         })
 
         .catch(error => {
@@ -333,3 +342,56 @@ leaveQueueBtn.addEventListener("click", function () {
         });
 
 });
+
+// RESTORE ACTIVE QUEUE TICKET
+
+function restoreQueueTicket() {
+
+    const savedQueue =
+        localStorage.getItem("queueLessTicket");
+
+    if (!savedQueue) {
+        return;
+    }
+
+    try {
+
+        const queueData =
+            JSON.parse(savedQueue);
+
+        if (queueData.slug !== slug) {
+            return;
+        }
+
+        joinQueueForm.style.display = "none";
+        ticketResult.style.display = "block";
+
+        ticketNumber.textContent =
+            queueData.ticket;
+
+        updateQueueStatus(queueData.ticket);
+
+        clearInterval(queueUpdateInterval);
+
+        queueUpdateInterval = setInterval(function () {
+
+            updateQueueStatus(queueData.ticket);
+
+        }, 5000);
+
+    } catch (error) {
+
+        console.error(
+            "Failed to restore queue ticket:",
+            error
+        );
+
+        localStorage.removeItem("queueLessTicket");
+
+    }
+}
+
+
+// RESTORE TICKET WHEN PAGE LOADS
+
+restoreQueueTicket();
