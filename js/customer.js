@@ -180,10 +180,69 @@ function updateQueueStatus(ticket) {
 
             peopleAhead.textContent = data.people_ahead;
 
-            ticketStatus.textContent = data.status;
+if (data.status === "waiting") {
 
-            queueUpdateMessage.textContent = "Updated just now";
+    ticketStatus.textContent =
+        "You're in the queue";
+    ticketStatus.className =
+    "ticket-status waiting";    
 
+    if (data.people_ahead === 0) {
+
+        queueUpdateMessage.textContent =
+            "You're next! Please get ready.";
+
+    } else if (data.people_ahead === 1) {
+
+        queueUpdateMessage.textContent =
+            "1 person is ahead of you.";
+
+    } else {
+
+        queueUpdateMessage.textContent =
+            `${data.people_ahead} people are ahead of you.`;
+
+    }
+
+} else if (data.status === "serving") {
+
+    ticketStatus.textContent =
+        "You're being served";
+    ticketStatus.className =
+    "ticket-status serving";    
+
+    queueUpdateMessage.textContent =
+        "Please proceed to the service area.";
+
+} else if (data.status === "completed") {
+
+    ticketStatus.textContent =
+        "Service completed";
+    ticketStatus.className =
+    "ticket-status completed";    
+
+    queueUpdateMessage.textContent =
+        "Thank you for using QueueLess!";
+
+} else if (data.status === "cancelled") {
+
+    ticketStatus.textContent =
+        "Queue cancelled";
+    ticketStatus.className =
+    "ticket-status cancelled";    
+
+    queueUpdateMessage.textContent =
+        "Your queue ticket has been cancelled.";
+
+} else {
+
+    ticketStatus.textContent =
+        data.status;
+
+    queueUpdateMessage.textContent =
+        "Updated just now";
+
+}
             if (
                 data.status === "completed" ||
                 data.status === "cancelled"

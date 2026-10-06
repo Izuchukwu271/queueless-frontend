@@ -6304,3 +6304,239 @@ body:not(.dark-mode) .notification-badge {
     }
 
 }
+
+/* =========================
+   CUSTOMER TICKET STATUS
+========================= */
+
+.ticket-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* Waiting */
+
+.ticket-status.waiting {
+    background: #ecfdf5;
+    color: #15803d;
+}
+
+
+/* Being served */
+
+.ticket-status.serving {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+
+/* Completed */
+
+.ticket-status.completed {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+
+/* Cancelled */
+
+.ticket-status.cancelled {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+/* =========================
+   CUSTOMER DIGITAL TICKET
+========================= */
+
+.ticket-result {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Ticket top section */
+
+.ticket-result::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 5px;
+
+    background: #2563eb;
+}
+
+
+/* Ticket number */
+
+#ticketNumber {
+    font-size: clamp(42px, 12vw, 64px);
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    line-height: 1;
+
+    margin: 12px 0;
+}
+
+
+/* People ahead */
+
+#peopleAhead {
+    font-size: 32px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    display: block;
+
+    margin-top: 8px;
+}
+
+
+/* Queue update message */
+
+#queueUpdateMessage {
+    margin-top: 10px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* Status badge */
+
+.ticket-status {
+    margin-top: 12px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .ticket-result {
+        border-radius: 20px;
+    }
+
+    #ticketNumber {
+        font-size: 52px;
+    }
+
+    #peopleAhead {
+        font-size: 28px;
+    }
+
+}
+
+/* =========================
+   CUSTOMER MOBILE EXPERIENCE
+========================= */
+
+@media (max-width: 600px) {
+
+    /* Give the page comfortable phone spacing */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Customer form */
+    #joinQueueForm {
+        width: 100%;
+    }
+
+    #joinQueueForm input,
+    #joinQueueForm select {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    #joinQueueForm button {
+        width: 100%;
+        min-height: 52px;
+        font-size: 15px;
+    }
+
+    /* Ticket result */
+    #ticketResult {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Make the ticket comfortable on small screens */
+    #ticketNumber {
+        font-size: 52px;
+        letter-spacing: 2px;
+    }
+
+    #peopleAhead {
+        font-size: 30px;
+    }
+
+    /* Business information */
+    #businessName,
+    #businessCardName {
+        overflow-wrap: anywhere;
+    }
+
+    #businessLocation,
+    #businessPhone {
+        overflow-wrap: anywhere;
+    }
+}
+
+/* =========================
+   CUSTOMER FORM - MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    #joinQueueForm input,
+    #joinQueueForm select,
+    #joinQueueForm textarea {
+        min-height: 50px;
+        padding: 13px 15px;
+        border-radius: 12px;
+        font-size: 16px;
+    }
+
+    #joinQueueForm label {
+        font-size: 13px;
+        margin-bottom: 7px;
+    }
+
+    #joinQueueForm button {
+        min-height: 52px; 
+
+        
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    /* Prevent iPhone/Android browsers
+       from making the page feel cramped */
+    #joinQueueForm {
+        gap: 16px;
+    }
+
+}
