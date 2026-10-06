@@ -6640,3 +6640,76 @@ body:not(.dark-mode) .notification-badge {
     }
 
 }
+
+/* =========================
+   CUSTOMER FORM CARD - MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .customer-form-section {
+        padding: 20px 12px 30px;
+    }
+
+    .customer-form-card {
+        padding: 26px 20px;
+        border-radius: 20px;
+    }
+
+    .form-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 21px;
+        margin-bottom: 16px;
+    }
+
+    .customer-form-card h2 {
+        font-size: 30px;
+        line-height: 1.15;
+        margin-bottom: 10px;
+    }
+
+    .form-description {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 24px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 7px;
+    }
+
+    #joinQueueForm input,
+    #joinQueueForm select {
+        width: 100%;
+        min-height: 50px;
+        box-sizing: border-box;
+        padding: 13px 14px;
+        border-radius: 11px;
+        font-size: 16px;
+    }
+
+    .customer-submit-btn {
+        width: 100%;
+        min-height: 52px;
+        margin-top: 6px;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    .customer-info-note {
+        margin-top: 20px;
+        padding: 12px 14px;
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+}

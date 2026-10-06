@@ -10,6 +10,7 @@ const ticketNumber = document.getElementById("ticketNumber");
 const peopleAhead = document.getElementById("peopleAhead");
 const ticketStatus = document.getElementById("ticketStatus");
 const queueUpdateMessage = document.getElementById("queueUpdateMessage");
+const leaveQueueBtn = document.getElementById("leaveQueueBtn");
 
 const urlParams = new URLSearchParams(window.location.search);
 const slug = urlParams.get("business");
@@ -262,3 +263,73 @@ if (data.status === "waiting") {
         });
 
 }
+
+// LEAVE QUEUE
+
+leaveQueueBtn.addEventListener("click", function () {
+
+    const ticket = ticketNumber.textContent;
+
+    if (!ticket || ticket === "A00") {
+        return;
+    }
+
+    const confirmLeave = confirm(
+        "Are you sure you want to leave the queue?"
+    );
+
+    if (!confirmLeave) {
+        return;
+    }
+
+    leaveQueueBtn.disabled = true;
+    leaveQueueBtn.textContent = "Leaving queue...";
+
+    fetch(
+        `http://localhost:3000/join/${slug}/queue/${ticket}/cancel`,
+        {
+            method: "PATCH"
+        }
+    )
+        .then(response => {
+
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(
+                        data.message || "Failed to leave queue."
+                    );
+                });
+            }
+
+            return response.json();
+
+        })
+        .then(data => {
+
+            console.log("Queue cancelled:", data);
+
+            clearInterval(queueUpdateInterval);
+
+            ticketStatus.textContent = "Queue cancelled";
+            ticketStatus.className = "ticket-status cancelled";
+
+            peopleAhead.textContent = "0";
+
+            queueUpdateMessage.textContent =
+                "You have left the queue.";
+
+            leaveQueueBtn.style.display = "none";
+
+        })
+        .catch(error => {
+
+            console.error("Leave queue error:", error);
+
+            alert(error.message);
+
+            leaveQueueBtn.disabled = false;
+            leaveQueueBtn.textContent = "Leave Queue";
+
+        });
+
+});
