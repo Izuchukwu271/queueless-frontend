@@ -2046,23 +2046,6 @@ footer p {
 }
 
 
-/* =========================================
-   FOOTER
-   ========================================= */
-
-.dashboard-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding-top: 20px;
-
-    border-top: 1px solid #e2e8f0;
-
-    color: #94a3b8;
-
-    font-size: 10px;
-}
 
 
 /* =========================================
@@ -6743,4 +6726,43 @@ body:not(.dark-mode) .notification-badge {
     opacity: 0.6;
     cursor: not-allowed;
     transform: none;
+}
+
+
+/* QueueLess compact footer */
+.dashboard-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+
+    width: 100%;
+    height: auto;
+    min-height: 0;
+
+    margin: 16px 0 0;
+    padding: 14px 18px;
+
+    background: transparent;
+    border: none;
+    border-top: 1px solid #1e293b;
+    border-radius: 0;
+
+    box-sizing: border-box;
+    color: #94a3b8;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.dashboard-footer span {
+    color: #94a3b8;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    .dashboard-footer {
+        justify-content: center;
+        text-align: center;
+    }
 }
