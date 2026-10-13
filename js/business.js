@@ -781,6 +781,102 @@ function renderQueueTable(queues) {
 }
 
 
+ // =====================================
+ // LOAD QUEUE HISTORY
+ // =====================================
+
+function loadQueueHistory() {
+    const historySection = document.getElementById("queueHistorySection");
+    const historyList = document.getElementById("queueHistoryList");
+
+    historyList.innerHTML = `
+        <tr>
+            <td colspan="6">Loading history...</td>
+        </tr>
+    `;
+
+    fetch("http://localhost:3000/queue-history", {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    .then(async response => {
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to load history.");
+        }
+
+        return data;
+    })
+    .then(data => {
+        const history = data.history || [];
+
+        historyList.innerHTML = "";
+
+        if (history.length === 0) {
+            historyList.innerHTML = `
+                <tr>
+                    <td colspan="6">
+                        No previous queue records found.
+                    </td>
+                </tr>
+            `;
+        } else {
+            history.forEach(customer => {
+                const row = document.createElement("tr");
+
+                const values = [
+                    customer.ticket,
+                    customer.customer_name,
+                    customer.people ?? "—",
+                    customer.status,
+                    customer.staff_name || "—",
+                    customer.created_at
+                        ? new Date(customer.created_at).toLocaleString()
+                        : "—"
+                ];
+
+                values.forEach((value, index) => {
+                    const cell = document.createElement("td");
+
+                    if (index === 3) {
+                        const badge = document.createElement("span");
+                        badge.className = "status-badge " + value;
+                        badge.textContent = value;
+                        cell.appendChild(badge);
+                    } else {
+                        cell.textContent = value;
+                    }
+
+                    row.appendChild(cell);
+                });
+
+                historyList.appendChild(row);
+            });
+        }
+
+        historySection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    })
+    .catch(error => {
+        console.error("Queue history error:", error);
+
+        historyList.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    Could not load history. Please try again.
+                </td>
+            </tr>
+        `;
+    });
+}
+
+
+
 // =====================================
 // START DASHBOARD
 // =====================================
@@ -1251,6 +1347,17 @@ sidebarQrBtn.addEventListener(
 
     }
 );
+
+
+const sidebarHistoryBtn = document.getElementById("sidebarHistoryBtn");
+
+sidebarHistoryBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    loadQueueHistory();
+});
+
+
 qrModalClose.addEventListener(
     "click",
     function () {

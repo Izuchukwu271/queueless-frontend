@@ -328,6 +328,22 @@
 
                     </a>
 
+                    <a
+                        href="#"
+                        class="dashboard-nav-item"
+                        id="sidebarHistoryBtn"
+                    >
+
+                        <span class="nav-icon">
+                            ↺
+                        </span>
+
+                        <span>
+                            History
+                        </span>
+
+                    </a>
+
 
                     <a
                         href="#"
@@ -371,6 +387,7 @@
             </div>
 
         </aside>
+
 
 
         <!-- =====================================
@@ -862,6 +879,45 @@
     </div>
 
 </section>
+
+
+<!-- QUEUE HISTORY -->
+
+<section class="dashboard-panel" id="queueHistorySection">
+
+    <div class="panel-header">
+        <div>
+            <p class="panel-eyebrow">PAST RECORDS</p>
+            <h3>Queue History</h3>
+            <p>Review customers from previous days.</p>
+        </div>
+    </div>
+
+    <div class="queue-table-wrapper">
+        <table class="dashboard-queue-table">
+            <thead>
+                <tr>
+                    <th>TICKET</th>
+                    <th>CUSTOMER</th>
+                    <th>PEOPLE</th>
+                    <th>STATUS</th>
+                    <th>STAFF</th>
+                    <th>DATE &amp; TIME</th>
+                </tr>
+            </thead>
+
+            <tbody id="queueHistoryList">
+                <tr>
+                    <td colspan="6">
+                        Click History to load past records.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
 
 
             <!-- =================================
