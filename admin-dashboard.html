@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QueueLess | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/admin-dashboard.js" defer></script>
+</head>
+
+<body class="admin-dashboard-body">
+
+    <div class="admin-dashboard-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="admin-sidebar">
+            <a href="admin-dashboard.html" class="admin-sidebar-brand">
+                <span class="admin-sidebar-logo">Q</span>
+                <span>QueueLess</span>
+            </a>
+
+            <p class="admin-sidebar-label">ADMINISTRATION</p>
+
+            <nav class="admin-sidebar-nav">
+                <a href="#overview" class="admin-nav-link active">
+                    <span>▦</span> Overview
+                </a>
+
+                <a href="#recoveryRequests" class="admin-nav-link">
+                    <span>▤</span> Recovery Requests
+                    <span id="sidebarPendingCount" class="admin-nav-count">0</span>
+                </a>
+            </nav>
+
+            <div class="admin-sidebar-bottom">
+                <div class="admin-profile">
+                    <div class="admin-profile-avatar">A</div>
+                    <div>
+                        <strong>Administrator</strong>
+                        <small>System Manager</small>
+                    </div>
+                </div>
+
+                <button id="adminLogoutButton" class="admin-logout-button">
+                    ↪ Sign Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="admin-dashboard-main">
+
+            <header class="admin-topbar">
+                <div>
+                    <p class="admin-breadcrumb">QueueLess / Administration</p>
+                    <h1>Admin Dashboard</h1>
+                    <p class="admin-page-subtitle">
+                        Monitor and manage business account recovery requests.
+                    </p>
+                </div>
+
+                <button id="refreshRequestsButton" class="admin-refresh-button">
+                    ↻ Refresh
+                </button>
+            </header>
+
+            <!-- OVERVIEW -->
+            <section id="overview" class="admin-overview-section">
+                <div class="admin-section-heading">
+                    <div>
+                        <h2>Overview</h2>
+                        <p>Here's what's happening with account recovery.</p>
+                    </div>
+                </div>
+
+                <div class="admin-stats-grid">
+
+                    <article class="admin-stat-card">
+                        <div class="admin-stat-icon pending-icon">◷</div>
+                        <p>Pending Requests</p>
+                        <h3 id="pendingRequestsCount">—</h3>
+                        <small>Awaiting review</small>
+                    </article>
+
+                    <article class="admin-stat-card">
+                        <div class="admin-stat-icon approved-icon">✓</div>
+                        <p>Approved Requests</p>
+                        <h3 id="approvedRequestsCount">—</h3>
+                        <small>Approved by admin</small>
+                    </article>
+
+                    <article class="admin-stat-card">
+                        <div class="admin-stat-icon rejected-icon">×</div>
+                        <p>Rejected Requests</p>
+                        <h3 id="rejectedRequestsCount">—</h3>
+                        <small>Declined by admin</small>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- RECOVERY REQUESTS -->
+            <section id="recoveryRequests" class="admin-requests-section">
+
+                <div class="admin-section-heading">
+                    <div>
+                        <h2>Password Recovery Requests</h2>
+                        <p>Review requests submitted by registered businesses.</p>
+                    </div>
+
+                    <span class="admin-live-label">
+                        <span class="admin-live-dot"></span>
+                        Admin Panel
+                    </span>
+                </div>
+
+                <div id="adminDashboardMessage"
+                     class="admin-dashboard-message"
+                     role="status"
+                     aria-live="polite">
+                    Loading recovery requests...
+                </div>
+
+                <div class="admin-table-container">
+                    <table class="admin-requests-table">
+                        <thead>
+                            <tr>
+                                <th>BUSINESS</th>
+                                <th>PHONE NUMBER</th>
+                                <th>REQUEST DATE</th>
+                                <th>STATUS</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="recoveryRequestsTableBody">
+                            <tr>
+                                <td colspan="5" class="admin-table-empty">
+                                    Connecting to the server...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="admin-table-footer">
+                    QueueLess account recovery management
+                </p>
+
+            </section>
+
+            <footer class="admin-dashboard-footer">
+                <p>© 2026 QueueLess. Administration Portal.</p>
+                <p>Secure management for your queue system.</p>
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>

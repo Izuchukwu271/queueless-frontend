@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QueueLess | Admin Login</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/admin.js" defer></script>
+</head>
+
+<body>
+    <main class="admin-login-page">
+        <section class="admin-login-card">
+
+            <div class="admin-brand">
+                <div class="admin-logo">Q</div>
+                <h1>QueueLess</h1>
+                <p>Administration Portal</p>
+            </div>
+
+            <div class="admin-login-heading">
+                <h2>Welcome back</h2>
+                <p>Sign in to manage QueueLess.</p>
+            </div>
+
+            <form id="adminLoginForm">
+                <div class="admin-form-group">
+                    <label for="adminUsername">Username</label>
+                    <input
+                        type="text"
+                        id="adminUsername"
+                        name="username"
+                        placeholder="Enter admin username"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="admin-form-group">
+                    <label for="adminPassword">Password</label>
+                    <input
+                        type="password"
+                        id="adminPassword"
+                        name="password"
+                        placeholder="Enter admin password"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <p id="adminLoginMessage" role="status" aria-live="polite"></p>
+
+                <button type="submit" id="adminLoginButton">
+                    Sign In to Dashboard
+                </button>
+            </form>
+
+            <p class="admin-security-note">
+                <span>🔒</span> Restricted access for authorized administrators
+            </p>
+
+            <a class="admin-back-link" href="index.html">
+                ← Back to QueueLess
+            </a>
+
+        </section>
+    </main>
+</body>
+</html>
