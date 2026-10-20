@@ -21,6 +21,7 @@ if (!token) {
     window.location.replace("admin.html");
 } else {
     loadRecoveryRequests();
+    loadRecoveryStats();
 }
 
 // Load pending recovery requests from the protected backend.
@@ -71,14 +72,8 @@ async function loadRecoveryRequests() {
 
         message.style.color = "#718096";
 
-        // This endpoint only returns pending requests.
-        pendingCount.textContent = recoveryRequests.length;
-        sidebarPendingCount.textContent = recoveryRequests.length;
-
-        // These counts are not available from the pending-only endpoint.
-        approvedCount.textContent = "—";
-        rejectedCount.textContent = "—";
-
+        // Update the pending count from the statistics endpoint.
+            loadRecoveryStats();
     } catch (error) {
         message.textContent = error.message;
         message.style.color = "#dc2626";
@@ -94,6 +89,42 @@ async function loadRecoveryRequests() {
         refreshButton.disabled = false;
     }
 }
+
+
+
+async function loadRecoveryStats() {
+    try {
+        const response = await fetch(`${API_URL}/admin/recovery-stats`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        const data = await response.json();
+
+        if (response.status === 401 || response.status === 403) {
+            sessionStorage.removeItem("queuelessAdminToken");
+            window.location.replace("admin.html");
+            return;
+        }
+
+        if (!response.ok) {
+            throw new Error(
+                data.message || "Could not load recovery statistics."
+            );
+        }
+
+        pendingCount.textContent = data.pending;
+        approvedCount.textContent = data.approved;
+        rejectedCount.textContent = data.rejected;
+        sidebarPendingCount.textContent = data.pending;
+
+    } catch (error) {
+        console.error("Statistics loading error:", error.message);
+    }
+}
+
 
 // Safely display the pending requests in the table.
 function renderRecoveryRequests() {
@@ -129,7 +160,33 @@ function renderRecoveryRequests() {
         statusCell.textContent = request.status || "pending";
 
         const actionCell = document.createElement("td");
-        actionCell.textContent = "Actions will be added next";
+        
+        // Create the Approve button.
+        const approveButton = document.createElement("button");
+        approveButton.textContent = "Approve";
+        approveButton.className = "admin-action-button admin-approve-button";
+        approveButton.type = "button";
+
+        approveButton.addEventListener("click", () => {
+            updateRecoveryRequest(request.request_id, "approved");
+        });
+
+        // Create the Reject button.
+        const rejectButton = document.createElement("button");
+        rejectButton.textContent = "Reject";
+        rejectButton.className = "admin-action-button admin-reject-button";
+        rejectButton.type = "button";
+
+        rejectButton.addEventListener("click", () => {
+            updateRecoveryRequest(request.request_id, "rejected");
+        });
+
+        // Add both buttons to the Actions cell.
+        const actionButtons = document.createElement("div");
+        actionButtons.className = "admin-action-buttons";
+        actionButtons.append(approveButton, rejectButton);
+        actionCell.appendChild(actionButtons);
+
 
         row.append(
             businessCell,
@@ -151,3 +208,57 @@ logoutButton.addEventListener("click", () => {
     sessionStorage.removeItem("queuelessAdminToken");
     window.location.replace("admin.html");
 });
+
+
+async function updateRecoveryRequest(requestId, status) {
+    const action = status === "approved" ? "approve" : "reject";
+
+    const confirmed = window.confirm(
+        `Are you sure you want to ${action} recovery request #${requestId}?`
+    );
+
+    if (!confirmed) return;
+
+    message.textContent = `Updating request #${requestId}...`;
+    message.style.color = "#718096";
+
+    try {
+        const response = await fetch(
+            `${API_URL}/admin/recovery-requests/${requestId}`,
+            {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({ status })
+            }
+        );
+
+        const data = await response.json();
+
+        if (response.status === 401 || response.status === 403) {
+            sessionStorage.removeItem("queuelessAdminToken");
+            window.location.replace("admin.html");
+            return;
+        }
+
+        if (!response.ok) {
+            throw new Error(
+                data.message || `Could not ${action} this request.`
+            );
+        }
+
+        message.textContent =
+            `Recovery request #${requestId} was ${status} successfully.`;
+        message.style.color = "#16803d";
+
+        // Reload the pending list after a successful update.
+        await loadRecoveryRequests();
+
+    } catch (error) {
+        message.textContent = error.message;
+        message.style.color = "#dc2626";
+    }
+}
+
