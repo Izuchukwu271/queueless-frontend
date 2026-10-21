@@ -1,8 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -12,13 +12,8 @@
 
     <title>QueueLess — Create Business Account</title>
 
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 
 <body class="business-auth-page">
 
@@ -33,7 +28,6 @@
                 <a href="index.html" class="auth-logo">
                     QueueLess
                 </a>
-
 
                 <div class="auth-brand-message">
 
@@ -53,70 +47,49 @@
 
                 </div>
 
-
                 <div class="auth-feature-list">
 
                     <div class="auth-feature">
 
-                        <span class="auth-feature-icon">
-                            ✓
-                        </span>
+                        <span class="auth-feature-icon">✓</span>
 
                         <div>
-
-                            <strong>
-                                Digital queues
-                            </strong>
+                            <strong>Digital queues</strong>
 
                             <p>
                                 Replace physical waiting lines with
                                 simple digital tickets.
                             </p>
-
                         </div>
 
                     </div>
 
-
                     <div class="auth-feature">
 
-                        <span class="auth-feature-icon">
-                            ✓
-                        </span>
+                        <span class="auth-feature-icon">✓</span>
 
                         <div>
-
-                            <strong>
-                                Real-time updates
-                            </strong>
+                            <strong>Real-time updates</strong>
 
                             <p>
                                 Keep customers informed about
                                 their position.
                             </p>
-
                         </div>
 
                     </div>
 
-
                     <div class="auth-feature">
 
-                        <span class="auth-feature-icon">
-                            ✓
-                        </span>
+                        <span class="auth-feature-icon">✓</span>
 
                         <div>
-
-                            <strong>
-                                Simple management
-                            </strong>
+                            <strong>Simple management</strong>
 
                             <p>
                                 Manage your customers and staff
                                 from one dashboard.
                             </p>
-
                         </div>
 
                     </div>
@@ -126,7 +99,6 @@
             </div>
 
         </section>
-
 
         <!-- RIGHT SIDE -->
 
@@ -140,9 +112,7 @@
                         QueueLess
                     </p>
 
-                    <h2>
-                        Create your account
-                    </h2>
+                    <h2>Create your account</h2>
 
                     <p>
                         Set up your business on QueueLess.
@@ -150,9 +120,7 @@
 
                 </div>
 
-
                 <form id="businessRegisterForm">
-
 
                     <div class="form-group">
 
@@ -163,12 +131,13 @@
                         <input
                             type="text"
                             id="businessName"
+                            name="business_name"
                             placeholder="e.g. Happy Health Clinic"
+                            autocomplete="organization"
                             required
                         >
 
                     </div>
-
 
                     <div class="form-group">
 
@@ -179,6 +148,7 @@
                         <input
                             type="tel"
                             id="phone"
+                            name="phone"
                             placeholder="e.g. 690 123 456"
                             autocomplete="tel"
                             required
@@ -186,6 +156,27 @@
 
                     </div>
 
+                    <div class="form-group">
+
+                        <label for="email">
+                            Business email (Gmail)
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="yourbusiness@gmail.com"
+                            autocomplete="email"
+                            maxlength="254"
+                            required
+                        >
+
+                        <small>
+                            We'll send a verification link to this address.
+                        </small>
+
+                    </div>
 
                     <div class="form-group">
 
@@ -196,12 +187,13 @@
                         <input
                             type="text"
                             id="location"
+                            name="location"
                             placeholder="e.g. Yaoundé"
+                            autocomplete="address-level2"
                             required
                         >
 
                     </div>
-
 
                     <div class="form-group">
 
@@ -212,13 +204,14 @@
                         <input
                             type="password"
                             id="password"
+                            name="password"
                             placeholder="Create a password"
                             autocomplete="new-password"
+                            minlength="6"
                             required
                         >
 
                     </div>
-
 
                     <button
                         type="submit"
@@ -229,22 +222,17 @@
 
                 </form>
 
-
                 <div class="auth-divider">
                     <span>or</span>
                 </div>
 
-
                 <p class="auth-register-text">
-
                     Already have a QueueLess account?
 
                     <a href="busi_login.html">
                         Sign in
                     </a>
-
                 </p>
-
 
                 <a
                     href="index.html"
@@ -259,9 +247,8 @@
 
     </main>
 
-
     <script src="js/business-register.js"></script>
 
 </body>
-
 </html>
+```

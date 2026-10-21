@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email — QueueLess</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="business-auth-page">
+    <main class="auth-layout">
+        <section class="auth-brand">
+            <div class="auth-brand-content">
+                <a href="index.html" class="auth-logo">QueueLess</a>
+
+                <div class="auth-brand-message">
+                    <p class="hero-label">ACCOUNT SECURITY</p>
+                    <h1>One last step to <span>join QueueLess.</span></h1>
+                    <p>Verify your email address to help protect your business account.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="auth-panel">
+            <div class="auth-card">
+                <div class="auth-card-header">
+                    <p class="auth-mobile-logo">QueueLess</p>
+                    <h2 id="verificationTitle">Verifying your email</h2>
+                    <p id="verificationMessage" role="status" aria-live="polite">
+                        Please wait while we verify your email address.
+                    </p>
+                </div>
+
+                <a href="busi_login.html" class="primary-btn auth-submit-btn"
+                   id="loginLink" hidden>
+                    Go to sign in
+                </a>
+
+                <a href="busi_register.html" class="auth-back-link">
+                    Return to registration
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const API_BASE_URL = "http://localhost:3000";
+
+        const title = document.getElementById("verificationTitle");
+        const message = document.getElementById("verificationMessage");
+        const loginLink = document.getElementById("loginLink");
+
+        async function verifyEmail() {
+            const params = new URLSearchParams(window.location.search);
+            const token = params.get("token");
+
+            // Remove the token from the visible URL after reading it.
+            window.history.replaceState({}, document.title,
+                window.location.pathname);
+
+            if (!token || !/^[a-f0-9]{64}$/i.test(token)) {
+                title.textContent = "Invalid verification link";
+                message.textContent =
+                    "This verification link is missing or invalid. Please register again or contact QueueLess support.";
+                return;
+            }
+
+            try {
+                const response = await fetch(
+                    `${API_BASE_URL}/verify-email`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ token })
+                    }
+                );
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(
+                        data.message || "Email verification failed."
+                    );
+                }
+
+                title.textContent = "Email verified successfully!";
+                message.textContent =
+                    data.message ||
+                    "Your email address has been verified. You can now sign in.";
+                loginLink.hidden = false;
+
+            } catch (error) {
+                title.textContent = "Verification unsuccessful";
+                message.textContent =
+                    error.message ||
+                    "Unable to verify your email. Please try again.";
+            }
+        }
+
+        verifyEmail();
+    </script>
+</body>
+</html>
