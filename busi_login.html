@@ -1,8 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -12,13 +12,8 @@
 
     <title>QueueLess — Business Login</title>
 
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 
 <body class="business-auth-page">
 
@@ -51,19 +46,14 @@
 
                 </div>
 
-
                 <div class="auth-feature-list">
 
                     <div class="auth-feature">
 
-                        <span class="auth-feature-icon">
-                            ✓
-                        </span>
+                        <span class="auth-feature-icon">✓</span>
 
                         <div>
-                            <strong>
-                                Manage your queue
-                            </strong>
+                            <strong>Manage your queue</strong>
 
                             <p>
                                 Keep customers moving efficiently.
@@ -72,17 +62,12 @@
 
                     </div>
 
-
                     <div class="auth-feature">
 
-                        <span class="auth-feature-icon">
-                            ✓
-                        </span>
+                        <span class="auth-feature-icon">✓</span>
 
                         <div>
-                            <strong>
-                                Track customers
-                            </strong>
+                            <strong>Track customers</strong>
 
                             <p>
                                 See who is waiting and who is being served.
@@ -91,17 +76,12 @@
 
                     </div>
 
-
                     <div class="auth-feature">
 
-                        <span class="auth-feature-icon">
-                            ✓
-                        </span>
+                        <span class="auth-feature-icon">✓</span>
 
                         <div>
-                            <strong>
-                                Built for any business
-                            </strong>
+                            <strong>Built for any business</strong>
 
                             <p>
                                 Clinics, banks, salons, restaurants and more.
@@ -116,7 +96,6 @@
 
         </section>
 
-
         <!-- RIGHT SIDE -->
         <section class="auth-panel">
 
@@ -128,9 +107,7 @@
                         QueueLess
                     </p>
 
-                    <h2>
-                        Welcome back
-                    </h2>
+                    <h2>Welcome back</h2>
 
                     <p>
                         Sign in to manage your business queue.
@@ -138,7 +115,7 @@
 
                 </div>
 
-
+                <!-- BUSINESS LOGIN FORM -->
                 <form id="businessLoginForm">
 
                     <div class="form-group">
@@ -157,7 +134,6 @@
 
                     </div>
 
-
                     <div class="form-group">
 
                         <div class="password-label-row">
@@ -166,11 +142,9 @@
                                 Password
                             </label>
 
-                            
-                             <a href="forgot_password.html">
+                            <a href="forgot_password.html">
                                 Forgot password?
                             </a>
-
 
                         </div>
 
@@ -184,7 +158,6 @@
 
                     </div>
 
-
                     <button
                         type="submit"
                         class="primary-btn auth-submit-btn"
@@ -194,22 +167,69 @@
 
                 </form>
 
-
+                <!-- DIVIDER -->
                 <div class="auth-divider">
                     <span>or</span>
                 </div>
 
+                <!-- RESEND VERIFICATION EMAIL -->
+                <div class="resend-verification">
 
+                    <h3>Haven't verified your email?</h3>
+
+                    <p>
+                        Enter your registered email address below
+                        to request a new verification link.
+                    </p>
+
+                    <form id="resendVerificationForm">
+
+                        <div class="form-group">
+
+                            <label for="resendEmail">
+                                Business email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="resendEmail"
+                                name="email"
+                                placeholder="yourbusiness@gmail.com"
+                                autocomplete="email"
+                                maxlength="254"
+                                required
+                            >
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            id="resendVerificationButton"
+                            class="primary-btn"
+                        >
+                            Resend Verification Email
+                        </button>
+
+                        <p
+                            id="resendVerificationMessage"
+                            role="status"
+                            aria-live="polite"
+                        ></p>
+
+                    </form>
+
+                </div>
+
+                <!-- REGISTRATION LINK -->
                 <p class="auth-register-text">
 
                     Don't have a QueueLess business account?
 
-                    <a href="#">
+                    <a href="busi_register.html">
                         Create one
                     </a>
 
                 </p>
-
 
                 <a
                     href="index.html"
@@ -224,8 +244,8 @@
 
     </main>
 
-
     <script src="js/business-login.js"></script>
+    <script src="js/resend-verification.js"></script>
 
 </body>
 
