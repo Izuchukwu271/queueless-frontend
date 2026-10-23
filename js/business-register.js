@@ -38,7 +38,7 @@ businessRegisterForm.addEventListener("submit", async function (event) {
 
     // Use your deployed backend in production.
     // Keep localhost if you are testing with your local backend.
-    const API_BASE_URL = "http://localhost:3000";
+    const API_BASE_URL = "https://queueless-backend-k0hq.onrender.com";
 
     try {
         const response = await fetch(`${API_BASE_URL}/businesses`, {
