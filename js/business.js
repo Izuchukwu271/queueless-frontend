@@ -90,7 +90,7 @@ const staffStatusCount =
 
 function loadBusinessInformation() {
 
-    fetch("http://localhost:3000/my-business", {
+    fetch("https://queueless-backend-k0hq.onrender.com/my-business", {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`
@@ -150,7 +150,7 @@ function loadBusinessInformation() {
 
 function loadQueueData() {
 
-    fetch("http://localhost:3000/my-queues", {
+    fetch("https://queueless-backend-k0hq.onrender.com/my-queues", {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`
@@ -270,7 +270,7 @@ if (!notificationsInitialized) {
 
 function loadStaffStatus(queues) {
 
-    fetch("http://localhost:3000/my-staff", {
+    fetch("https://queueless-backend-k0hq.onrender.com/my-staff", {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`
@@ -798,7 +798,7 @@ function loadQueueHistory() {
         </tr>
     `;
 
-    fetch("http://localhost:3000/queue-history", {
+    fetch("https://queueless-backend-k0hq.onrender.com/queue-history", {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`
@@ -929,7 +929,7 @@ serveNextBtn.addEventListener(
 
 
         fetch(
-            `http://localhost:3000/queues/${businessId}/next`,
+            `https://queueless-backend-k0hq.onrender.com/queues/${businessId}/next`,
             {
                 method: "PATCH",
 
@@ -1031,7 +1031,7 @@ currentlyServingList.addEventListener(
 
 
         fetch(
-            `http://localhost:3000/queues/${queueId}/complete`,
+            `https://queueless-backend-k0hq.onrender.com/queues/${queueId}/complete`,
             {
                 method: "PATCH",
 
@@ -1128,7 +1128,7 @@ queueList.addEventListener(
 
 
         fetch(
-            `http://localhost:3000/queues/${queueId}/complete`,
+            `https://queueless-backend-k0hq.onrender.com/queues/${queueId}/complete`,
             {
                 method: "PATCH",
 
@@ -1236,7 +1236,7 @@ queueList.addEventListener(
 
 
         fetch(
-            `http://localhost:3000/queues/${queueId}/cancel`,
+            `https://queueless-backend-k0hq.onrender.com/queues/${queueId}/cancel`,
             {
                 method: "PATCH",
 
@@ -1633,7 +1633,7 @@ businessSettingsForm.addEventListener(
         // =========================
 
         fetch(
-            "http://localhost:3000/my-business",
+            "https://queueless-backend-k0hq.onrender.com/my-business",
             {
 
                 method: "PATCH",

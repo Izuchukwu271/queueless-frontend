@@ -5,7 +5,7 @@ const confirmPasswordInput = document.getElementById("confirmPassword");
 const resetMessage = document.getElementById("resetMessage");
 
 const API_URL =
-      "http://localhost:3000/password-reset/complete";
+      "https://queueless-backend-k0hq.onrender.com/password-reset/complete";
 
 const params = new URLSearchParams(window.location.search);
 const resetToken = params.get("token");

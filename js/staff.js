@@ -42,7 +42,7 @@ const staffMessage =
 
 function loadStaff() {
 
-    fetch("http://localhost:3000/my-staff", {
+    fetch("https://queueless-backend-k0hq.onrender.com/my-staff", {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -280,7 +280,7 @@ staffForm.addEventListener(
         // ==============================
 
         fetch(
-            "http://localhost:3000/staff",
+            "https://queueless-backend-k0hq.onrender.com/staff",
             {
 
                 method: "POST",

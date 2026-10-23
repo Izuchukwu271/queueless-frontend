@@ -31,7 +31,7 @@ businessLoginForm.addEventListener("submit", function (event) {
 
     // Send login request to backend
 
-    fetch("http://localhost:3000/login", {
+    fetch("https://queueless-backend-k0hq.onrender.com/login", {
 
         method: "POST",
 

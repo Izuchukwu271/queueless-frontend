@@ -1,5 +1,5 @@
 
-const API_URL = "http://localhost:3000";
+const API_URL ="https://queueless-backend-k0hq.onrender.com";
 
 const adminLoginForm = document.getElementById("adminLoginForm");
 const adminLoginMessage = document.getElementById("adminLoginMessage");

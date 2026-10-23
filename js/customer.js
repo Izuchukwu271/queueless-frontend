@@ -29,7 +29,7 @@ if (!slug) {
 
 } else {
 
-    fetch(`http://localhost:3000/join/${slug}`)
+    fetch(`https://queueless-backend-k0hq.onrender.com/join/${slug}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error("Business not found");
@@ -96,7 +96,7 @@ joinQueueForm.addEventListener("submit", function (event) {
     submitButton.disabled = true;
     submitButton.textContent = "Joining queue...";
 
-    fetch(`http://localhost:3000/join/${slug}`, {
+    fetch(`https://queueless-backend-k0hq.onrender.com/join/${slug}`, {
 
         method: "POST",
 
@@ -170,7 +170,7 @@ joinQueueForm.addEventListener("submit", function (event) {
 
 function updateQueueStatus(ticket) {
 
-    fetch(`http://localhost:3000/join/${slug}/queue/${ticket}`)
+    fetch(`https://queueless-backend-k0hq.onrender.com/join/${slug}/queue/${ticket}`)
 
         .then(response => {
 
@@ -295,7 +295,7 @@ leaveQueueBtn.addEventListener("click", function () {
     leaveQueueBtn.textContent = "Leaving queue...";
 
     fetch(
-        `http://localhost:3000/join/${slug}/queue/${ticket}/cancel`,
+        `https://queueless-backend-k0hq.onrender.com/${slug}/queue/${ticket}/cancel`,
         {
             method: "PATCH"
         }

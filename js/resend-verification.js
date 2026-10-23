@@ -4,7 +4,7 @@ const resendEmailInput = document.getElementById("resendEmail");
 const resendButton = document.getElementById("resendVerificationButton");
 const resendMessage = document.getElementById("resendVerificationMessage");
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://queueless-backend-k0hq.onrender.com";
 
 resendForm.addEventListener("submit", async function (event) {
     event.preventDefault();
