@@ -1047,41 +1047,47 @@
     id="qrModal"
 >
 
-    <div class="qr-modal-content">
+    
+<div class="qr-modal-content">
 
-        <button
-            class="qr-modal-close"
-            id="qrModalClose"
-            type="button"
-        >
-            ×
-        </button>
+    <button
+        class="qr-modal-close"
+        id="qrModalClose"
+        type="button"
+    >
+        ×
+    </button>
 
-        <div class="qr-modal-header">
+    <div class="qr-modal-header">
+        <p class="panel-eyebrow">QUEUELESS</p>
 
-            <p class="panel-eyebrow">
-                QUEUELESS
-            </p>
+        <h2>Business QR Code</h2>
 
-            <h2>
-                Business QR Code
-            </h2>
+        <p>
+            Customers can scan this QR code
+            to join your queue.
+        </p>
+    </div>
 
-            <p>
-                Customers can scan this QR code
-                to join your queue.
-            </p>
-
+    <div
+        class="qr-code-container"
+        id="qrCodeContainer"
+    >
+        <div class="qr-loading">
+            Loading QR code...
         </div>
+    </div>
 
-        <div
-            class="qr-code-container"
-            id="qrCodeContainer"
-        >
-            <div class="qr-loading">
-                Loading QR code...
-            </div>
-        </div>
+    <button
+        id="downloadQrBtn"
+        type="button"
+        class="primary-btn"
+    >
+        Download QR Code
+    </button>
+
+</div>
+
 
         <div class="qr-business-name">
             <strong id="qrBusinessName">

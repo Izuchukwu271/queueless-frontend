@@ -69,6 +69,9 @@ const qrBusinessLocation =
 const qrCustomerUrl =
     document.getElementById("qrCustomerUrl");
 
+const downloadQrBtn =
+    document.getElementById("downloadQrBtn");
+
 
 // =====================================
 // STAFF STATUS ELEMENTS
@@ -1336,6 +1339,47 @@ businessQrBtn.addEventListener(
         qrModal.classList.add("show");
     }
 );
+
+
+downloadQrBtn.addEventListener("click", async function () {
+    const qrImage = qrCodeContainer.querySelector("img");
+
+    if (!qrImage) {
+        alert("Please generate your QR code first.");
+        return;
+    }
+
+    try {
+        downloadQrBtn.disabled = true;
+        downloadQrBtn.textContent = "Preparing download...";
+
+        const response = await fetch(qrImage.src);
+
+        if (!response.ok) {
+            throw new Error("Unable to retrieve QR code.");
+        }
+
+        const blob = await response.blob();
+        const downloadUrl = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+        link.href = downloadUrl;
+        link.download = "queueless-business-qr.png";
+
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        URL.revokeObjectURL(downloadUrl);
+    } catch (error) {
+        console.error("QR download error:", error);
+        alert("Could not download the QR code. Please try again.");
+    } finally {
+        downloadQrBtn.disabled = false;
+        downloadQrBtn.textContent = "Download QR Code";
+    }
+});
+
 
 sidebarQrBtn.addEventListener(
     "click",
